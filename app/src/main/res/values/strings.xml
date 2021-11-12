@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Shopping List Application</string>
+
+    <string name="button_save">Save</string>
+    <string name="empty_not_saved">Word not saved because it is empty.</string>
+    <string name="add_word">Add word</string>
+    <string name="hint_new_name_product">podaj nazwę nowego produktu</string>
+    <string name="hint_category_of_new_product">podaj kategorię nowego produktu</string>
+</resources>
