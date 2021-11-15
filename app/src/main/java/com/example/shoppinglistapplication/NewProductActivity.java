@@ -32,7 +32,7 @@ public class NewProductActivity extends AppCompatActivity {
                 setResult(RESULT_CANCELED, replyIntent);
             } else {
                 String product_name = editProductName.getText().toString();
-                String category_name = editProductName.getText().toString();
+                String category_name = editProductCategory.getText().toString();
                 replyIntent.putExtra(EXTRA_REPLY_NAME, product_name);
                 replyIntent.putExtra(EXTRA_REPLY_CATEGORY, category_name);
                 setResult(RESULT_OK, replyIntent);

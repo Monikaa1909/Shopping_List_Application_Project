@@ -50,9 +50,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == NEW_PRODUCT_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            String cat = data.getStringExtra(NewProductActivity.EXTRA_REPLY_CATEGORY);
-//            Category category = new Category("Warzywo");
-//            categoryViewModel.insert(category);
+//            String cat = data.getStringExtra(NewProductActivity.EXTRA_REPLY_CATEGORY);    // nazwa kategorii
             Product product = new Product(data.getStringExtra(NewProductActivity.EXTRA_REPLY_NAME), 1);
             productViewModel.insert(product);
         } else {

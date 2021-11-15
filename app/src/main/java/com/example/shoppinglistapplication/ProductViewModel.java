@@ -10,24 +10,22 @@ import java.util.List;
 
 public class ProductViewModel extends AndroidViewModel {
 
-    private ProductDao productDao;
-    private final LiveData<List<Product>> allProducts;
+    private DataRepository dataRepository;
 
-    public ProductViewModel(Application application) {
+    private LiveData<List<Product>> products;
+
+    public ProductViewModel(@NonNull Application application) {
         super(application);
 
-        AppRoomDatabase db = AppRoomDatabase.getDatabase(application);
-        productDao = db.productDao();
-        allProducts = productDao.getAlphabetizedProducts();
+        dataRepository = DataRepository.getInstance(application);
+        products = dataRepository.getAlphabetizedProducts();
     }
 
     LiveData<List<Product>> getAllProducts() {
-        return allProducts;
+        return products;
     }
 
     public void insert(Product product) {
-        AppRoomDatabase.databaseWriteExecutor.execute(() -> {
-            productDao.insert(product);
-        });
+        dataRepository.insert(product);
     }
 }

@@ -17,8 +17,8 @@ public interface CategoryDao {
     @Query("DELETE FROM Category")
     void deleteAll();
 
-//    @Query("select id_category from category where category_name = :name")
-//    LiveData<List<Integer>> getIdByCategoryName(String name);
+//    @Query("select * from category where category_name = :name")
+//    LiveData<Category> getIdByCategoryName(String name);
 
     @Query("SELECT * FROM category ORDER BY category_name ASC")
     LiveData<List<Category>> getAlphabetizedCategories();
