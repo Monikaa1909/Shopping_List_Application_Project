@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import com.example.shoppinglistapplication.entities.Product;
+
 import java.util.List;
 
 public class ProductViewModel extends AndroidViewModel {

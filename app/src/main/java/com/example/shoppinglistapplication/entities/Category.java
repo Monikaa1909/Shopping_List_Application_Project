@@ -1,4 +1,4 @@
-package com.example.shoppinglistapplication;
+package com.example.shoppinglistapplication.entities;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;

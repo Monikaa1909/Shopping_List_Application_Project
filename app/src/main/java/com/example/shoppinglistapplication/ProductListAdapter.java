@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 
-import java.util.List;
+import com.example.shoppinglistapplication.entities.Product;
 
 public class ProductListAdapter extends ListAdapter<Product, ProductViewHolder> {
 
