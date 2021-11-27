@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".NewProductActivity">
 
     <EditText
         android:id="@+id/edit_product_name"
@@ -15,8 +18,9 @@
         android:layout_margin="@dimen/big_padding"
         android:textSize="18sp" />
 
+<!--    zmienić to na możliwość wyboru z istniejących kategorii, bez wpisywania ręcznie -->
     <EditText
-        android:id="@+id/edit_product_category"
+        android:id="@+id/edit_product_category_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="@dimen/min_height"

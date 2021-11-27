@@ -10,10 +10,40 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoppingListApplication">
         <activity
+            android:name=".ProductsByDishesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DishesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NewProductInCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OneListOfPreferencesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProductsByCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NewCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CategoriesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListsOfPreferencesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NewListOfPreferencesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProductsActivity"
+            android:exported="false" />
+        <activity
             android:name=".NewProductActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".StartActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

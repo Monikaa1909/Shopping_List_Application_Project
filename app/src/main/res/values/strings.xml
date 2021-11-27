@@ -1,9 +1,19 @@
 <resources>
     <string name="app_name">Shopping List Application</string>
 
-    <string name="button_save">Save</string>
-    <string name="empty_not_saved">Word not saved because it is empty.</string>
-    <string name="add_word">Add word</string>
+    <string name="button_save">Zapisz</string>
+    <string name="empty_not_saved">Pole nie może być puste, musisz podać nazwę</string>
     <string name="hint_new_name_product">podaj nazwę nowego produktu</string>
-    <string name="hint_category_of_new_product">podaj kategorię nowego produktu</string>
+    <string name="hint_category_of_new_product">Podaj kategorię nowego produktu</string>
+    <string name="button_create_new_list">Stwórz nową listę zakupów</string>
+    <string name="hint_new_name_list">Podaj nazwę listy zakupów</string>
+    <string name="button_save_new_list_name">Zapisz</string>
+    <string name="button_back_from_list_name">Wróć</string>
+    <string name="button_load_list">Listy preferencji</string>
+    <string name="button_load_products">Produkty</string>
+    <string name="button_load_categories">Kategorie</string>
+    <string name="add_category">Dodaj kategorię</string>
+    <string name="add_product">Dodaj produkt</string>
+    <string name="hint_new_name_category">Podaj nazwę kategorii</string>
+    <string name="button_load_dishes">Dostępne dania</string>
 </resources>
