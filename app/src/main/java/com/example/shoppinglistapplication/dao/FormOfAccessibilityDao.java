@@ -15,11 +15,16 @@ import java.util.List;
 public interface FormOfAccessibilityDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insert(FormOfAccessibility form_of_accessibility);
-
+    long insert(FormOfAccessibility form_of_accessibility);
 
     @Query("DELETE FROM FormOfAccessibility")
     void deleteAll();
+
+    @Query("select exists (select * from formofaccessibility where form = :form)")
+    Boolean formExists(float form);
+
+    @Query("select idFormOfAccessibility from formofaccessibility where form = :form")
+    long formIdByName(float form);
 
     @Query("SELECT * FROM FormOfAccessibility")
     LiveData<List<FormOfAccessibility>> getAllForms();

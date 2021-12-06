@@ -18,11 +18,11 @@ import androidx.room.PrimaryKey;
                         parentColumns = "idUnitOfMeasurement",
                         childColumns = "idUnitOfMeasurement",
                         onDelete = CASCADE),
-                @ForeignKey(
-                        entity = FormOfAccessibility.class,
-                        parentColumns = "idFormOfAccessibility",
-                        childColumns = "idFormOfAccessibility",
-                        onDelete = CASCADE)
+//                @ForeignKey(
+//                        entity = FormOfAccessibility.class,
+//                        parentColumns = "idFormOfAccessibility",
+//                        childColumns = "idFormOfAccessibility",
+//                        onDelete = CASCADE)
 })
 
 public class Product {
@@ -44,18 +44,19 @@ public class Product {
         this.idUnitOfMeasurement = idUnitOfMeasurement;
     }
 
-    public int getIdFormOfAccessibility() {
-        return idFormOfAccessibility;
-    }
-
-    public void setIdFormOfAccessibility(int idFormOfAccessibility) {
-        this.idFormOfAccessibility = idFormOfAccessibility;
-    }
+//    public int getIdFormOfAccessibility() {
+//        return idFormOfAccessibility;
+//    }
+//
+//    public void setIdFormOfAccessibility(int idFormOfAccessibility) {
+//        this.idFormOfAccessibility = idFormOfAccessibility;
+//    }
 
     @NonNull
     private int idUnitOfMeasurement;
-    @NonNull
-    private int idFormOfAccessibility;
+
+//    @NonNull
+//    private int idFormOfAccessibility;
 
     public int getIdCategory() {
         return idCategory;
@@ -68,10 +69,10 @@ public class Product {
     public String getProductName() { return productName; }
     public void setProductName(@NonNull String productName) { this.productName = productName; }
 
-    public Product(@NonNull String productName, int idCategory, int idFormOfAccessibility, int idUnitOfMeasurement) {
+    public Product(@NonNull String productName, int idCategory, int idUnitOfMeasurement) {
         this.productName = productName;
         this.idCategory = idCategory;
-        this.idFormOfAccessibility = idFormOfAccessibility;
+//        this.idFormOfAccessibility = idFormOfAccessibility;
         this.idUnitOfMeasurement = idUnitOfMeasurement;
     }
 }

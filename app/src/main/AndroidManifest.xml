@@ -10,37 +10,130 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoppingListApplication">
         <activity
-            android:name=".ProductsByDishesActivity"
+            android:name=".uiDishes.NewDishActivity5"
             android:exported="false" />
         <activity
-            android:name=".DishesActivity"
+            android:name=".uiDishes.NewDishActivity4"
             android:exported="false" />
         <activity
-            android:name=".NewProductInCategoryActivity"
+            android:name=".uiDishes.NewDishActivity3"
             android:exported="false" />
         <activity
-            android:name=".OneListOfPreferencesActivity"
+            android:name=".uiDishes.NewDishActivity2"
             android:exported="false" />
         <activity
-            android:name=".ProductsByCategoryActivity"
+            android:name=".uiCategories.ProductsByCategoryToDeleteActivity"
             android:exported="false" />
         <activity
-            android:name=".NewCategoryActivity"
+            android:name=".uiCategories.EditCategoryActivity"
             android:exported="false" />
         <activity
-            android:name=".CategoriesActivity"
+            android:name=".uiCategories.CategoriesToEditActivity"
             android:exported="false" />
         <activity
-            android:name=".ListsOfPreferencesActivity"
+            android:name=".uiCategories.CategoriesToDeleteActivity"
             android:exported="false" />
         <activity
-            android:name=".NewListOfPreferencesActivity"
+            android:name=".uiProducts.ProductFormDeleteActivity"
             android:exported="false" />
         <activity
-            android:name=".ProductsActivity"
+            android:name=".uiProducts.NewProductFormActivity"
             android:exported="false" />
         <activity
-            android:name=".NewProductActivity"
+            android:name=".uiProducts.EditProductUnitActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiProducts.EditProductCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiProducts.ProductCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiProducts.ProductsToEditActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiProducts.EditProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiProducts.ProductFormsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiProducts.ProductUnitActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiProducts.ProductsToDeleteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiProducts.ProductDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiCategories.NewProductInCategoryActivity3"
+            android:exported="false" />
+        <activity
+            android:name=".uiCategories.NewProductInCategoryActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".uiDishes.NewDishDetailActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".uiDishes.NewDishDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiDishes.NewDishActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiFormOfAccessibility.NewFormOfAccessibilityActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiUnitOfMeasurement.NewUnitOfMeasurementActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiFormOfAccessibility.FormOfAccessibilityActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiUnitOfMeasurement.UnitsOfMeasurementActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiProducts.NewProductActivity3"
+            android:exported="false" />
+        <activity
+            android:name=".uiProducts.NewProductActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".uiDishes.IngredientsDishActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiDishes.DishesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiCategories.NewProductInCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiListOfPreferences.OneListOfPreferencesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiCategories.ProductsByCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiCategories.NewCategoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiCategories.CategoriesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiListOfPreferences.ListsOfPreferencesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiListOfPreferences.NewListOfPreferencesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiProducts.ProductsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiProducts.NewProductActivity"
             android:exported="false" />
         <activity
             android:name=".StartActivity"

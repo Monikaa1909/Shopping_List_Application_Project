@@ -4,38 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".NewProductActivity">
-
-    <EditText
-        android:id="@+id/edit_product_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="@dimen/min_height"
-        android:fontFamily="sans-serif-light"
-        android:hint="@string/hint_new_name_product"
-        android:inputType="textAutoComplete"
-        android:layout_margin="@dimen/big_padding"
-        android:textSize="18sp" />
-
-<!--    zmienić to na możliwość wyboru z istniejących kategorii, bez wpisywania ręcznie -->
-    <EditText
-        android:id="@+id/edit_product_category_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="@dimen/min_height"
-        android:fontFamily="sans-serif-light"
-        android:hint="@string/hint_category_of_new_product"
-        android:inputType="textAutoComplete"
-        android:layout_margin="@dimen/big_padding"
-        android:textSize="18sp" />
+    tools:context=".StartActivity"
+    android:orientation="vertical">
 
     <Button
-        android:id="@+id/button_save"
+        android:id="@+id/button_category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        android:text="@string/button_save"
+        android:text="@string/button_category"
+        android:layout_margin="@dimen/big_padding"
+        android:textColor="@color/buttonLabel" />
+
+    <Button
+        android:id="@+id/button_unit_of_measurement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="@string/button_unit_of_measurment"
+        android:layout_margin="@dimen/big_padding"
+        android:textColor="@color/buttonLabel" />
+
+    <Button
+        android:id="@+id/button_form_of_accessibility"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="@string/button_form_of_accessibility"
         android:layout_margin="@dimen/big_padding"
         android:textColor="@color/buttonLabel" />
 

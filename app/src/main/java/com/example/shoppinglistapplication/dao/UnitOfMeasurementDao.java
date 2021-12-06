@@ -11,10 +11,16 @@ import java.util.List;
 public interface UnitOfMeasurementDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insert(UnitOfMeasurement unit_of_measurement);
+    long insert(UnitOfMeasurement unit_of_measurement);
 
     @Query("DELETE FROM UnitOfMeasurement")
     void deleteAll();
+
+    @Query("select exists (select * from unitofmeasurement where unit = :name)")
+    Boolean unitExists(String name);
+
+    @Query("select idUnitOfMeasurement from unitofmeasurement where unit = :name")
+    long unitIdByName(String name);
 
     @Query("SELECT * FROM UnitOfMeasurement")
     LiveData<List<UnitOfMeasurement>> getAllUnits();

@@ -20,10 +20,16 @@ public interface CategoryDao {
     void deleteAll();
 
     @Query("select idCategory from category where categoryName = :name limit 1;")
-    Integer getIdByCategoryName(String name);
+    long getIdByCategoryName(String name);
 
     @Query("select exists (select * from category where categoryName = :name)")
     Boolean categoryExists(String name);
+
+    @Query("UPDATE category SET categoryName = :newCategoryName WHERE idCategory =:id")
+    void updateCategoryName(long id, String newCategoryName);
+
+    @Query("DELETE FROM category WHERE idCategory = :id")
+    void deleteCategoryById(long id);
 
     @Query("SELECT * FROM category ORDER BY categoryName ASC")
     LiveData<List<Category>> getAlphabetizedCategories();

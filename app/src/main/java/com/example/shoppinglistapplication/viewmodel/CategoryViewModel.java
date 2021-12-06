@@ -17,7 +17,7 @@ public class CategoryViewModel extends AndroidViewModel {
 
     private LiveData<List<Category>> categories;
 
-    public CategoryViewModel(@NonNull Application application, String name, int id) {
+    public CategoryViewModel(@NonNull Application application) {
         super(application);
 
         dataRepository = DataRepository.getInstance(application);
@@ -28,7 +28,7 @@ public class CategoryViewModel extends AndroidViewModel {
         return categories;
     }
 
-    public Integer getIdCategoryByName(String name) { return dataRepository.getIdByCategoryName(name); }
+    public long getIdCategoryByName(String name) { return dataRepository.getIdByCategoryName(name); }
 
     public Boolean categoryExists(String name) {
         return dataRepository.categoryExists(name);
@@ -36,5 +36,13 @@ public class CategoryViewModel extends AndroidViewModel {
 
     public void insert(Category category, DataRepository.Executor executor) {
         dataRepository.insert(category, executor);
+    }
+
+    public void deleteCategoryById(long id, DataRepository.Executor executor) {
+        dataRepository.deleteCategoryById(id);
+    }
+
+    public void updateCategoryName(long id, String newCategoryName, DataRepository.Executor executor) {
+        dataRepository.updateCategoryName(id, newCategoryName);
     }
 }

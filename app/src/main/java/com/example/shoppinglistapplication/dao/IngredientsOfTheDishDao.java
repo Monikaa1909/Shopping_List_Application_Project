@@ -27,7 +27,10 @@ public interface IngredientsOfTheDishDao {
     @Query("DELETE FROM IngredientsOfTheDish")
     void deleteAll();
 
-    @Query("select product.productName, ingredientsofthedish.quantity from ingredientsofthedish, product, dish where ingredientsofthedish.idDish = dish.idDish and ingredientsofthedish.idProduct = product.idProduct and dishName = :name")
+    @Query("select exists (select * from ingredientsofthedish where idProduct = :idProduct and idDish = :idDish)")
+    Boolean ingredientsExists(int idProduct, int idDish);
+
+    @Query("select product.productName, ingredientsofthedish.quantity, unitofmeasurement.unit from ingredientsofthedish, product, dish, unitofmeasurement where unitofmeasurement.idUnitOfMeasurement = product.idUnitOfMeasurement and ingredientsofthedish.idDish = dish.idDish and ingredientsofthedish.idProduct = product.idProduct and dishName = :name")
     List<DishDetail> getDetail(String name);
 }
 

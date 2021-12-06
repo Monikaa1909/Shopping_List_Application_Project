@@ -16,4 +16,22 @@
     <string name="add_product">Dodaj produkt</string>
     <string name="hint_new_name_category">Podaj nazwę kategorii</string>
     <string name="button_load_dishes">Dostępne dania</string>
+    <string name="button_next">Dalej</string>
+    <string name="button_load_settings">Dodatkowe ustawienia</string>
+    <string name="button_load_list_of_measurment">Dostępne jednostki</string>
+    <string name="button_load_form_of_accessibility">Dostępne formy dostępności</string>
+    <string name="hint_new_name_unit">Podaj nową jednostkę</string>
+    <string name="hint_new_form">Podaj nową formę dostępności</string>
+    <string name="hint_new_name_dish">Podaj nazwę dania</string>
+    <string name="add_dish">Dodaj danie</string>
+    <string name="button_skip_adding_form">Pomiń dodawanie formy dostępności</string>
+    <string name="button_form_of_accessibility">Formy dostępności produktu</string>
+    <string name="button_unit_of_measurment">Jednostka produktu</string>
+    <string name="hint_edit_name_product">Podaj nową nazwę produktu</string>
+    <string name="button_category">Kategoria</string>
+    <string name="lose_your_data">Wraz z usunięciem kategorii, utracisz też wszystkie powiązane z nią produkty</string>
+    <string name="hint_edit_name_category">Podaj nową nazwę kategorii</string>
+    <string name="button_add_ingredients">Dodaj składnik</string>
+    <string name="button_add_ingredients_later">Dodaj składniki później</string>
+    <string name="hint_new_quantity">Podaj ilość danego składnika</string>
 </resources>
