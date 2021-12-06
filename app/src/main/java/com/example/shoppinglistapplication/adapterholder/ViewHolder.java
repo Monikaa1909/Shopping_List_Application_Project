@@ -12,12 +12,16 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.shoppinglistapplication.entity.IngredientsOfTheDish;
 import com.example.shoppinglistapplication.entity.Product;
 import com.example.shoppinglistapplication.entity.ProductFormOfAccessibility;
 import com.example.shoppinglistapplication.entity.UnitOfMeasurement;
 import com.example.shoppinglistapplication.uiCategories.CategoriesActivity;
 import com.example.shoppinglistapplication.uiCategories.EditCategoryActivity;
 import com.example.shoppinglistapplication.uiCategories.ProductsByCategoryActivity;
+import com.example.shoppinglistapplication.uiDishes.DishesActivity;
+import com.example.shoppinglistapplication.uiDishes.EditDishActivity;
+import com.example.shoppinglistapplication.uiDishes.EditQuantityActivity;
 import com.example.shoppinglistapplication.uiDishes.NewDishActivity;
 import com.example.shoppinglistapplication.uiDishes.NewDishActivity2;
 import com.example.shoppinglistapplication.uiDishes.NewDishActivity4;
@@ -26,6 +30,7 @@ import com.example.shoppinglistapplication.uiDishes.NewDishDetailActivity;
 import com.example.shoppinglistapplication.uiDishes.NewDishDetailActivity2;
 import com.example.shoppinglistapplication.uiDishes.IngredientsDishActivity;
 import com.example.shoppinglistapplication.R;
+import com.example.shoppinglistapplication.uiDishes.NewDishDetailActivity3;
 import com.example.shoppinglistapplication.uiProducts.EditProductActivity;
 import com.example.shoppinglistapplication.uiProducts.NewProductActivity;
 import com.example.shoppinglistapplication.uiProducts.NewProductActivity3;
@@ -35,6 +40,8 @@ import com.example.shoppinglistapplication.uiProducts.ProductFormsActivity;
 import com.example.shoppinglistapplication.uiProducts.ProductUnitActivity;
 import com.example.shoppinglistapplication.uiProducts.ProductsActivity;
 import com.example.shoppinglistapplication.viewmodel.CategoryViewModel;
+import com.example.shoppinglistapplication.viewmodel.DishViewModel;
+import com.example.shoppinglistapplication.viewmodel.IngredientsOfTheDishViewModel;
 import com.example.shoppinglistapplication.viewmodel.ProductFormOfAccessibilityViewModel;
 import com.example.shoppinglistapplication.viewmodel.ProductViewModel;
 
@@ -142,7 +149,18 @@ class ProductViewHolder2 extends RecyclerView.ViewHolder implements View.OnClick
                 v.getContext().startActivity(intent);
                 ((Activity)v.getContext()).finish();
             }).start();
-
+        } else if (version == 6) {  // wybór produktu przy dodawaniu składnika do dania
+            ProductViewModel productViewModel = new ProductViewModel(((Activity) v.getContext()).getApplication());
+            new Thread(() -> {
+                List<UnitOfMeasurement> units = productViewModel.getProductUnit(idProduct);
+                String unit = units.get(0).getUnit();
+                Intent intent = new Intent(v.getContext(), NewDishDetailActivity3.class);
+                intent.putExtra(IngredientsDishActivity.KEY_DISH_ID, idItem);
+                intent.putExtra(IngredientsDishActivity.KEY_NEW_INGREDIENT_ID, idProduct);
+                intent.putExtra(IngredientsDishActivity.KEY_NEW_INGREDIENT_UNIT, unit);
+                v.getContext().startActivity(intent);
+                ((Activity) v.getContext()).finish();
+            }).start();
         }
     }
 }
@@ -229,11 +247,13 @@ class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClick
             intent.putExtra(ProductsByCategoryActivity.KEY_CATEGORY_ID2, idCategory);
             v.getContext().startActivity(intent);
 
-        } else if (version == 2) {  // nie wiem
+        } else if (version == 2) {  // wybór kategorii nowego składnika dania
             Intent intent = new Intent(v.getContext(), NewDishDetailActivity2.class);
-            intent.putExtra(NewDishDetailActivity.KEY_CATEGORY_ID, idCategory);
+            intent.putExtra(IngredientsDishActivity.KEY_CATEGORY_ID, idCategory);
+            intent.putExtra(IngredientsDishActivity.KEY_DISH_ID, idItem);
             v.getContext().startActivity(intent);
             ((Activity)v.getContext()).finish();
+
         } else if (version == 3) {  // edytowanie kategorii produktu
             ProductViewModel productViewModel = new ProductViewModel(((Activity)v.getContext()).getApplication());
             new Thread(() -> {
@@ -249,7 +269,7 @@ class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClick
             AlertDialog.Builder builder = new AlertDialog.Builder((Activity)v.getContext())
                     .setView(((Activity)v.getContext()).getLayoutInflater().inflate(R.layout.dialog_wrong_data, null))
                     .setTitle("Czy na pewno chcesz usunąć kategorię?")
-                    .setMessage(R.string.lose_your_data)
+                    .setMessage(R.string.lose_your_category_data)
                     .setPositiveButton("Tak", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             new Thread(() -> {
@@ -263,9 +283,9 @@ class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClick
                     })
                     .setNegativeButton("Anuluj usuwanie kategorii", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
-//                            Intent intent = new Intent(v.getContext(), CategoriesActivity.class);
-//                            v.getContext().startActivity(intent);
-//                            ((Activity)v.getContext()).finish();
+                            Intent intent = new Intent(v.getContext(), CategoriesActivity.class);
+                            v.getContext().startActivity(intent);
+                            ((Activity)v.getContext()).finish();
                         }
                     });
             AlertDialog dialog = builder.create();
@@ -292,40 +312,6 @@ class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClick
     }
 }
 
-//class CategoryViewHolder2 extends RecyclerView.ViewHolder implements View.OnClickListener {
-//
-//    private final TextView categoryItemView;
-//    private String productName;
-//    private int idCategory;
-//
-//    private CategoryViewHolder2(View itemView, String productName) {
-//        super(itemView);
-//        this.productName = productName;
-//        itemView.setOnClickListener(this);
-//        categoryItemView = itemView.findViewById(R.id.item_name);
-//    }
-//
-//    public void bind(String text, int idCategory) {
-//        categoryItemView.setText(text);
-//        this.idCategory = idCategory;
-//    }
-//
-//    public static CategoryViewHolder2 create(ViewGroup parent, String productName) {
-//        View view = LayoutInflater.from(parent.getContext())
-//                .inflate(R.layout.recyclerview_item, parent, false);
-//        return new CategoryViewHolder2(view, productName);
-//    }
-//
-//    @Override
-//    public void onClick(View v) {
-//        Intent intent = new Intent(v.getContext(), NewProductActivity3.class);
-//        intent.putExtra(NewProductActivity.KEY_CATEGORY_ID, idCategory);
-//        intent.putExtra(NewProductActivity.KEY_NEW_PRODUCT_NAME, productName);
-//        v.getContext().startActivity(intent);
-//        ((Activity)v.getContext()).finish();
-//    }
-//}
-
 class PreferencesViewHolder extends RecyclerView.ViewHolder {
 
     private final TextView preferencesItemView;
@@ -350,67 +336,127 @@ class DishViewHolder extends RecyclerView.ViewHolder implements View.OnClickList
 
     private static final String KEY_DISH_NAME = "dishName";
     private final TextView dishItemView;
+    private int version;
+    private int idDish;
 
-    private DishViewHolder(View itemView) {
+    private DishViewHolder(View itemView, int version) {
         super(itemView);
         itemView.setOnClickListener(this);
         dishItemView = itemView.findViewById(R.id.item_name);
+        this.version = version;
     }
 
-    public void bind(String text) {
+    public void bind(String text, int idDish) {
         dishItemView.setText(text);
+        this.idDish = idDish;
     }
 
-    public static DishViewHolder create(ViewGroup parent) {
+    public static DishViewHolder create(ViewGroup parent, int version) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recyclerview_item, parent, false);
-        return new DishViewHolder(view);
+        return new DishViewHolder(view, version);
     }
 
     @Override
     public void onClick(View v) {
-        Log.d("CAT", "klik w danie");
-        Intent intent = new Intent(v.getContext(), IngredientsDishActivity.class);
-        intent.putExtra(KEY_DISH_NAME, dishItemView.getText());
-        v.getContext().startActivity(intent);
-        ((Activity)v.getContext()).finish();
+        if (version == 1) { // wyświetlenie składników dania
+            Intent intent = new Intent(v.getContext(), IngredientsDishActivity.class);
+            intent.putExtra(IngredientsDishActivity.KEY_DISH_ID, idDish);
+            v.getContext().startActivity(intent);
+//            ((Activity)v.getContext()).finish();
+        } else if (version == 2) {  // usuwanie dania
+            DishViewModel dishViewModel = new DishViewModel(((Activity)v.getContext()).getApplication());
+
+            AlertDialog.Builder builder = new AlertDialog.Builder((Activity)v.getContext())
+                    .setView(((Activity)v.getContext()).getLayoutInflater().inflate(R.layout.dialog_wrong_data, null))
+                    .setTitle("Czy na pewno chcesz usunąć danie?")
+                    .setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            new Thread(() -> {
+                                dishViewModel.deleteDishById(idDish, emptyFunction -> {});
+                                Intent intent = new Intent(v.getContext(), DishesActivity.class);
+                                v.getContext().startActivity(intent);
+                                ((Activity)v.getContext()).finish();
+                            }).start();
+                        }
+                    })
+                    .setNegativeButton("Anuluj usuwanie dania", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            Intent intent = new Intent(v.getContext(), DishesActivity.class);
+                            v.getContext().startActivity(intent);
+                            ((Activity)v.getContext()).finish();
+                        }
+                    });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        } else if (version == 3) {  // edytowanie kategorii
+            Intent intent = new Intent(v.getContext(), EditDishActivity.class);
+            intent.putExtra(EditDishActivity.KEY_EDIT_DISH_ID, idDish);
+            v.getContext().startActivity(intent);
+            ((Activity) v.getContext()).finish();
+        }
     }
 }
 
 class DishDetailViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-//    private static final String KEY_DISH_DETAIL = "dishDetail";
     private final TextView dishDetailItemView;
     private final TextView dishDetailItemView2;
     private final TextView dishDetailItemView3;
+    private int version;
+    private int idProduct;
+    private int idDish;
 
-    private DishDetailViewHolder(View itemView) {
+    private DishDetailViewHolder(View itemView, int version) {
         super(itemView);
         itemView.setOnClickListener(this);
         dishDetailItemView = itemView.findViewById(R.id.dish_detail_item_name);
         dishDetailItemView2 = itemView.findViewById(R.id.dish_detail_item_quantity);
         dishDetailItemView3 = itemView.findViewById(R.id.dish_detail_item_unit);
+        this.version = version;
     }
 
-    public void bind(String name, float quantity, String unit) {
+    public void bind(String name, float quantity, String unit, int idProduct, int idDish) {
         dishDetailItemView.setText(name);
         dishDetailItemView2.setText(String.valueOf(quantity));
         dishDetailItemView3.setText(unit);
+        this.idProduct = idProduct;
+        this.idDish = idDish;
     }
 
-    public static DishDetailViewHolder create(ViewGroup parent) {
+    public static DishDetailViewHolder create(ViewGroup parent, int version) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recyclerview_dishes_details_item, parent, false);
-        return new DishDetailViewHolder(view);
+        return new DishDetailViewHolder(view, version);
     }
 
     @Override
     public void onClick(View v) {
-        Log.d("CAT", "klik w dishdetail");
+        if (version == 1) {
+            Log.d("CAT", "klik w dishdetail");
 //        Intent intent = new Intent(v.getContext(), ProductsByDishesActivity.class);
 //        intent.putExtra(KEY_DISH_NAME, dishItemView.getText());
 //        v.getContext().startActivity(intent);
-        ((Activity)v.getContext()).finish();
+//            ((Activity)v.getContext()).finish();
+        } else if (version == 2) {
+            IngredientsOfTheDishViewModel ingredientsOfTheDishViewModel = new IngredientsOfTheDishViewModel(((Activity)v.getContext()).getApplication());
+            new Thread(() -> {
+                ingredientsOfTheDishViewModel.deleteIngredientOfTheDishById(idProduct, idDish, emptyFunction -> {});
+                Intent intent = new Intent(v.getContext(), IngredientsDishActivity.class);
+                intent.putExtra(IngredientsDishActivity.KEY_DISH_ID, idDish);
+                v.getContext().startActivity(intent);
+                ((Activity)v.getContext()).finish();
+            }).start();
+        } else if (version == 3) {
+            IngredientsOfTheDishViewModel ingredientsOfTheDishViewModel = new IngredientsOfTheDishViewModel(((Activity)v.getContext()).getApplication());
+            new Thread(() -> {
+                Intent intent = new Intent(v.getContext(), EditQuantityActivity.class);
+                intent.putExtra(IngredientsDishActivity.KEY_DISH_ID, idDish);
+                intent.putExtra(IngredientsDishActivity.KEY_NEW_INGREDIENT_ID, idProduct);
+                v.getContext().startActivity(intent);
+                ((Activity)v.getContext()).finish();
+            }).start();
+        }
     }
 }
 
@@ -583,3 +629,5 @@ class FormOfAccessibilityViewHolder2 extends RecyclerView.ViewHolder implements 
         }
     }
 }
+
+

@@ -26,6 +26,12 @@ public interface DishDao {
     @Query("select exists (select * from dish where dishName = :name)")
     Boolean dishExists(String name);
 
+    @Query("UPDATE dish SET dishName = :newDishName WHERE idDish =:id")
+    void updateDishName(long id, String newDishName);
+
+    @Query("DELETE FROM dish WHERE idDish = :id")
+    void deleteDishById(long id);
+
     @Query("SELECT * FROM Dish ORDER BY dishName ASC")
     LiveData<List<Dish>> getAlphabetizedDishes();
 }

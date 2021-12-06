@@ -26,7 +26,7 @@ public class ProductListAdapter2 extends ListAdapter<Product, ProductViewHolder2
 
     @Override
     public ProductViewHolder2 onCreateViewHolder(ViewGroup parent, int viewType) {
-        if (version == 5 || version == 2) {
+        if (version == 5 || version == 2 || version == 6) {
             return ProductViewHolder2.create(parent, version, idItem);
         }
         return ProductViewHolder2.create(parent, version);

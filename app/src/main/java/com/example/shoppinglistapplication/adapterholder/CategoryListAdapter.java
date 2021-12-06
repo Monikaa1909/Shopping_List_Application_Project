@@ -33,7 +33,7 @@ public class CategoryListAdapter extends ListAdapter<Category, CategoryViewHolde
 
     @Override
     public CategoryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if (version == 3 || version == 7) {
+        if (version == 3 || version == 7 || version == 2) {
             return CategoryViewHolder.create(parent, version, idItem);
         } else if (version == 6) {
             return CategoryViewHolder.create(parent, version, productName);

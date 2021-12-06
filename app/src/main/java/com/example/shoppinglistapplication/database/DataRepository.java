@@ -93,7 +93,7 @@ public class DataRepository {
     public LiveData<List<FormOfAccessibility>> getAllFormsOfAccessibility() { return formOfAccessibility; }
     public LiveData<List<ProductFormOfAccessibility>> getAllProductFormOfAccessibility() { return productFormOfAccessibility; }
 
-    public List<DishDetail> getDishDetail(String name) { return ingredientsOfTheDishDao.getDetail(name); }
+    public List<DishDetail> getDishDetail(int idDish) { return ingredientsOfTheDishDao.getDetail(idDish); }
     public List<Product> getProductsByCategoryName(String name) { return productDao.getProductsByCategoryName(name); }
     public List<Product> getAlphabetizedProductsByCategory(int id) { return productDao.getAlphabetizedProductsByCategory(id); }
 
@@ -195,6 +195,18 @@ public class DataRepository {
         });
     }
 
+    public void deleteDishById(long id) {
+        AppRoomDatabase.databaseWriteExecutor.execute(() -> {
+            dishDao.deleteDishById(id);
+        });
+    }
+
+    public void deleteIngredientOfTheDish(int idProduct, int idDish) {
+        AppRoomDatabase.databaseWriteExecutor.execute(() -> {
+            ingredientsOfTheDishDao.deleteIngredientOfTheDish(idProduct, idDish);
+        });
+    }
+
     public void updateProductName(long id, String newProductName) {
         AppRoomDatabase.databaseWriteExecutor.execute(() -> {
             productDao.updateProductName(id, newProductName);
@@ -216,6 +228,18 @@ public class DataRepository {
     public void updateCategoryName(long id, String newCategoryName) {
         AppRoomDatabase.databaseWriteExecutor.execute(() -> {
             categoryDao.updateCategoryName(id, newCategoryName);
+        });
+    }
+
+    public void updateDishName(long id, String newDishName) {
+        AppRoomDatabase.databaseWriteExecutor.execute(() -> {
+            dishDao.updateDishName(id, newDishName);
+        });
+    }
+
+    public void updateIngredientOfTheDish(int idProduct, int idDish, float quantity) {
+        AppRoomDatabase.databaseWriteExecutor.execute(() -> {
+            ingredientsOfTheDishDao.updateIngredientQuantity(idProduct, idDish, quantity);
         });
     }
 

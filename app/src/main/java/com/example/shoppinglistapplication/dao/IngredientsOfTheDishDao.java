@@ -30,7 +30,13 @@ public interface IngredientsOfTheDishDao {
     @Query("select exists (select * from ingredientsofthedish where idProduct = :idProduct and idDish = :idDish)")
     Boolean ingredientsExists(int idProduct, int idDish);
 
-    @Query("select product.productName, ingredientsofthedish.quantity, unitofmeasurement.unit from ingredientsofthedish, product, dish, unitofmeasurement where unitofmeasurement.idUnitOfMeasurement = product.idUnitOfMeasurement and ingredientsofthedish.idDish = dish.idDish and ingredientsofthedish.idProduct = product.idProduct and dishName = :name")
-    List<DishDetail> getDetail(String name);
+    @Query("UPDATE ingredientsofthedish SET quantity = :quantity WHERE idProduct =:idProduct and idDish = :idDish")
+    void updateIngredientQuantity(int idProduct, int idDish, float quantity);
+
+    @Query("DELETE FROM ingredientsofthedish where idProduct = :idProduct and idDish = :idDish")
+    void deleteIngredientOfTheDish(int idProduct, int idDish);
+
+    @Query("select product.productName, product.idProduct, ingredientsofthedish.quantity, unitofmeasurement.unit, ingredientsofthedish.idDish from ingredientsofthedish, product, dish, unitofmeasurement where unitofmeasurement.idUnitOfMeasurement = product.idUnitOfMeasurement and ingredientsofthedish.idDish = dish.idDish and ingredientsofthedish.idProduct = product.idProduct and ingredientsofthedish.idDish = :idDish")
+    List<DishDetail> getDetail(int idDish);
 }
 

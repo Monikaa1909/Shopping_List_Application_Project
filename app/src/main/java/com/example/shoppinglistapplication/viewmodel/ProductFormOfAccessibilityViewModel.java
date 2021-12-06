@@ -7,9 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.shoppinglistapplication.database.DataRepository;
-import com.example.shoppinglistapplication.entity.IngredientsOfTheDish;
 import com.example.shoppinglistapplication.entity.ProductFormOfAccessibility;
-import com.example.shoppinglistapplication.helpfulModel.DishDetail;
 
 import java.util.List;
 

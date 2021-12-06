@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.shoppinglistapplication.R;
 import com.example.shoppinglistapplication.adapterholder.ProductListAdapter2;
@@ -22,12 +23,13 @@ public class NewDishDetailActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recyclerview_without_button);
 
+        int idCategory = (int) getIntent().getSerializableExtra(IngredientsDishActivity.KEY_CATEGORY_ID);
+        int idDish = (int) getIntent().getSerializableExtra(IngredientsDishActivity.KEY_DISH_ID);
+
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final ProductListAdapter2 adapter = new ProductListAdapter2(new ProductListAdapter2.ProductDiff(), 2);
+        final ProductListAdapter2 adapter = new ProductListAdapter2(new ProductListAdapter2.ProductDiff(), 6, idDish);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        int idCategory = (int) getIntent().getSerializableExtra(NewDishDetailActivity.KEY_CATEGORY_ID);
 
         productViewModel = new ProductViewModel(this.getApplication());
 

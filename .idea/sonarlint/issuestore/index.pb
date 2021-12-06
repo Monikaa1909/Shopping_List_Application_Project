@@ -11,8 +11,6 @@ Uapp/src/main/java/com/example/shoppinglistapplication/entity/FormOfAccessibilit
 Wapp/src/main/java/com/example/shoppinglistapplication/dao/ListOfPreferencesDishDao.java,5\0\50a8b8168e8494b631df457fb535037567e2c3c7
 ‡
 Wapp/src/main/java/com/example/shoppinglistapplication/entity/ListOfPreferencesDish.java,9\1\9149e412e3a473af41de17132379e59b89f5734d
-v
-Fapp/src/main/java/com/example/shoppinglistapplication/dao/DishDao.java,7\b\7bb76e554ee82342bf7c0801934fb5efc8264321
 †
 Vapp/src/main/java/com/example/shoppinglistapplication/entity/IngredientsOfTheDish.java,8\d\8d0ae9e365a9d63a2c59b6f408a089836030074b
 @

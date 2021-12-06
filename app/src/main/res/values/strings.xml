@@ -29,9 +29,12 @@
     <string name="button_unit_of_measurment">Jednostka produktu</string>
     <string name="hint_edit_name_product">Podaj nową nazwę produktu</string>
     <string name="button_category">Kategoria</string>
-    <string name="lose_your_data">Wraz z usunięciem kategorii, utracisz też wszystkie powiązane z nią produkty</string>
+    <string name="lose_your_category_data">Wraz z usunięciem kategorii, utracisz też wszystkie powiązane z nią produkty</string>
+    <!--    <string name="lose_your_dish_data">Wraz z usunięciem dania, utracisz też wszystkie powiązane z nim wszystki</string>-->
     <string name="hint_edit_name_category">Podaj nową nazwę kategorii</string>
     <string name="button_add_ingredients">Dodaj składnik</string>
     <string name="button_add_ingredients_later">Dodaj składniki później</string>
     <string name="hint_new_quantity">Podaj ilość danego składnika</string>
+    <string name="hint_edit_name_dish">Podaj nową nazwę dania</string>
+    <string name="hint_edit_quantity">Podaj nową ilość składnika</string>
 </resources>

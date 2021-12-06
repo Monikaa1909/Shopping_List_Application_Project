@@ -2,8 +2,12 @@ package com.example.shoppinglistapplication.uiDishes;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
@@ -39,8 +43,6 @@ public class NewDishActivity2 extends AppCompatActivity {
         dishViewModel = new DishViewModel(this.getApplication());
 
         new Thread(() -> {
-
-
             int idDish;
             if (getIntent().getStringExtra(NewDishActivity.KEY_NEW_DISH_NAME) != null) {
                 String newDishName = getIntent().getStringExtra(NewDishActivity.KEY_NEW_DISH_NAME);

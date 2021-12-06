@@ -11,19 +11,22 @@ import com.example.shoppinglistapplication.entity.Dish;
 
 public class DishListAdapter extends ListAdapter<Dish, DishViewHolder> {
 
-    public DishListAdapter(@NonNull DiffUtil.ItemCallback<Dish> diffCallback) {
+    private int version;
+
+    public DishListAdapter(@NonNull DiffUtil.ItemCallback<Dish> diffCallback, int version) {
         super(diffCallback);
+        this.version = version;
     }
 
     @Override
     public DishViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return DishViewHolder.create(parent);
+        return DishViewHolder.create(parent, version);
     }
 
     @Override
     public void onBindViewHolder(DishViewHolder holder, int position) {
         Dish current = getItem(position);
-        holder.bind(current.getDishName());
+        holder.bind(current.getDishName(), current.getIdDish());
     }
 
     public static class DishDiff extends DiffUtil.ItemCallback<Dish> {

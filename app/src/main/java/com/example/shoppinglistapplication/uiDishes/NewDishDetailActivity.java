@@ -9,10 +9,10 @@ import com.example.shoppinglistapplication.adapterholder.CategoryListAdapter;
 import com.example.shoppinglistapplication.viewmodel.CategoryViewModel;
 
 import android.os.Bundle;
+import android.util.Log;
 
 public class NewDishDetailActivity extends AppCompatActivity {
 
-    public static final String KEY_CATEGORY_ID = "categoryID";
     private CategoryViewModel categoryViewModel;
 
     @Override
@@ -20,8 +20,10 @@ public class NewDishDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recyclerview_without_button);
 
+        int idDish = (int) getIntent().getSerializableExtra(IngredientsDishActivity.KEY_DISH_ID);
+
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final CategoryListAdapter adapter = new CategoryListAdapter(new CategoryListAdapter.CategoryDiff(), 2);
+        final CategoryListAdapter adapter = new CategoryListAdapter(new CategoryListAdapter.CategoryDiff(), 2, idDish);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

@@ -28,7 +28,7 @@ public class IngredientsOfTheDishViewModel extends AndroidViewModel {
 
     public LiveData<List<IngredientsOfTheDish>> getAllIngredientsOfTheDish() { return ingredientsOfTheDish; }
 
-    public List<DishDetail> getDishDetail(String name) { return dataRepository.getDishDetail(name); }
+    public List<DishDetail> getDishDetail(int idDish) { return dataRepository.getDishDetail(idDish); }
 
     public Boolean ingredientExists(int idProduct, int idDish) {
         return dataRepository.ingredientExists(idProduct, idDish);
@@ -36,5 +36,13 @@ public class IngredientsOfTheDishViewModel extends AndroidViewModel {
 
     public void insert(IngredientsOfTheDish ingredientsOfTheDish, DataRepository.Executor executor) {
         dataRepository.insert(ingredientsOfTheDish, executor);
+    }
+
+    public void deleteIngredientOfTheDishById(int idProduct, int idDish, DataRepository.Executor executor) {
+        dataRepository.deleteIngredientOfTheDish(idProduct, idDish);
+    }
+
+    public void updateIngredientOfTheDishQuantity(int idProduct, int idDish, float quantity, DataRepository.Executor executor) {
+        dataRepository.updateIngredientOfTheDish(idProduct, idDish, quantity);
     }
 }

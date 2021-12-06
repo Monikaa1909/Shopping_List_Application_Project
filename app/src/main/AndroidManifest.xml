@@ -10,6 +10,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoppingListApplication">
         <activity
+            android:name=".uiDishes.EditQuantityActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiDishes.IngredientsDishToEditActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiDishes.IngredientsDishToDeleteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiDishes.NewDishDetailActivity3"
+            android:exported="false" />
+        <activity
+            android:name=".uiDishes.EditDishActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiDishes.DishesToEditActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiDishes.DishesToDeleteActivity"
+            android:exported="false" />
+        <activity
             android:name=".uiDishes.NewDishActivity5"
             android:exported="false" />
         <activity

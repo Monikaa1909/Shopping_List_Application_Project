@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shoppinglistapplication.R;
 import com.example.shoppinglistapplication.adapterholder.DishListAdapter;
+import com.example.shoppinglistapplication.uiCategories.CategoriesActivity;
+import com.example.shoppinglistapplication.uiCategories.CategoriesToDeleteActivity;
+import com.example.shoppinglistapplication.uiCategories.CategoriesToEditActivity;
 import com.example.shoppinglistapplication.viewmodel.DishViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -23,15 +26,8 @@ public class DishesActivity  extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recyclerview_with_all_button);
 
-        if (getIntent().getStringExtra(KEY_DISH_INFO) != null) {
-            String info = getIntent().getStringExtra(KEY_DISH_INFO);
-            if (info.equals("alreadyExists")) {
-                Toast.makeText(getApplicationContext(),"Danie o podanej nazwie już istnieje",Toast.LENGTH_LONG).show();
-            }
-        }
-
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final DishListAdapter adapter = new DishListAdapter(new DishListAdapter.DishDiff());
+        final DishListAdapter adapter = new DishListAdapter(new DishListAdapter.DishDiff(), 1);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -45,6 +41,20 @@ public class DishesActivity  extends AppCompatActivity {
         fab.setOnClickListener(view -> {
             Intent intent = new Intent(DishesActivity.this, NewDishActivity.class);
             startActivity(intent);
+        });
+
+        FloatingActionButton deleteFab = findViewById(R.id.fab_delete);
+        deleteFab.setOnClickListener(view -> {
+            Intent intent = new Intent(DishesActivity.this, DishesToDeleteActivity.class);
+            startActivity(intent);
+            this.finish();
+        });
+
+        FloatingActionButton editFab = findViewById(R.id.fab_edit);
+        editFab.setOnClickListener(view -> {
+            Intent intent = new Intent(DishesActivity.this, DishesToEditActivity.class);
+            startActivity(intent);
+            this.finish();
         });
     }
 

@@ -39,4 +39,12 @@ public class DishViewModel extends AndroidViewModel {
     public void insert(Dish dish, DataRepository.Executor executor) {
         dataRepository.insert(dish, executor);
     }
+
+    public void deleteDishById(long id, DataRepository.Executor executor) {
+        dataRepository.deleteDishById(id);
+    }
+
+    public void updateDishName(long id, String newDishName, DataRepository.Executor executor) {
+        dataRepository.updateDishName(id, newDishName);
+    }
 }
