@@ -20,6 +20,9 @@ public interface FormOfAccessibilityDao {
     @Query("DELETE FROM FormOfAccessibility")
     void deleteAll();
 
+    @Query("DELETE FROM formofaccessibility WHERE idFormOfAccessibility = :id")
+    void deleteFormById(long id);
+
     @Query("select exists (select * from formofaccessibility where form = :form)")
     Boolean formExists(float form);
 

@@ -1,8 +1,0 @@
-
-{
-java:S1450"`Remove the "categoryViewModel" field and declare it as a local variable in the relevant methods.(‘ª—æøÿÿÿÿ
-A
-java:S1602 ",Remove useless curly braces around statement(¤¹¢E
-\
-java:S1612 "@Replace this lambda with method reference 'adapter::submitList'.(¤¹¢E8©‰ˆ†Ù/
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‡ï“Æùÿÿÿÿ

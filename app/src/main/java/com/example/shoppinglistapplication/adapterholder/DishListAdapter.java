@@ -12,14 +12,24 @@ import com.example.shoppinglistapplication.entity.Dish;
 public class DishListAdapter extends ListAdapter<Dish, DishViewHolder> {
 
     private int version;
+    private int idItem;
 
     public DishListAdapter(@NonNull DiffUtil.ItemCallback<Dish> diffCallback, int version) {
         super(diffCallback);
         this.version = version;
     }
 
+    public DishListAdapter(@NonNull DiffUtil.ItemCallback<Dish> diffCallback, int version, int idItem) {
+        super(diffCallback);
+        this.version = version;
+        this.idItem = idItem;
+    }
+
     @Override
     public DishViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        if (version == 4 || version == 5) {
+            return DishViewHolder.create(parent, version, idItem);
+        }
         return DishViewHolder.create(parent, version);
     }
 

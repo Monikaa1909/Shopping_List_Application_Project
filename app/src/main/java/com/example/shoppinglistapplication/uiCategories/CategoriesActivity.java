@@ -15,6 +15,8 @@ import android.widget.Toast;
 import com.example.shoppinglistapplication.R;
 import com.example.shoppinglistapplication.adapterholder.CategoryListAdapter;
 import com.example.shoppinglistapplication.entity.Category;
+import com.example.shoppinglistapplication.uiDishes.DishesActivity;
+import com.example.shoppinglistapplication.uiDishes.EditDishActivity;
 import com.example.shoppinglistapplication.uiProducts.NewProductActivity;
 import com.example.shoppinglistapplication.uiProducts.ProductsActivity;
 import com.example.shoppinglistapplication.uiProducts.ProductsToDeleteActivity;
@@ -54,6 +56,27 @@ public class CategoriesActivity extends AppCompatActivity {
                         });
                 AlertDialog dialog = builder.create();
                 dialog.show();
+            } else if (info.equals("editingNameExists")) {
+                int idCategory = (int) getIntent().getSerializableExtra(EditCategoryActivity.KEY_EDIT_CATEGORY_ID);
+                AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                        .setView(this.getLayoutInflater().inflate(R.layout.dialog_wrong_data, null))
+                        .setTitle("Niepoprawna nazwa")
+                        .setMessage(R.string.category_already_exists)
+                        .setPositiveButton("Podaj nową nazwę", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Intent intent = new Intent(CategoriesActivity.this, EditCategoryActivity.class);
+                                intent.putExtra(EditCategoryActivity.KEY_EDIT_CATEGORY_ID, idCategory);
+                                startActivity(intent);
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("Anuluj edytowanie kategorii", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Toast.makeText(getApplicationContext(),"Anulowano edytowanie kategorii",Toast.LENGTH_LONG).show();
+                            }
+                        });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         }
 
@@ -88,25 +111,4 @@ public class CategoriesActivity extends AppCompatActivity {
             this.finish();
         });
     }
-
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//
-//
-//        if (requestCode == NEW_CATEGORY_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-//            String categoryName = data.getStringExtra(NewCategoryActivity.EXTRA_REPLY_NAME);
-//
-//            new Thread(() -> {
-//                categoryViewModel = new CategoryViewModel(this.getApplication());
-//
-//                if (!categoryViewModel.categoryExists(categoryName)) {
-//                    Category category = new Category(categoryName);
-//                    categoryViewModel.insert(category, emptyFunction -> {});
-//                }
-//            }).start();
-//
-//        } else {
-//        }
-//    }
 }

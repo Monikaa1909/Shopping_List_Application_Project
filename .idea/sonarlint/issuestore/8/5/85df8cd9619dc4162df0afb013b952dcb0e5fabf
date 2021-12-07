@@ -1,8 +1,0 @@
-
-
-java:S1450"kRemove the "formOfAccessibilityViewModel" field and declare it as a local variable in the relevant methods.(Áô“¶şÿÿÿÿ8ÔÅõ×Ø/
-I
-java:S1602$",Remove useless curly braces around statement(ü §8ßÅõ×Ø/
-]
-java:S1612$"@Replace this lambda with method reference 'adapter::submitList'.(ü §8àÅõ×Ø/
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(°ÛÆô

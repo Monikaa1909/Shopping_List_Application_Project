@@ -33,7 +33,7 @@ public class NewProductFormActivity extends AppCompatActivity {
 
         formOfAccessibilityViewModel = new FormOfAccessibilityViewModel(this.getApplication());
 
-        formOfAccessibilityViewModel.getAllUnits().observe(this, forms -> {
+        formOfAccessibilityViewModel.getAllForms().observe(this, forms -> {
             adapter.submitList(forms);
         });
     }

@@ -2,7 +2,9 @@ package com.example.shoppinglistapplication.uiDishes;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,6 +17,8 @@ import android.widget.Toast;
 import com.example.shoppinglistapplication.R;
 import com.example.shoppinglistapplication.StartActivity;
 import com.example.shoppinglistapplication.entity.Dish;
+import com.example.shoppinglistapplication.uiCategories.CategoriesActivity;
+import com.example.shoppinglistapplication.uiCategories.NewCategoryActivity;
 import com.example.shoppinglistapplication.uiCategories.ProductsByCategoryActivity;
 import com.example.shoppinglistapplication.uiListOfPreferences.ListsOfPreferencesActivity;
 import com.example.shoppinglistapplication.uiListOfPreferences.NewListOfPreferencesActivity;
@@ -26,7 +30,6 @@ public class NewDishActivity2 extends AppCompatActivity {
     public static final String KEY_NEW_INGREDIENT_CATEGORY_ID = "newIngredientCategoryID";
     public static final String KEY_NEW_INGREDIENT_ID = "newIngredientID";
     public static final String KEY_NEW_INGREDIENT_UNIT = "newIngredientUnit";
-    public static final String KEY_DISH_INFO = "dishInfo";
     private Button button_add_ingredients;
     private Button button_add_later;
     private DishViewModel dishViewModel;

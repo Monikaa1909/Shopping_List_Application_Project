@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import com.example.shoppinglistapplication.R;
 import com.example.shoppinglistapplication.entity.Category;
+import com.example.shoppinglistapplication.uiCategories.CategoriesActivity;
+import com.example.shoppinglistapplication.uiCategories.EditCategoryActivity;
 import com.example.shoppinglistapplication.viewmodel.CategoryViewModel;
 import com.example.shoppinglistapplication.viewmodel.ProductViewModel;
 
@@ -29,7 +31,7 @@ public class EditProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.element_name);
 
-        int idCategory = (int) getIntent().getSerializableExtra(KEY_EDIT_PRODUCT_ID);
+        int idProduct = (int) getIntent().getSerializableExtra(KEY_EDIT_PRODUCT_ID);
 
         editProductName = findViewById(R.id.new_element_name);
         editProductName.setHint(R.string.hint_edit_name_product);
@@ -58,13 +60,15 @@ public class EditProductActivity extends AppCompatActivity {
                 new Thread(() -> {
                     productViewModel = new ProductViewModel(this.getApplication());
                     String newProductName = editProductName.getText().toString();
-                    if (!productViewModel.productExists(newProductName)) {
-                        productViewModel.updateProductName(idCategory, newProductName, emptyFunction -> {});
-                    }
                     Intent intent = new Intent(EditProductActivity.this, ProductsActivity.class);
+                    if (!productViewModel.productExists(newProductName)) {
+                        productViewModel.updateProductName(idProduct, newProductName, emptyFunction -> {});
+                    } else {
+                        intent.putExtra(ProductsActivity.KEY_PRODUCT_INFO, "editingNameExists");
+                        intent.putExtra(EditProductActivity.KEY_EDIT_PRODUCT_ID, idProduct);
+                    }
                     startActivity(intent);
                     finish();
-//                    this.finish();
                 }).start();
             }
         });

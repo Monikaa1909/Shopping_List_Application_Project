@@ -70,7 +70,6 @@ public class NewDishActivity extends AppCompatActivity {
                         startActivity(intent);
                         this.finish();
                     }
-
                 }).start();
             }
         });

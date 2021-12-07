@@ -22,8 +22,16 @@ public interface ListOfPreferencesDao {
     @Query("SELECT * FROM ListOfPreferences ORDER BY listOfPreferencesName ASC")
     LiveData<List<ListOfPreferences>> getAlphabetizedListOfPreferences();
 
+    @Query("select idListOfPreferences from listofpreferences where listOfPreferencesName = :name limit 1;")
+    Integer getIdByListOfPreferencesName(String name);
+
     @Query("select exists (select * from listofpreferences where listOfPreferencesName = :name)")
     Boolean listOfPreferencesExists(String name);
 
+    @Query("UPDATE listofpreferences SET listOfPreferencesName = :newListName WHERE idListOfPreferences =:id")
+    void updateListOfPreferencesName(long id, String newListName);
+
+    @Query("DELETE FROM listofpreferences WHERE idListOfPreferences = :id")
+    void deleteListOfPreferencesById(long id);
 }
 

@@ -34,8 +34,6 @@ public class NewDishDetailActivity3 extends AppCompatActivity {
         int newIngredientId = (int) getIntent().getSerializableExtra(IngredientsDishActivity.KEY_NEW_INGREDIENT_ID);
         String newIngredientUnit = getIntent().getStringExtra(IngredientsDishActivity.KEY_NEW_INGREDIENT_UNIT);
 
-        Log.d("AAAAAAAAAA", "newdishdetail3: idDish: " + dishId + " idproduct: " + newIngredientId);
-
         editQuantity = findViewById(R.id.new_element_name);
         editQuantity.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
         editQuantity.setHint(R.string.hint_new_quantity);
@@ -76,7 +74,7 @@ public class NewDishDetailActivity3 extends AppCompatActivity {
                         this.finish();
                     } else {
                         Intent intent = new Intent(NewDishDetailActivity3.this, IngredientsDishActivity.class);
-                        Log.d("aaaa", "istnieje");
+                        intent.putExtra(IngredientsDishActivity.KEY_INGREDIENT_INFO, "alreadyExists");
                         intent.putExtra(IngredientsDishActivity.KEY_DISH_ID, dishId);
                         startActivity(intent);
                         this.finish();

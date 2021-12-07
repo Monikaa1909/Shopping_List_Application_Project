@@ -16,6 +16,9 @@ public interface UnitOfMeasurementDao {
     @Query("DELETE FROM UnitOfMeasurement")
     void deleteAll();
 
+    @Query("DELETE FROM unitofmeasurement WHERE idUnitOfMeasurement = :id")
+    void deleteUnitById(long id);
+
     @Query("select exists (select * from unitofmeasurement where unit = :name)")
     Boolean unitExists(String name);
 

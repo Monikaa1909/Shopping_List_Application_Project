@@ -10,6 +10,48 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoppingListApplication">
         <activity
+            android:name=".uiUnitOfMeasurement.UnitsOfMeasurementToDeleteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiFormOfAccessibility.FormOfAccessibilityToDeleteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiListOfPreferences.NewListOfPreferencesActivity4"
+            android:exported="false" />
+        <activity
+            android:name=".uiListOfPreferences.NewListOfPreferencesActivity3"
+            android:exported="false" />
+        <activity
+            android:name=".uiListOfPreferences.EditListOfPreferencesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiListOfPreferences.ListOfPreferencesToEditActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiListOfPreferences.ListOfPreferencesToDeleteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiListOfPreferences.EditPortionsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiListOfPreferences.CompositionListOfThePreferencesToEditActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiListOfPreferences.CompositionListOfThePreferencesToDeleteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiListOfPreferences.NewListOfThePreferencesDetailActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".uiListOfPreferences.NewListOfThePreferencesDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiListOfPreferences.CompositionListOfThePreferencesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiListOfPreferences.NewListOfPreferencesActivity2"
+            android:exported="false" />
+        <activity
             android:name=".uiDishes.EditQuantityActivity"
             android:exported="false" />
         <activity
@@ -131,9 +173,6 @@
             android:exported="false" />
         <activity
             android:name=".uiCategories.NewProductInCategoryActivity"
-            android:exported="false" />
-        <activity
-            android:name=".uiListOfPreferences.OneListOfPreferencesActivity"
             android:exported="false" />
         <activity
             android:name=".uiCategories.ProductsByCategoryActivity"

@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.shoppinglistapplication.R;
+import com.example.shoppinglistapplication.uiDishes.DishesActivity;
+import com.example.shoppinglistapplication.uiDishes.EditDishActivity;
 import com.example.shoppinglistapplication.uiProducts.EditProductActivity;
 import com.example.shoppinglistapplication.uiProducts.ProductsActivity;
 import com.example.shoppinglistapplication.viewmodel.CategoryViewModel;
@@ -57,10 +59,13 @@ public class EditCategoryActivity extends AppCompatActivity {
                 new Thread(() -> {
                     categoryViewModel = new CategoryViewModel(this.getApplication());
                     String newCategoryName = editCategoryName.getText().toString();
+                    Intent intent = new Intent(EditCategoryActivity.this, CategoriesActivity.class);
                     if (!categoryViewModel.categoryExists(newCategoryName)) {
                         categoryViewModel.updateCategoryName(idCategory, newCategoryName, emptyFunction -> {});
+                    } else {
+                        intent.putExtra(CategoriesActivity.KEY_CATEGORY_INFO, "editingNameExists");
+                        intent.putExtra(EditCategoryActivity.KEY_EDIT_CATEGORY_ID, idCategory);
                     }
-                    Intent intent = new Intent(EditCategoryActivity.this, CategoriesActivity.class);
                     startActivity(intent);
                     finish();
                 }).start();

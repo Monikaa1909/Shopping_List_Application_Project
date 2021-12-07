@@ -1,10 +1,12 @@
 package com.example.shoppinglistapplication.uiDishes;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.shoppinglistapplication.R;
 import com.example.shoppinglistapplication.adapterholder.CategoryListAdapter;
@@ -29,7 +31,7 @@ public class IngredientsDishToEditActivity extends AppCompatActivity {
         ingredientsOfTheDishViewModel = new IngredientsOfTheDishViewModel(this.getApplication());
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final DishDetailAdapter adapter = new DishDetailAdapter(new DishDetailAdapter.DishDetailDiff(), 3);
+        final DishDetailAdapter adapter = new DishDetailAdapter(new DishDetailAdapter.DishDetailDiff(), 2);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

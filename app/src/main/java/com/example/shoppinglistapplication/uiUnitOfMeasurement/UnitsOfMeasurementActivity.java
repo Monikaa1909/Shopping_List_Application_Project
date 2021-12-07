@@ -7,21 +7,55 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.shoppinglistapplication.R;
 import com.example.shoppinglistapplication.adapterholder.UnitOfMeasurementListAdapter;
 import com.example.shoppinglistapplication.entity.UnitOfMeasurement;
+import com.example.shoppinglistapplication.uiCategories.CategoriesActivity;
+import com.example.shoppinglistapplication.uiCategories.EditCategoryActivity;
+import com.example.shoppinglistapplication.uiCategories.NewCategoryActivity;
+import com.example.shoppinglistapplication.uiDishes.DishesActivity;
+import com.example.shoppinglistapplication.uiDishes.EditDishActivity;
+import com.example.shoppinglistapplication.uiFormOfAccessibility.FormOfAccessibilityActivity;
+import com.example.shoppinglistapplication.uiFormOfAccessibility.FormOfAccessibilityToDeleteActivity;
 import com.example.shoppinglistapplication.viewmodel.UnitOfMeasurementViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 public class UnitsOfMeasurementActivity extends AppCompatActivity {
 
-    private static final int NEW_UNIT_ACTIVITY_REQUEST_CODE = 4;
+    public static final String KEY_UNIT_INFO = "unitInfo";
     private UnitOfMeasurementViewModel unitOfMeasurementViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.recyclerview_with_all_button);
+        setContentView(R.layout.recyclerview_with_add_delete_button);
+
+        if (getIntent().getStringExtra(KEY_UNIT_INFO) != null) {
+            String info = getIntent().getStringExtra(KEY_UNIT_INFO);
+            if (info.equals("alreadyExists")) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                        .setView(this.getLayoutInflater().inflate(R.layout.dialog_wrong_data, null))
+                        .setTitle("Niepoprawna nazwa")
+                        .setMessage(R.string.unit_already_exists)
+                        .setPositiveButton("Podaj nową nazwę", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Intent intent = new Intent(UnitsOfMeasurementActivity.this, NewUnitOfMeasurementActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("Anuluj dodawanie nowej jednostki", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Toast.makeText(getApplicationContext(),"Anulowano dodawanie nowej jednostki",Toast.LENGTH_LONG).show();
+                            }
+                        });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        }
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         final UnitOfMeasurementListAdapter adapter = new UnitOfMeasurementListAdapter(new UnitOfMeasurementListAdapter.UnitOfMeasurementDiff());
@@ -37,27 +71,14 @@ public class UnitsOfMeasurementActivity extends AppCompatActivity {
         FloatingActionButton fab = findViewById(R.id.fab_add);
         fab.setOnClickListener(view -> {
             Intent intent = new Intent(UnitsOfMeasurementActivity.this, NewUnitOfMeasurementActivity.class);
-            startActivityForResult(intent, NEW_UNIT_ACTIVITY_REQUEST_CODE);
+            startActivity(intent);
         });
-    }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == NEW_UNIT_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            String unitName = data.getStringExtra(NewUnitOfMeasurementActivity.EXTRA_REPLY_UNIT);
-
-            new Thread(() -> {
-                unitOfMeasurementViewModel = new UnitOfMeasurementViewModel(this.getApplication());
-
-                if (!unitOfMeasurementViewModel.unitExists(unitName)) {
-                    UnitOfMeasurement unitOfMeasurement = new UnitOfMeasurement(unitName);
-                    unitOfMeasurementViewModel.insert(unitOfMeasurement, emptyFunction -> {});
-                }
-            }).start();
-
-        } else {
-
-        }
+        FloatingActionButton deleteFab = findViewById(R.id.fab_delete);
+        deleteFab.setOnClickListener(view -> {
+            Intent intent = new Intent(UnitsOfMeasurementActivity.this, UnitsOfMeasurementToDeleteActivity.class);
+            startActivity(intent);
+            finish();
+        });
     }
 }

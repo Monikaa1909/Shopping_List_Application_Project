@@ -1,5 +1,6 @@
 package com.example.shoppinglistapplication.uiDishes;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -50,6 +51,27 @@ public class DishesActivity  extends AppCompatActivity {
                         });
                 AlertDialog dialog = builder.create();
                 dialog.show();
+            } else if (info.equals("editingNameExists")) {
+                int idDish = (int) getIntent().getSerializableExtra(EditDishActivity.KEY_EDIT_DISH_ID);
+                AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                        .setView(this.getLayoutInflater().inflate(R.layout.dialog_wrong_data, null))
+                        .setTitle("Niepoprawna nazwa")
+                        .setMessage(R.string.dish_already_exists)
+                        .setPositiveButton("Podaj nową nazwę", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Intent intent = new Intent(DishesActivity.this, EditDishActivity.class);
+                                intent.putExtra(EditDishActivity.KEY_EDIT_DISH_ID, idDish);
+                                startActivity(intent);
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("Anuluj edytowanie dania", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Toast.makeText(getApplicationContext(),"Anulowano dodawanie nowego dania",Toast.LENGTH_LONG).show();
+                            }
+                        });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         }
 
@@ -59,7 +81,6 @@ public class DishesActivity  extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         dishViewModel = new DishViewModel(this.getApplication());
-
         dishViewModel.getAllDishes().observe(this, dishes -> {
             adapter.submitList(dishes);
         });
@@ -84,26 +105,4 @@ public class DishesActivity  extends AppCompatActivity {
             this.finish();
         });
     }
-
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == NEW_CATEGORY_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-//            String categoryName = data.getStringExtra(NewCategoryActivity.EXTRA_REPLY_NAME);
-//
-//            new Thread(() -> {
-//                CategoryViewModelFactory factory = new CategoryViewModelFactory(this.getApplication(), categoryName, 0);
-//                categoryViewModel = new ViewModelProvider(this, factory).get(CategoryViewModel.class);
-//
-//                if (!categoryViewModel.categoryExists(categoryName)) {
-//                    Category category = new Category(categoryName);
-//                    categoryViewModel.insert(category, emptyFunction -> {});
-//                }
-//            }).start();
-//
-//        } else {
-//            Toast.makeText(getApplicationContext(), R.string.empty_not_saved,
-//                    Toast.LENGTH_LONG).show();
-//        }
-//    }
 }

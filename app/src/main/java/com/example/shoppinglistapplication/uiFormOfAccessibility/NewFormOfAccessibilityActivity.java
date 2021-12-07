@@ -2,6 +2,12 @@ package com.example.shoppinglistapplication.uiFormOfAccessibility;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.shoppinglistapplication.R;
+import com.example.shoppinglistapplication.entity.FormOfAccessibility;
+import com.example.shoppinglistapplication.entity.UnitOfMeasurement;
+import com.example.shoppinglistapplication.uiUnitOfMeasurement.NewUnitOfMeasurementActivity;
+import com.example.shoppinglistapplication.uiUnitOfMeasurement.UnitsOfMeasurementActivity;
+import com.example.shoppinglistapplication.viewmodel.FormOfAccessibilityViewModel;
+import com.example.shoppinglistapplication.viewmodel.UnitOfMeasurementViewModel;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -15,13 +21,14 @@ import android.widget.Toast;
 
 public class NewFormOfAccessibilityActivity extends AppCompatActivity {
 
-    public static final String EXTRA_REPLY_FORM = "newForm";
     private EditText editForm;
+    private FormOfAccessibilityViewModel formOfAccessibilityViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.element_name);
+
         editForm = findViewById(R.id.new_element_name);
         editForm.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
         editForm.setHint(R.string.hint_new_form);
@@ -48,10 +55,22 @@ public class NewFormOfAccessibilityActivity extends AppCompatActivity {
                 AlertDialog dialog = builder.create();
                 dialog.show();
             } else {
-                float form = Float.valueOf(editForm.getText().toString());
-                replyIntent.putExtra(EXTRA_REPLY_FORM, form);
-                setResult(RESULT_OK, replyIntent);
-                finish();
+                new Thread(() -> {
+                    float form = Float.valueOf(editForm.getText().toString());
+                    formOfAccessibilityViewModel = new FormOfAccessibilityViewModel(this.getApplication());
+                    if (!formOfAccessibilityViewModel.formExists(form)) {
+                        Intent intent = new Intent(NewFormOfAccessibilityActivity.this, FormOfAccessibilityActivity.class);
+                        FormOfAccessibility formOfAccessibility = new FormOfAccessibility(form);
+                        formOfAccessibilityViewModel.insert(formOfAccessibility, emptyFunction -> {});
+                        startActivity(intent);
+                        this.finish();
+                    } else {
+                        Intent intent = new Intent(NewFormOfAccessibilityActivity.this, FormOfAccessibilityActivity.class);
+                        intent.putExtra(FormOfAccessibilityActivity.KEY_INFO_FORM, "alreadyExists");
+                        startActivity(intent);
+                        this.finish();
+                    }
+                }).start();
             }
         });
     }

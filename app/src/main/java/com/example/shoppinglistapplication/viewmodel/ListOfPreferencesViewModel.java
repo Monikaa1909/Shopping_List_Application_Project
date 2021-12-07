@@ -40,4 +40,15 @@ public class ListOfPreferencesViewModel extends AndroidViewModel {
     public Boolean listOfPreferencesExists(String name) {
         return dataRepository.listOfPreferencesExists(name);
     }
+
+    public Integer getIdListOfPreferencesByName(String name) {
+        return dataRepository.getIdByListOfPreferencesName(name); }
+
+    public void deleteListOfPreferencesById(int id, DataRepository.Executor executor) {
+        dataRepository.deleteListOfPreferences(id);
+    }
+
+    public void updateListOfPreferencesName(int id, String newName, DataRepository.Executor executor) {
+        dataRepository.updateListOfPreferences(id, newName);
+    }
 }

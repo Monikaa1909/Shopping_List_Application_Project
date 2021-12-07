@@ -28,10 +28,17 @@ public class UnitOfMeasurementListAdapter2 extends ListAdapter<UnitOfMeasurement
         this.version = version;
     }
 
+    public UnitOfMeasurementListAdapter2(@NonNull DiffUtil.ItemCallback<UnitOfMeasurement> diffCallback, int version) {
+        super(diffCallback);
+        this.version = version;
+    }
+
     @Override
     public UnitOfMeasurementViewHolder2 onCreateViewHolder(ViewGroup parent, int viewType) {
         if (version == 3) {
             return UnitOfMeasurementViewHolder2.create(parent, version, idProduct);
+        } else if (version == 4) {
+            return UnitOfMeasurementViewHolder2.create(parent, version);
         }
         return UnitOfMeasurementViewHolder2.create(parent, version, productName, idCategory);
     }

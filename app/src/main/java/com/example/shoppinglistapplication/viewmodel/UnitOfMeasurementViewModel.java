@@ -25,6 +25,10 @@ public class UnitOfMeasurementViewModel extends AndroidViewModel {
         units = dataRepository.getAllUnits();
     }
 
+    public void deleteUnitById(long id, DataRepository.Executor executor) {
+        dataRepository.deleteUnitById(id);
+    }
+
     public LiveData<List<UnitOfMeasurement>> getAllUnits() {
         return units;
     }

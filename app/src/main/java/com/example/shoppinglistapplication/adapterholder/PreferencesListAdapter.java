@@ -1,5 +1,6 @@
 package com.example.shoppinglistapplication.adapterholder;
 
+import android.util.Log;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -10,19 +11,22 @@ import com.example.shoppinglistapplication.entity.ListOfPreferences;
 
 public class PreferencesListAdapter extends ListAdapter<ListOfPreferences, PreferencesViewHolder> {
 
-    public PreferencesListAdapter(@NonNull DiffUtil.ItemCallback<ListOfPreferences> diffCallback) {
+    private int version;
+
+    public PreferencesListAdapter(@NonNull DiffUtil.ItemCallback<ListOfPreferences> diffCallback, int version) {
         super(diffCallback);
+        this.version = version;
     }
 
     @Override
     public PreferencesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return PreferencesViewHolder.create(parent);
+        return PreferencesViewHolder.create(parent, version);
     }
 
     @Override
     public void onBindViewHolder(PreferencesViewHolder holder, int position) {
         ListOfPreferences current = getItem(position);
-        holder.bind(current.getListOfPreferencesName());
+        holder.bind(current.getListOfPreferencesName(), current.getIdListOfPreferences());
     }
 
     public static class PreferencesDiff extends DiffUtil.ItemCallback<ListOfPreferences> {

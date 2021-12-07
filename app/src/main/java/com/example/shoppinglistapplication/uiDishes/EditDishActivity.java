@@ -57,10 +57,13 @@ public class EditDishActivity extends AppCompatActivity {
                 new Thread(() -> {
                     dishViewModel = new DishViewModel(this.getApplication());
                     String newDishName = editDishName.getText().toString();
+                    Intent intent = new Intent(EditDishActivity.this, DishesActivity.class);
                     if (!dishViewModel.dishExists(newDishName)) {
                         dishViewModel.updateDishName(idDish, newDishName, emptyFunction -> {});
+                    } else {
+                        intent.putExtra(DishesActivity.KEY_DISH_INFO, "editingNameExists");
+                        intent.putExtra(EditDishActivity.KEY_EDIT_DISH_ID, idDish);
                     }
-                    Intent intent = new Intent(EditDishActivity.this, DishesActivity.class);
                     startActivity(intent);
                     finish();
                 }).start();

@@ -108,6 +108,7 @@ public class DataRepository {
 
     public long getIdByCategoryName(String name) { return categoryDao.getIdByCategoryName(name); }
     public Integer getIdByDishName(String name) { return dishDao.getIdByDishName(name); }
+    public Integer getIdByListOfPreferencesName(String name) { return listOfPreferencesDao.getIdByListOfPreferencesName(name); }
 
     public Boolean categoryExists(String name) {
         return categoryDao.categoryExists(name);
@@ -205,6 +206,18 @@ public class DataRepository {
         });
     }
 
+    public void deleteFormById(long id) {
+        AppRoomDatabase.databaseWriteExecutor.execute(() -> {
+            formOfAccessibilityDao.deleteFormById(id);
+        });
+    }
+
+    public void deleteUnitById(long id) {
+        AppRoomDatabase.databaseWriteExecutor.execute(() -> {
+            unitOfMeasurementDao.deleteUnitById(id);
+        });
+    }
+
     public void deleteProductFormOfAccessibilityById(long idProduct, long idForm) {
         AppRoomDatabase.databaseWriteExecutor.execute(() -> {
             productFormOfAccessibilityDao.deleteProductFormOfAccessibilityById(idProduct, idForm);
@@ -226,6 +239,12 @@ public class DataRepository {
     public void deleteListOfPreferencesDish(int idDish, int idListOfPreferences) {
         AppRoomDatabase.databaseWriteExecutor.execute(() -> {
             listOfPreferencesDishDao.deleteListOfPreferencesDish(idDish, idListOfPreferences);
+        });
+    }
+
+    public void deleteListOfPreferences(int idListOfPreferences) {
+        AppRoomDatabase.databaseWriteExecutor.execute(() -> {
+            listOfPreferencesDao.deleteListOfPreferencesById(idListOfPreferences);
         });
     }
 
@@ -268,6 +287,12 @@ public class DataRepository {
     public void updateListOfPreferencesDishPortions(int idDish, int idListOfPreferences, int portions) {
         AppRoomDatabase.databaseWriteExecutor.execute(() -> {
             listOfPreferencesDishDao.updateListOfPreferencesDishPortions(idDish, idListOfPreferences, portions);
+        });
+    }
+
+    public void updateListOfPreferences(int idListOfPreferences, String name) {
+        AppRoomDatabase.databaseWriteExecutor.execute(() -> {
+            listOfPreferencesDao.updateListOfPreferencesName(idListOfPreferences, name);
         });
     }
 

@@ -32,7 +32,7 @@ public class IngredientsDishToDeleteActivity extends AppCompatActivity {
         ingredientsOfTheDishViewModel = new IngredientsOfTheDishViewModel(this.getApplication());
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final DishDetailAdapter adapter = new DishDetailAdapter(new DishDetailAdapter.DishDetailDiff(), 2);
+        final DishDetailAdapter adapter = new DishDetailAdapter(new DishDetailAdapter.DishDetailDiff(), 1);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,6 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.shoppinglistapplication.entity.IngredientsOfTheDish;
 import com.example.shoppinglistapplication.entity.Product;
 import com.example.shoppinglistapplication.entity.ProductFormOfAccessibility;
 import com.example.shoppinglistapplication.entity.UnitOfMeasurement;
@@ -22,15 +20,22 @@ import com.example.shoppinglistapplication.uiCategories.ProductsByCategoryActivi
 import com.example.shoppinglistapplication.uiDishes.DishesActivity;
 import com.example.shoppinglistapplication.uiDishes.EditDishActivity;
 import com.example.shoppinglistapplication.uiDishes.EditQuantityActivity;
-import com.example.shoppinglistapplication.uiDishes.NewDishActivity;
 import com.example.shoppinglistapplication.uiDishes.NewDishActivity2;
 import com.example.shoppinglistapplication.uiDishes.NewDishActivity4;
 import com.example.shoppinglistapplication.uiDishes.NewDishActivity5;
-import com.example.shoppinglistapplication.uiDishes.NewDishDetailActivity;
 import com.example.shoppinglistapplication.uiDishes.NewDishDetailActivity2;
 import com.example.shoppinglistapplication.uiDishes.IngredientsDishActivity;
 import com.example.shoppinglistapplication.R;
 import com.example.shoppinglistapplication.uiDishes.NewDishDetailActivity3;
+import com.example.shoppinglistapplication.uiFormOfAccessibility.FormOfAccessibilityActivity;
+import com.example.shoppinglistapplication.uiListOfPreferences.EditListOfPreferencesActivity;
+import com.example.shoppinglistapplication.uiListOfPreferences.EditPortionsActivity;
+import com.example.shoppinglistapplication.uiListOfPreferences.ListsOfPreferencesActivity;
+import com.example.shoppinglistapplication.uiListOfPreferences.NewListOfPreferencesActivity2;
+import com.example.shoppinglistapplication.uiListOfPreferences.NewListOfPreferencesActivity3;
+import com.example.shoppinglistapplication.uiListOfPreferences.NewListOfPreferencesActivity4;
+import com.example.shoppinglistapplication.uiListOfPreferences.NewListOfThePreferencesDetailActivity2;
+import com.example.shoppinglistapplication.uiListOfPreferences.CompositionListOfThePreferencesActivity;
 import com.example.shoppinglistapplication.uiProducts.EditProductActivity;
 import com.example.shoppinglistapplication.uiProducts.NewProductActivity;
 import com.example.shoppinglistapplication.uiProducts.NewProductActivity3;
@@ -39,11 +44,16 @@ import com.example.shoppinglistapplication.uiProducts.ProductDetailsActivity;
 import com.example.shoppinglistapplication.uiProducts.ProductFormsActivity;
 import com.example.shoppinglistapplication.uiProducts.ProductUnitActivity;
 import com.example.shoppinglistapplication.uiProducts.ProductsActivity;
+import com.example.shoppinglistapplication.uiUnitOfMeasurement.UnitsOfMeasurementActivity;
 import com.example.shoppinglistapplication.viewmodel.CategoryViewModel;
 import com.example.shoppinglistapplication.viewmodel.DishViewModel;
+import com.example.shoppinglistapplication.viewmodel.FormOfAccessibilityViewModel;
 import com.example.shoppinglistapplication.viewmodel.IngredientsOfTheDishViewModel;
+import com.example.shoppinglistapplication.viewmodel.ListOfPreferencesDishViewModel;
+import com.example.shoppinglistapplication.viewmodel.ListOfPreferencesViewModel;
 import com.example.shoppinglistapplication.viewmodel.ProductFormOfAccessibilityViewModel;
 import com.example.shoppinglistapplication.viewmodel.ProductViewModel;
+import com.example.shoppinglistapplication.viewmodel.UnitOfMeasurementViewModel;
 
 import java.util.List;
 
@@ -263,6 +273,7 @@ class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClick
                 v.getContext().startActivity(intent);
                 ((Activity)v.getContext()).finish();
             }).start();
+
         } else if (version == 4) {  // usuwanie kategorii
             CategoryViewModel categoryViewModel = new CategoryViewModel(((Activity)v.getContext()).getApplication());
 
@@ -312,32 +323,79 @@ class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClick
     }
 }
 
-class PreferencesViewHolder extends RecyclerView.ViewHolder {
+class PreferencesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     private final TextView preferencesItemView;
+    private int version;
+    private int idListOfPreferences;
 
-    private PreferencesViewHolder(View itemView) {
+    private PreferencesViewHolder(View itemView, int version) {
         super(itemView);
+        itemView.setOnClickListener(this);
         preferencesItemView = itemView.findViewById(R.id.item_name);
+        this.version = version;
     }
 
-    public void bind(String text) {
+    public void bind(String text, int idListOfPreferences) {
         preferencesItemView.setText(text);
+        this.idListOfPreferences = idListOfPreferences;
     }
 
-    public static PreferencesViewHolder create(ViewGroup parent) {
+    public static PreferencesViewHolder create(ViewGroup parent, int version) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recyclerview_item, parent, false);
-        return new PreferencesViewHolder(view);
+        return new PreferencesViewHolder(view, version);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (version == 1) { // wyświetlanie zawartości listy
+            Intent intent = new Intent(v.getContext(), CompositionListOfThePreferencesActivity.class);
+            intent.putExtra(CompositionListOfThePreferencesActivity.KEY_LIST_OF_THE_PREFERENCES_ID, idListOfPreferences);
+            v.getContext().startActivity(intent);
+        } else if (version == 2) { // usuniecie listy
+            ListOfPreferencesViewModel listOfPreferencesViewModel = new ListOfPreferencesViewModel(((Activity)v.getContext()).getApplication());
+
+            AlertDialog.Builder builder = new AlertDialog.Builder((Activity)v.getContext())
+                    .setView(((Activity)v.getContext()).getLayoutInflater().inflate(R.layout.dialog_wrong_data, null))
+                    .setTitle("Czy na pewno chcesz usunąć listę?")
+                    .setMessage(R.string.lose_your_list_of_preferences_data)
+                    .setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            new Thread(() -> {
+                                listOfPreferencesViewModel.deleteListOfPreferencesById(idListOfPreferences, emptyFunction -> {});
+                                Intent intent = new Intent(v.getContext(), ListsOfPreferencesActivity.class);
+                                v.getContext().startActivity(intent);
+                                ((Activity)v.getContext()).finish();
+                            }).start();
+                        }
+                    })
+                    .setNegativeButton("Anuluj usuwanie listy", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            Intent intent = new Intent(v.getContext(), ListsOfPreferencesActivity.class);
+                            v.getContext().startActivity(intent);
+                            ((Activity)v.getContext()).finish();
+                        }
+                    });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+
+        } else if (version == 3) {  // edytowanie listy
+            Intent intent = new Intent(v.getContext(), EditListOfPreferencesActivity.class);
+            intent.putExtra(EditListOfPreferencesActivity.KEY_EDIT_LIST_OF_PREFERENCES_ID, idListOfPreferences);
+            v.getContext().startActivity(intent);
+            ((Activity) v.getContext()).finish();
+        }
     }
 }
 
 class DishViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    private static final String KEY_DISH_NAME = "dishName";
     private final TextView dishItemView;
     private int version;
     private int idDish;
+    private int idItem;
+    private String dishName;
 
     private DishViewHolder(View itemView, int version) {
         super(itemView);
@@ -346,15 +404,30 @@ class DishViewHolder extends RecyclerView.ViewHolder implements View.OnClickList
         this.version = version;
     }
 
+    private DishViewHolder(View itemView, int version, int idItem) {
+        super(itemView);
+        itemView.setOnClickListener(this);
+        dishItemView = itemView.findViewById(R.id.item_name);
+        this.version = version;
+        this.idItem = idItem;
+    }
+
     public void bind(String text, int idDish) {
         dishItemView.setText(text);
         this.idDish = idDish;
+        this.dishName = text;
     }
 
     public static DishViewHolder create(ViewGroup parent, int version) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recyclerview_item, parent, false);
         return new DishViewHolder(view, version);
+    }
+
+    public static DishViewHolder create(ViewGroup parent, int version, int idItem) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.recyclerview_item, parent, false);
+        return new DishViewHolder(view, version, idItem);
     }
 
     @Override
@@ -364,6 +437,7 @@ class DishViewHolder extends RecyclerView.ViewHolder implements View.OnClickList
             intent.putExtra(IngredientsDishActivity.KEY_DISH_ID, idDish);
             v.getContext().startActivity(intent);
 //            ((Activity)v.getContext()).finish();
+
         } else if (version == 2) {  // usuwanie dania
             DishViewModel dishViewModel = new DishViewModel(((Activity)v.getContext()).getApplication());
 
@@ -389,11 +463,27 @@ class DishViewHolder extends RecyclerView.ViewHolder implements View.OnClickList
                     });
             AlertDialog dialog = builder.create();
             dialog.show();
+
         } else if (version == 3) {  // edytowanie kategorii
             Intent intent = new Intent(v.getContext(), EditDishActivity.class);
             intent.putExtra(EditDishActivity.KEY_EDIT_DISH_ID, idDish);
             v.getContext().startActivity(intent);
             ((Activity) v.getContext()).finish();
+
+        } else if (version == 4) {  // wybór dania do listy preferencji
+            Intent intent = new Intent(v.getContext(), NewListOfThePreferencesDetailActivity2.class);
+            intent.putExtra(CompositionListOfThePreferencesActivity.KEY_LIST_OF_THE_PREFERENCES_ID, idItem);
+            intent.putExtra(CompositionListOfThePreferencesActivity.KEY_DISH_ID, idDish);
+            intent.putExtra(CompositionListOfThePreferencesActivity.KEY_DISH_NAME, dishName);
+            v.getContext().startActivity(intent);
+            ((Activity)v.getContext()).finish();
+
+        } else if (version == 5) {  // wybór dania przy tworzeniu listy preferencji
+            Intent intent = new Intent(v.getContext(), NewListOfPreferencesActivity4.class);
+            intent.putExtra(NewListOfPreferencesActivity2.KEY_NEW_DISH_IN_LIST_OF_PREFERENCES_ID, idDish);
+            intent.putExtra(NewListOfPreferencesActivity2.KEY_NEW_LIST_OF_PREFERENCES_ID, idItem);
+            v.getContext().startActivity(intent);
+            ((Activity)v.getContext()).finish();
         }
     }
 }
@@ -432,13 +522,7 @@ class DishDetailViewHolder extends RecyclerView.ViewHolder implements View.OnCli
 
     @Override
     public void onClick(View v) {
-        if (version == 1) {
-            Log.d("CAT", "klik w dishdetail");
-//        Intent intent = new Intent(v.getContext(), ProductsByDishesActivity.class);
-//        intent.putExtra(KEY_DISH_NAME, dishItemView.getText());
-//        v.getContext().startActivity(intent);
-//            ((Activity)v.getContext()).finish();
-        } else if (version == 2) {
+        if (version == 1) {  // usuwanie składnika
             IngredientsOfTheDishViewModel ingredientsOfTheDishViewModel = new IngredientsOfTheDishViewModel(((Activity)v.getContext()).getApplication());
             new Thread(() -> {
                 ingredientsOfTheDishViewModel.deleteIngredientOfTheDishById(idProduct, idDish, emptyFunction -> {});
@@ -447,7 +531,7 @@ class DishDetailViewHolder extends RecyclerView.ViewHolder implements View.OnCli
                 v.getContext().startActivity(intent);
                 ((Activity)v.getContext()).finish();
             }).start();
-        } else if (version == 3) {
+        } else if (version == 2) {  // edytowanie składnika
             IngredientsOfTheDishViewModel ingredientsOfTheDishViewModel = new IngredientsOfTheDishViewModel(((Activity)v.getContext()).getApplication());
             new Thread(() -> {
                 Intent intent = new Intent(v.getContext(), EditQuantityActivity.class);
@@ -457,6 +541,116 @@ class DishDetailViewHolder extends RecyclerView.ViewHolder implements View.OnCli
                 ((Activity)v.getContext()).finish();
             }).start();
         }
+    }
+}
+
+class DishDetailViewHolder2 extends RecyclerView.ViewHolder {
+
+    private final TextView dishDetailItemView;
+    private final TextView dishDetailItemView2;
+    private final TextView dishDetailItemView3;
+
+    private DishDetailViewHolder2(View itemView) {
+        super(itemView);
+        dishDetailItemView = itemView.findViewById(R.id.dish_detail_item_name);
+        dishDetailItemView2 = itemView.findViewById(R.id.dish_detail_item_quantity);
+        dishDetailItemView3 = itemView.findViewById(R.id.dish_detail_item_unit);
+    }
+
+    public void bind(String name, float quantity, String unit, int idProduct, int idDish) {
+        dishDetailItemView.setText(name);
+        dishDetailItemView2.setText(String.valueOf(quantity));
+        dishDetailItemView3.setText(unit);
+    }
+
+    public static DishDetailViewHolder2 create(ViewGroup parent) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.recyclerview_dishes_details_item, parent, false);
+        return new DishDetailViewHolder2(view);
+    }
+}
+
+class ListOfThePreferenceDetailViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+    private final TextView dishDetailItemView;
+    private final TextView dishDetailItemView2;
+    private int version;
+    private int portions;
+    private int idDish;
+    private int idListOfPreferences;
+    private String dishName;
+    private String listOfPreferencesName;
+
+    private ListOfThePreferenceDetailViewHolder(View itemView, int version) {
+        super(itemView);
+        itemView.setOnClickListener(this);
+        dishDetailItemView = itemView.findViewById(R.id.preferences_detail_item_name);
+        dishDetailItemView2 = itemView.findViewById(R.id.preferences_detail_item_quantity);
+        this.version = version;
+    }
+
+    public void bind(int idDish, String dishName, int idListOfPreferences, String listOfPreferencesName, int portions) {
+        dishDetailItemView.setText(dishName);
+        dishDetailItemView2.setText(String.valueOf(portions));
+
+        this.idListOfPreferences = idListOfPreferences;
+        this.idDish = idDish;
+        this.dishName = dishName;
+        this.listOfPreferencesName = listOfPreferencesName;
+        this.portions = portions;
+    }
+
+    public static ListOfThePreferenceDetailViewHolder create(ViewGroup parent, int version) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.recyclerview_list_of_preferences_detail_item, parent, false);
+        return new ListOfThePreferenceDetailViewHolder(view, version);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (version == 1) {  // usuwanie dania z listy
+            ListOfPreferencesDishViewModel listOfPreferencesDishViewModel = new ListOfPreferencesDishViewModel(((Activity)v.getContext()).getApplication());
+            new Thread(() -> {
+                listOfPreferencesDishViewModel.deleteListOfPreferencesDish(idDish, idListOfPreferences, emptyFunction -> {});
+                Intent intent = new Intent(v.getContext(), CompositionListOfThePreferencesActivity.class);
+                intent.putExtra(CompositionListOfThePreferencesActivity.KEY_LIST_OF_THE_PREFERENCES_ID, idListOfPreferences);
+                v.getContext().startActivity(intent);
+                ((Activity)v.getContext()).finish();
+            }).start();
+        }
+        else if (version == 2) {  // edytowanie składnika
+            ListOfPreferencesDishViewModel listOfPreferencesDishViewModel = new ListOfPreferencesDishViewModel(((Activity)v.getContext()).getApplication());
+            new Thread(() -> {
+                Intent intent = new Intent(v.getContext(), EditPortionsActivity.class);
+                intent.putExtra(CompositionListOfThePreferencesActivity.KEY_LIST_OF_THE_PREFERENCES_ID, idListOfPreferences);
+                intent.putExtra(CompositionListOfThePreferencesActivity.KEY_DISH_ID, idDish);
+                v.getContext().startActivity(intent);
+                ((Activity)v.getContext()).finish();
+            }).start();
+        }
+    }
+}
+
+class ListOfThePreferenceDetailViewHolder2 extends RecyclerView.ViewHolder {
+
+    private final TextView dishDetailItemView;
+    private final TextView dishDetailItemView2;
+
+    private ListOfThePreferenceDetailViewHolder2(View itemView) {
+        super(itemView);
+        dishDetailItemView = itemView.findViewById(R.id.preferences_detail_item_name);
+        dishDetailItemView2 = itemView.findViewById(R.id.preferences_detail_item_quantity);
+    }
+
+    public void bind(String dishName, int portions) {
+        dishDetailItemView.setText(dishName);
+        dishDetailItemView2.setText(String.valueOf(portions));
+    }
+
+    public static ListOfThePreferenceDetailViewHolder2 create(ViewGroup parent) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.recyclerview_list_of_preferences_detail_item, parent, false);
+        return new ListOfThePreferenceDetailViewHolder2(view);
     }
 }
 
@@ -506,6 +700,13 @@ class UnitOfMeasurementViewHolder2 extends RecyclerView.ViewHolder implements Vi
         this.version = version;
     }
 
+    private UnitOfMeasurementViewHolder2(View itemView, int version) {
+        super(itemView);
+        itemView.setOnClickListener(this);
+        unitItemView = itemView.findViewById(R.id.item_name);
+        this.version = version;
+    }
+
     public void bind(String text, int idUnit) {
         unitItemView.setText(text);
         this.idUnit = idUnit;
@@ -521,6 +722,12 @@ class UnitOfMeasurementViewHolder2 extends RecyclerView.ViewHolder implements Vi
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recyclerview_item, parent, false);
         return new UnitOfMeasurementViewHolder2(view, version, idProduct);
+    }
+
+    public static UnitOfMeasurementViewHolder2 create(ViewGroup parent, int version) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.recyclerview_item, parent, false);
+        return new UnitOfMeasurementViewHolder2(view, version);
     }
 
     @Override
@@ -551,6 +758,14 @@ class UnitOfMeasurementViewHolder2 extends RecyclerView.ViewHolder implements Vi
                 productViewModel.updateProductUnit(idProduct, idUnit, emptyFunction -> {});
                 Intent intent = new Intent(v.getContext(), ProductUnitActivity.class);
                 intent.putExtra(ProductDetailsActivity.KEY_PRODUCT_DETAIL_ID, idProduct);
+                v.getContext().startActivity(intent);
+                ((Activity)v.getContext()).finish();
+            }).start();
+        } else if (version == 4) { // usuwanie jednostki
+            UnitOfMeasurementViewModel unitOfMeasurementViewModel = new UnitOfMeasurementViewModel(((Activity)v.getContext()).getApplication());
+            new Thread(() -> {
+                unitOfMeasurementViewModel.deleteUnitById(idUnit, emptyFunction -> {});
+                Intent intent = new Intent(v.getContext(), UnitsOfMeasurementActivity.class);
                 v.getContext().startActivity(intent);
                 ((Activity)v.getContext()).finish();
             }).start();
@@ -594,6 +809,13 @@ class FormOfAccessibilityViewHolder2 extends RecyclerView.ViewHolder implements 
         this.version = version;
     }
 
+    private FormOfAccessibilityViewHolder2(View itemView, int version) {
+        super(itemView);
+        formItemView = itemView.findViewById(R.id.item_name);
+        itemView.setOnClickListener(this);
+        this.version = version;
+    }
+
     public void bind(String text, int idForm) {
         formItemView.setText(text);
         this.idForm = idForm;
@@ -603,6 +825,12 @@ class FormOfAccessibilityViewHolder2 extends RecyclerView.ViewHolder implements 
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recyclerview_item, parent, false);
         return new FormOfAccessibilityViewHolder2(view, version, idProduct);
+    }
+
+    public static FormOfAccessibilityViewHolder2 create(ViewGroup parent, int version) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.recyclerview_item, parent, false);
+        return new FormOfAccessibilityViewHolder2(view, version);
     }
 
     @Override
@@ -623,6 +851,14 @@ class FormOfAccessibilityViewHolder2 extends RecyclerView.ViewHolder implements 
                 productFormOfAccessibilityViewModel.deleteProductFormOfAccessibilityById(idProduct, idForm, emptyFunction -> {});
                 Intent intent = new Intent(v.getContext(), ProductFormsActivity.class);
                 intent.putExtra(ProductDetailsActivity.KEY_PRODUCT_DETAIL_ID, idProduct);
+                v.getContext().startActivity(intent);
+                ((Activity)v.getContext()).finish();
+            }).start();
+        } else if (version == 3) {         // usuwanie formy
+            FormOfAccessibilityViewModel formOfAccessibilityViewModel = new FormOfAccessibilityViewModel(((Activity)v.getContext()).getApplication());
+            new Thread(() -> {
+                formOfAccessibilityViewModel.deleteFormById(idForm, emptyFunction -> {});
+                Intent intent = new Intent(v.getContext(), FormOfAccessibilityActivity.class);
                 v.getContext().startActivity(intent);
                 ((Activity)v.getContext()).finish();
             }).start();

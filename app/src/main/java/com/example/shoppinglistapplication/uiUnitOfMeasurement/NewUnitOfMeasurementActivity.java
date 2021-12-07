@@ -2,6 +2,12 @@ package com.example.shoppinglistapplication.uiUnitOfMeasurement;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.shoppinglistapplication.R;
+import com.example.shoppinglistapplication.entity.Category;
+import com.example.shoppinglistapplication.entity.UnitOfMeasurement;
+import com.example.shoppinglistapplication.uiCategories.CategoriesActivity;
+import com.example.shoppinglistapplication.uiCategories.NewCategoryActivity;
+import com.example.shoppinglistapplication.viewmodel.CategoryViewModel;
+import com.example.shoppinglistapplication.viewmodel.UnitOfMeasurementViewModel;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -14,8 +20,9 @@ import android.widget.Toast;
 
 public class NewUnitOfMeasurementActivity extends AppCompatActivity {
 
-    public static final String EXTRA_REPLY_UNIT = "newUnitName";
+    public static final String KEY_UNIT_NAME = "newUnitName";
     private EditText editUnitName;
+    private UnitOfMeasurementViewModel unitOfMeasurementViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +54,22 @@ public class NewUnitOfMeasurementActivity extends AppCompatActivity {
                 AlertDialog dialog = builder.create();
                 dialog.show();
             } else {
-                String unit_name = editUnitName.getText().toString();
-                replyIntent.putExtra(EXTRA_REPLY_UNIT, unit_name);
-                setResult(RESULT_OK, replyIntent);
-                finish();
+                new Thread(() -> {
+                    String unitName = editUnitName.getText().toString();
+                    unitOfMeasurementViewModel = new UnitOfMeasurementViewModel(this.getApplication());
+                    if (!unitOfMeasurementViewModel.unitExists(unitName)) {
+                        Intent intent = new Intent(NewUnitOfMeasurementActivity.this, UnitsOfMeasurementActivity.class);
+                        UnitOfMeasurement unitOfMeasurement = new UnitOfMeasurement(unitName);
+                        unitOfMeasurementViewModel.insert(unitOfMeasurement, emptyFunction -> {});
+                        startActivity(intent);
+                        this.finish();
+                    } else {
+                        Intent intent = new Intent(NewUnitOfMeasurementActivity.this, UnitsOfMeasurementActivity.class);
+                        intent.putExtra(UnitsOfMeasurementActivity.KEY_UNIT_INFO, "alreadyExists");
+                        startActivity(intent);
+                        this.finish();
+                    }
+                }).start();
             }
         });
     }

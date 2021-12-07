@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.example.shoppinglistapplication.R;
 import com.example.shoppinglistapplication.adapterholder.ProductListAdapter2;
+import com.example.shoppinglistapplication.uiCategories.CategoriesActivity;
+import com.example.shoppinglistapplication.uiCategories.EditCategoryActivity;
 import com.example.shoppinglistapplication.uiCategories.ProductsByCategoryActivity;
 import com.example.shoppinglistapplication.viewmodel.ProductViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -44,6 +46,27 @@ public class ProductsActivity extends AppCompatActivity {
                         .setNegativeButton("Anuluj dodawanie nowego produktu", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 Toast.makeText(getApplicationContext(),"Anulowano dodawanie nowego produktu",Toast.LENGTH_LONG).show();
+                            }
+                        });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            } else if (info.equals("editingNameExists")) {
+                int idProduct = (int) getIntent().getSerializableExtra(EditProductActivity.KEY_EDIT_PRODUCT_ID);
+                AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                        .setView(this.getLayoutInflater().inflate(R.layout.dialog_wrong_data, null))
+                        .setTitle("Niepoprawna nazwa")
+                        .setMessage(R.string.product_already_exists)
+                        .setPositiveButton("Podaj nową nazwę", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Intent intent = new Intent(ProductsActivity.this, EditProductActivity.class);
+                                intent.putExtra(EditProductActivity.KEY_EDIT_PRODUCT_ID, idProduct);
+                                startActivity(intent);
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("Anuluj edytowanie produktu", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Toast.makeText(getApplicationContext(),"Anulowano edytowanie produktu",Toast.LENGTH_LONG).show();
                             }
                         });
                 AlertDialog dialog = builder.create();

@@ -1,8 +1,0 @@
-
-~
-java:S1450"\Remove the "dishViewModel" field and declare it as a local variable in the relevant methods.(ÝÞÿ˜úÿÿÿÿ8ðÜÅ‚Ù/
-H
-java:S1602 ",Remove useless curly braces around statement(ý× 8¥½Å‚Ù/
-\
-java:S1612 "@Replace this lambda with method reference 'adapter::submitList'.(ý× 8›£É‚Ù/
-t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‡ï“Æùÿÿÿÿ

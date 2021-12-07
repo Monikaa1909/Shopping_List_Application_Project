@@ -24,10 +24,13 @@ public class FormOfAccessibilityViewModel extends AndroidViewModel {
         forms = dataRepository.getAllFormsOfAccessibility();
     }
 
-    public LiveData<List<FormOfAccessibility>> getAllUnits() {
+    public LiveData<List<FormOfAccessibility>> getAllForms() {
         return forms;
     }
 
+    public void deleteFormById(long id, DataRepository.Executor executor) {
+        dataRepository.deleteFormById(id);
+    }
 //    public List<Product> getProductsByCategoryName(String name) { return dataRepository.getProductsByCategoryName(name); }
 
     public Boolean formExists(float form) {

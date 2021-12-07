@@ -70,20 +70,12 @@ public class NewDishActivity5 extends AppCompatActivity {
                     if (!ingredientsOfTheDishViewModel.ingredientExists(newIngredientId, newDishId)) {
                         IngredientsOfTheDish ingredientsOfTheDish = new IngredientsOfTheDish(newIngredientId, newDishId, quantity);
                         ingredientsOfTheDishViewModel.insert(ingredientsOfTheDish, emptyFunction -> {});
-                        Intent intent = new Intent(NewDishActivity5.this, NewDishActivity2.class);
-                        intent.putExtra(NewDishActivity2.KEY_NEW_DISH_ID, newDishId);
-                        startActivity(intent);
-                        this.finish();
-                    } else {
-                        Intent intent = new Intent(NewDishActivity5.this, NewDishActivity2.class);
-                        Log.d("aaaa", "istnieje");
-                        intent.putExtra(NewDishActivity2.KEY_NEW_DISH_ID, newDishId);
-                        intent.putExtra(NewDishActivity2.KEY_DISH_INFO, "alreadyExists");
+                        Intent intent = new Intent(NewDishActivity5.this, IngredientsDishActivity.class);
+                        intent.putExtra(IngredientsDishActivity.KEY_DISH_ID, newDishId);
                         startActivity(intent);
                         this.finish();
                     }
-
-                    }).start();
+                }).start();
             }
         });
     }

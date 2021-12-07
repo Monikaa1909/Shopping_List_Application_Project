@@ -13,6 +13,11 @@ public class FormOfAccessibilityListAdapter2 extends ListAdapter<FormOfAccessibi
     private int idProduct;
     private int version;
 
+    public FormOfAccessibilityListAdapter2(@NonNull DiffUtil.ItemCallback<FormOfAccessibility> diffCallback, int version) {
+        super(diffCallback);
+        this.version = version;
+    }
+
     public FormOfAccessibilityListAdapter2(@NonNull DiffUtil.ItemCallback<FormOfAccessibility> diffCallback, int version, int idProduct) {
         super(diffCallback);
         this.idProduct = idProduct;
@@ -21,6 +26,9 @@ public class FormOfAccessibilityListAdapter2 extends ListAdapter<FormOfAccessibi
 
     @Override
     public FormOfAccessibilityViewHolder2 onCreateViewHolder(ViewGroup parent, int viewType) {
+        if (version == 3) {
+            return FormOfAccessibilityViewHolder2.create(parent, version);
+        }
         return FormOfAccessibilityViewHolder2.create(parent, version, idProduct);
     }
 
