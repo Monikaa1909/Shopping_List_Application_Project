@@ -1,0 +1,13 @@
+
+G
+java:S1602!",Remove useless curly braces around statement(Ë¼òÎıÿÿÿÿ
+b
+java:S1612!"@Replace this lambda with method reference 'adapter::submitList'.(Ë¼òÎıÿÿÿÿ8ß°ß×/
+Y
+java:S1874(">Remove this use of "startActivityForResult"; it is deprecated.(†»¢ ûÿÿÿÿ
+`
+java:S1874-"JDon't override a deprecated method or explicitly mark it as "@Deprecated".(ŸŒ¹Ñ
+>	java:S108;")Either remove or fill this block of code.(å¥‡
+L
+java:S54115"*Use the primitive boolean expression here.(Ëã½şúÿÿÿÿ8ˆ±ß×/
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¤”’¬ıÿÿÿÿ

@@ -1,0 +1,11 @@
+
+k	java:S116"VRename this field "button_unit" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’¦¢«
+l	java:S116"WRename this field "button_forms" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„í„·
+o	java:S116"ZRename this field "button_category" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(™âµ¢
+t
+java:S1450"^Remove the "button_category" field and declare it as a local variable in the relevant methods.(™âµ¢
+q
+java:S1450"[Remove the "button_forms" field and declare it as a local variable in the relevant methods.(„í„·
+p
+java:S1450"ZRemove the "button_unit" field and declare it as a local variable in the relevant methods.(’¦¢«
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(°ÛÆô

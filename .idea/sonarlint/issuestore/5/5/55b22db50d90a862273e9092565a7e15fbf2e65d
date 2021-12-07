@@ -1,0 +1,16 @@
+
+v
+java:S1450"[Remove the "editQuantity" field and declare it as a local variable in the relevant methods.(âÌÏ©ÿÿÿÿÿ
+r
+java:S1450"WRemove the "textUnit" field and declare it as a local variable in the relevant methods.(”ßàƒüÿÿÿÿ
+—
+java:S11866"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ý§„Ô
+V
+java:S2130D";Use "Float.parseFloat" for this string-to-float conversion.(ï®Âÿÿÿÿÿ
+>
+java:S16045"(Make this anonymous inner class a lambda(äæÕä
+=
+java:S1604:"(Make this anonymous inner class a lambda(¯¼Ï@
+G
+java:S5411F"*Use the primitive boolean expression here.(¿„÷ª8Šë´†Ù/
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‡ï“Æùÿÿÿÿ

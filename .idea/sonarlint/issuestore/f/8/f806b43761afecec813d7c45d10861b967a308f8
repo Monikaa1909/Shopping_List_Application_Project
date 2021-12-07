@@ -1,0 +1,8 @@
+
+
+java:S1450"_Remove the "productViewModel" field and declare it as a local variable in the relevant methods.(¤ì˜¶ûÿÿÿÿ8¢™•ÑØ/
+N
+java:S1602",Remove useless curly braces around statement(Ş—ŸÚÿÿÿÿÿ8²™•ÑØ/
+b
+java:S1612"@Replace this lambda with method reference 'adapter::submitList'.(Ş—ŸÚÿÿÿÿÿ8²™•ÑØ/
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(°ÛÆô

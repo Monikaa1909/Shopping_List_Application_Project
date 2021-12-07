@@ -1,0 +1,13 @@
+
+t
+java:S1450"^Remove the "editProductName" field and declare it as a local variable in the relevant methods.(Öïì¯
+—
+java:S1186-"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ý§„Ô
+W	java:S125C"<This block of commented-out lines of code should be removed.(Àÿå8ØÖ¾ÑØ/
+>
+java:S1604,"(Make this anonymous inner class a lambda(’Æã¼
+C
+java:S16041"(Make this anonymous inner class a lambda(Ï¨‚¬ûÿÿÿÿ
+@
+java:S5411="*Use the primitive boolean expression here.(­ëô‘
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(°ÛÆô
