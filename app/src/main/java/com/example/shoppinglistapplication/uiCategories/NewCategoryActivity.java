@@ -2,6 +2,7 @@ package com.example.shoppinglistapplication.uiCategories;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.shoppinglistapplication.R;
+import com.example.shoppinglistapplication.entity.Category;
 import com.example.shoppinglistapplication.uiProducts.NewProductActivity;
 import com.example.shoppinglistapplication.uiProducts.NewProductActivity2;
 import com.example.shoppinglistapplication.uiProducts.ProductsActivity;
@@ -43,7 +45,6 @@ public class NewCategoryActivity extends AppCompatActivity {
                         .setMessage(R.string.empty_not_saved)
                         .setPositiveButton("Podaj poprawną nazwę", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-
                             }
                         })
                         .setNegativeButton("Anuluj dodawanie kategorii", new DialogInterface.OnClickListener() {
@@ -56,19 +57,20 @@ public class NewCategoryActivity extends AppCompatActivity {
                 dialog.show();
             } else {
                 new Thread(() -> {
-                    String category_name = editCategoryName.getText().toString();
+                    String categoryName = editCategoryName.getText().toString();
                     categoryViewModel = new CategoryViewModel(this.getApplication());
-//                    if (categoryViewModel.categoryExists(category_name)) {
-//                        Intent intent = new Intent(NewCategoryActivity.this, CategoriesActivity.class);
-//                        replyIntent.putExtra(CategoriesActivity.KEY_CATEGORY_INFO, "alreadyExists");
-////                        setResult(RESULT_OK, replyIntent);
-//                        startActivity(intent);
-//                    } else {
-                        replyIntent.putExtra(EXTRA_REPLY_NAME, category_name);
-                        setResult(RESULT_OK, replyIntent);
-//                    }
-                    this.finish();
-
+                    if (!categoryViewModel.categoryExists(categoryName)) {
+                        Intent intent = new Intent(NewCategoryActivity.this, CategoriesActivity.class);
+                        Category category = new Category(categoryName);
+                        categoryViewModel.insert(category, emptyFunction -> {});
+                        startActivity(intent);
+                        this.finish();
+                    } else {
+                        Intent intent = new Intent(NewCategoryActivity.this, CategoriesActivity.class);
+                        intent.putExtra(CategoriesActivity.KEY_CATEGORY_INFO, "alreadyExists");
+                        startActivity(intent);
+                        this.finish();
+                    }
                 }).start();
             }
         });

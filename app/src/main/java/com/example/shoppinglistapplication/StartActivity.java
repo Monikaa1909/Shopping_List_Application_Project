@@ -14,7 +14,7 @@ import com.example.shoppinglistapplication.uiProducts.ProductsActivity;
 
 public class StartActivity extends AppCompatActivity {
 
-    private Button button_create_list_of_preferences;
+//    private Button button_create_list_of_preferences;
     private Button button_load_list_of_preferences;
     private Button button_load_products;
     private Button button_load_categories;
@@ -26,17 +26,17 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        button_create_list_of_preferences = findViewById(R.id.button_create_new_list);
+//        button_create_list_of_preferences = findViewById(R.id.button_create_new_list);
         button_load_list_of_preferences = findViewById(R.id.button_load_list);
         button_load_products = findViewById(R.id.button_load_products);
         button_load_categories = findViewById(R.id.button_load_categories);
         button_load_dishes = findViewById(R.id.button_load_dishes);
         button_load_settings = findViewById(R.id.button_load_settings);
 
-        button_create_list_of_preferences.setOnClickListener(view -> {
-            Intent intent = new Intent(StartActivity.this, NewListOfPreferencesActivity.class);
-            startActivity(intent);
-        });
+//        button_create_list_of_preferences.setOnClickListener(view -> {
+//            Intent intent = new Intent(StartActivity.this, NewListOfPreferencesActivity.class);
+//            startActivity(intent);
+//        });
 
         button_load_list_of_preferences.setOnClickListener(view -> {
             Intent intent = new Intent(StartActivity.this, ListsOfPreferencesActivity.class);

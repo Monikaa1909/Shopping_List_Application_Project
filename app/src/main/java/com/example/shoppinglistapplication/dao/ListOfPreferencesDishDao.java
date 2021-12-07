@@ -7,6 +7,8 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 import com.example.shoppinglistapplication.entity.ListOfPreferencesDish;
+import com.example.shoppinglistapplication.helpfulModel.DishDetail;
+import com.example.shoppinglistapplication.helpfulModel.ListOfPreferencesDetail;
 
 import java.util.List;
 
@@ -14,13 +16,28 @@ import java.util.List;
 public interface ListOfPreferencesDishDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(ListOfPreferencesDish listOfPreferencesDish);
+    long insert(ListOfPreferencesDish listOfPreferencesDish);
 
     @Query("DELETE FROM ListOfPreferencesDish")
     void deleteAll();
 
     @Query("SELECT * FROM listofpreferencesdish")
-    LiveData<List<ListOfPreferencesDish>> getAllListOfPreferences();
+    LiveData<List<ListOfPreferencesDish>> getAllListOfPreferencesDish();
+
+    @Query("select exists (select * from listofpreferencesdish where idDish = :idDish and idListOfPreferences = :idListOfPreferences)")
+    Boolean listOfPreferencesDishExists(int idDish, int idListOfPreferences);
+
+    @Query("UPDATE listofpreferencesdish SET portions = :portions WHERE idDish = :idDish and idListOfPreferences = :idListOfPreferences")
+    void updateListOfPreferencesDishPortions(int idDish, int idListOfPreferences, int portions);
+
+    @Query("DELETE FROM listofpreferencesdish where idDish = :idDish and idListOfPreferences = :idListOfPreferences")
+    void deleteListOfPreferencesDish(int idDish, int idListOfPreferences);
+
+    @Query("select listofpreferencesdish.idListOfPreferences, listofpreferences.listofpreferencesName, dish.idDish, " +
+            "dish.dishName, listofpreferencesdish.portions from listofpreferencesdish, listofpreferences, dish " +
+            "where listofpreferences.idListOfPreferences = listofpreferencesdish.idListOfPreferences " +
+            "and listofpreferencesdish.idDish = dish.idDish and listofpreferences.idListOfPreferences = :idListOfPreferences")
+    List<ListOfPreferencesDetail> getListOfPreferencesDishDetail(int idListOfPreferences);
 
 }
 

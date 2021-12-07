@@ -37,4 +37,7 @@
     <string name="hint_new_quantity">Podaj ilość danego składnika</string>
     <string name="hint_edit_name_dish">Podaj nową nazwę dania</string>
     <string name="hint_edit_quantity">Podaj nową ilość składnika</string>
+    <string name="product_already_exists">Produkt o podanej nazwie już istnieje</string>
+    <string name="category_already_exists">Kategoria o podanej nazwie już istnieje</string>
+    <string name="dish_already_exists">Danie o podanej nazwie już istnieje</string>
 </resources>

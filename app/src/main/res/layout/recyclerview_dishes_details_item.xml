@@ -11,7 +11,7 @@
 
         <TextView
             android:id="@+id/dish_detail_item_name"
-            style="@style/product_title"
+            style="@style/item_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
@@ -19,7 +19,7 @@
 
         <TextView
             android:id="@+id/dish_detail_item_quantity"
-            style="@style/product_title"
+            style="@style/item_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
@@ -27,7 +27,7 @@
 
         <TextView
             android:id="@+id/dish_detail_item_unit"
-            style="@style/product_title"
+            style="@style/item_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"

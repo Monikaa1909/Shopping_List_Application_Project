@@ -10,12 +10,14 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.shoppinglistapplication.R;
+import com.example.shoppinglistapplication.entity.ListOfPreferences;
+import com.example.shoppinglistapplication.viewmodel.ListOfPreferencesViewModel;
 
 public class NewListOfPreferencesActivity extends AppCompatActivity {
 
-    public static final String LIST_OF_PREFERENCES_NAME = "listOfPreferencesName";
     private EditText editListName;
     private Button saveName;
+    ListOfPreferencesViewModel listOfPreferencesViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,15 +31,20 @@ public class NewListOfPreferencesActivity extends AppCompatActivity {
         saveName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(NewListOfPreferencesActivity.this, OneListOfPreferencesActivity.class);
+                Intent intent = new Intent(NewListOfPreferencesActivity.this, ListsOfPreferencesActivity.class);
                 String listOfPreferencesName;
                 if (TextUtils.isEmpty(editListName.getText())) {
                     listOfPreferencesName = "Moja lista";
                 } else {
                     listOfPreferencesName = editListName.getText().toString();
                 }
+                new Thread(() -> {
+                    listOfPreferencesViewModel = new ListOfPreferencesViewModel(getApplication());
+                    ListOfPreferences listOfPreferences = new ListOfPreferences(listOfPreferencesName);
+                    listOfPreferencesViewModel.insert(listOfPreferences);
+                }).start();
 
-                intent.putExtra(LIST_OF_PREFERENCES_NAME, listOfPreferencesName);
+//                intent.putExtra(ListsOfPreferencesActivity.KEY_LIST_OF_PREFERENCES_NAME, listOfPreferencesName);
                 startActivity(intent);
             }
         });

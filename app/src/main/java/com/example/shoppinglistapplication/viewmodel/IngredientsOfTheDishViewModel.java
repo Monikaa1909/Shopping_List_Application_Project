@@ -16,7 +16,6 @@ import java.util.List;
 public class IngredientsOfTheDishViewModel extends AndroidViewModel {
 
     private DataRepository dataRepository;
-
     private LiveData<List<IngredientsOfTheDish>> ingredientsOfTheDish;
 
     public IngredientsOfTheDishViewModel(@NonNull Application application) {

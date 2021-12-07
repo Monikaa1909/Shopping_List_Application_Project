@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,7 +30,24 @@ public class ProductsActivity extends AppCompatActivity {
         if (getIntent().getStringExtra(KEY_PRODUCT_INFO) != null) {
             String info = getIntent().getStringExtra(KEY_PRODUCT_INFO);
             if (info.equals("alreadyExists")) {
-                Toast.makeText(getApplicationContext(),"Produkt o podanej nazwie już istnieje",Toast.LENGTH_LONG).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                        .setView(this.getLayoutInflater().inflate(R.layout.dialog_wrong_data, null))
+                        .setTitle("Niepoprawna nazwa")
+                        .setMessage(R.string.product_already_exists)
+                        .setPositiveButton("Podaj nową nazwę", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Intent intent = new Intent(ProductsActivity.this, NewProductActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("Anuluj dodawanie nowego produktu", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Toast.makeText(getApplicationContext(),"Anulowano dodawanie nowego produktu",Toast.LENGTH_LONG).show();
+                            }
+                        });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         }
 
@@ -63,32 +82,5 @@ public class ProductsActivity extends AppCompatActivity {
             startActivity(intent);
             this.finish();
         });
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-//        if (requestCode == NEW_PRODUCT_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-//            String categoryName = data.getStringExtra(NewProductActivity.EXTRA_REPLY_CATEGORY);
-//
-//            new Thread(() -> {
-//                CategoryViewModelFactory factory = new CategoryViewModelFactory(this.getApplication(), categoryName, 1);
-//                categoryViewModel = new ViewModelProvider(this, factory).get(CategoryViewModel.class);
-//
-//                if (!categoryViewModel.categoryExists(categoryName)) {
-//                    Category category = new Category(categoryName);
-//                    categoryViewModel.insert(category, id -> createProduct(data, (int) id));
-//                } else {
-//                    int categoryId = categoryViewModel.getIdCategoryByName(categoryName);
-//                    createProduct(data, categoryId);
-//                }
-////                Log.d("CAT", String.valueOf(categoryViewModel.getCategory_name_by_id(1)));
-//            }).start();
-//
-//        } else {
-//            Toast.makeText(getApplicationContext(), R.string.empty_not_saved,
-//                    Toast.LENGTH_LONG).show();
-//        }
     }
 }

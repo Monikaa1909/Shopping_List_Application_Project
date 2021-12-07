@@ -8,9 +8,14 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#59775d</color>
+    <color name="colorPrimaryDark">#2f4b33</color>
     <color name="colorAccent">#FF4081</color>
     <color name="buttonLabel">#FFFFFF</color>
+
+    <color name="main_dark_green">#2f4b33</color>
+    <color name="main_medium_green">#59775d</color>
+    <color name="main_light_green">#86a68a</color>
+    <color name="nice_grey">#cfd8dc</color>
 
 </resources>

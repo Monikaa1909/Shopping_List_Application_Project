@@ -7,60 +7,42 @@
     tools:context=".StartActivity"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/button_create_new_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:text="@string/button_create_new_list"
-        android:layout_margin="@dimen/big_padding"
-        android:textColor="@color/buttonLabel" />
+<!--    <Button-->
+<!--        android:id="@+id/button_create_new_list"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/button_create_new_list"-->
+<!--        style="@style/main_button"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        />-->
 
     <Button
         android:id="@+id/button_load_list"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
         android:text="@string/button_load_list"
-        android:layout_margin="@dimen/big_padding"
-        android:textColor="@color/buttonLabel" />
+        style="@style/main_button" />
 
     <Button
         android:id="@+id/button_load_products"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
         android:text="@string/button_load_products"
-        android:layout_margin="@dimen/big_padding"
-        android:textColor="@color/buttonLabel" />
+        style="@style/main_button" />
 
     <Button
         android:id="@+id/button_load_categories"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
         android:text="@string/button_load_categories"
-        android:layout_margin="@dimen/big_padding"
-        android:textColor="@color/buttonLabel" />
+        style="@style/main_button"/>
 
     <Button
         android:id="@+id/button_load_dishes"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
         android:text="@string/button_load_dishes"
-        android:layout_margin="@dimen/big_padding"
-        android:textColor="@color/buttonLabel" />
+        style="@style/main_button" />
 
     <Button
         android:id="@+id/button_load_settings"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
         android:text="@string/button_load_settings"
-        android:layout_margin="@dimen/big_padding"
-        android:textColor="@color/buttonLabel" />
-
-
+        style="@style/main_button" />
 
 </LinearLayout>

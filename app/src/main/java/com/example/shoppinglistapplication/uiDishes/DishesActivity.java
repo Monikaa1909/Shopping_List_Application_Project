@@ -1,5 +1,7 @@
 package com.example.shoppinglistapplication.uiDishes;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -13,6 +15,7 @@ import com.example.shoppinglistapplication.adapterholder.DishListAdapter;
 import com.example.shoppinglistapplication.uiCategories.CategoriesActivity;
 import com.example.shoppinglistapplication.uiCategories.CategoriesToDeleteActivity;
 import com.example.shoppinglistapplication.uiCategories.CategoriesToEditActivity;
+import com.example.shoppinglistapplication.uiCategories.NewCategoryActivity;
 import com.example.shoppinglistapplication.viewmodel.DishViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -25,6 +28,30 @@ public class DishesActivity  extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recyclerview_with_all_button);
+
+        if (getIntent().getStringExtra(KEY_DISH_INFO) != null) {
+            String info = getIntent().getStringExtra(KEY_DISH_INFO);
+            if (info.equals("alreadyExists")) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                        .setView(this.getLayoutInflater().inflate(R.layout.dialog_wrong_data, null))
+                        .setTitle("Niepoprawna nazwa")
+                        .setMessage(R.string.dish_already_exists)
+                        .setPositiveButton("Podaj nową nazwę", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Intent intent = new Intent(DishesActivity.this, NewDishActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("Anuluj dodawanie nowego dania", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Toast.makeText(getApplicationContext(),"Anulowano dodawanie nowego dania",Toast.LENGTH_LONG).show();
+                            }
+                        });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        }
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         final DishListAdapter adapter = new DishListAdapter(new DishListAdapter.DishDiff(), 1);
