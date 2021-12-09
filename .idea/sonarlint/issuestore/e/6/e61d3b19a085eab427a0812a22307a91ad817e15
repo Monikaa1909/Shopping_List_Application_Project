@@ -1,0 +1,12 @@
+
+
+java:S1450"_Remove the "editPortionsName" field and declare it as a local variable in the relevant methods.(¡ëÒüüÿÿÿÿ8µª”°Ù/
+
+java:S1186."€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ı§„Ô8¨é°Ù/
+[
+java:S2130="9Use "Integer.parseInt" for this string-to-int conversion.(Œ’¢€ÿÿÿÿÿ8°é°Ù/
+E
+java:S1604-"(Make this anonymous inner class a lambda(äæÕä8¶é°Ù/
+J
+java:S16042"(Make this anonymous inner class a lambda(“‚ıªùÿÿÿÿ8¶é°Ù/
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Å÷í

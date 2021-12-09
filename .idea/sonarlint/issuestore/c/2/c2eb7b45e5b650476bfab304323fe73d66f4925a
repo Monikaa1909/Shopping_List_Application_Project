@@ -1,0 +1,12 @@
+
+|
+java:S1450"_Remove the "editCategoryName" field and declare it as a local variable in the relevant methods.(‹Ç©è8ÁáİØ/
+
+java:S1186."€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ı§„Ô8É£ÛİØ/
+E
+java:S1604-"(Make this anonymous inner class a lambda(’Æã¼8Ö£ÛİØ/
+J
+java:S16042"(Make this anonymous inner class a lambda(ùª÷üÿÿÿÿ8×£ÛİØ/
+L
+java:S5411?"*Use the primitive boolean expression here.(ş£†¦úÿÿÿÿ8µÚêİØ/
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(íÙ¼½øÿÿÿÿ

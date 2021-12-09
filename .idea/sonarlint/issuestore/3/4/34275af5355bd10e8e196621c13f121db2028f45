@@ -1,0 +1,12 @@
+
+z
+java:S1450"_Remove the "editQuantityName" field and declare it as a local variable in the relevant methods.(‹žœ´þÿÿÿÿ
+—
+java:S1186."€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ý§„Ô
+T
+java:S2130="9Use "Integer.parseInt" for this string-to-int conversion.(àÅ¥þüÿÿÿÿ
+>
+java:S1604-"(Make this anonymous inner class a lambda(äæÕä
+>
+java:S16042"(Make this anonymous inner class a lambda(žÐ«Õ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‡ï“Æùÿÿÿÿ
