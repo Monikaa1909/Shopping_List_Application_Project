@@ -10,18 +10,14 @@
         android:id="@+id/button_add_ingredients"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
         android:text="@string/button_add_ingredients"
-        android:layout_margin="@dimen/big_padding"
-        android:textColor="@color/buttonLabel" />
+        style="@style/main_button" />
 
     <Button
         android:id="@+id/button_add_ingredients_later"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
         android:text="@string/button_add_ingredients_later"
-        android:layout_margin="@dimen/big_padding"
-        android:textColor="@color/buttonLabel" />
+        style="@style/main_button" />
 
 </LinearLayout>

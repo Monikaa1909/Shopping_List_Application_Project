@@ -8,6 +8,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shoppinglistapplication.R;
@@ -27,11 +28,15 @@ public class ProductsByCategoryActivity extends AppCompatActivity {
     public static final String KEY_PRODUCT_INFO = "productInfo";
     private ProductViewModel productViewModel;
     RecyclerView recyclerView;
+    private TextView subtitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recyclerview_with_add_delete_button);
+
+        subtitle = findViewById(R.id.subtitle_text_view);
+        subtitle.setText("Dostępne produkty:");
 
         int idCategory = (int) getIntent().getSerializableExtra(KEY_CATEGORY_ID2);
 

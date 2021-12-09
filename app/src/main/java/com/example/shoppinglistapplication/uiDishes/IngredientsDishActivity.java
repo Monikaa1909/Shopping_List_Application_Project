@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shoppinglistapplication.R;
@@ -34,6 +35,7 @@ public class IngredientsDishActivity extends AppCompatActivity {
 
     private IngredientsOfTheDishViewModel ingredientsOfTheDishViewModel;
     RecyclerView recyclerView;
+    private TextView subtitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,9 @@ public class IngredientsDishActivity extends AppCompatActivity {
         setContentView(R.layout.recyclerview_with_all_button);
 
         int idDish = (int) getIntent().getSerializableExtra(KEY_DISH_ID);
+
+        subtitle = findViewById(R.id.subtitle_text_view);
+        subtitle.setText("Składniki:");
 
         if (getIntent().getStringExtra(KEY_INGREDIENT_INFO) != null) {
             String info = getIntent().getStringExtra(KEY_INGREDIENT_INFO);

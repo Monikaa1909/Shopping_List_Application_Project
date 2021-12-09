@@ -7,23 +7,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@color/secondary_choice_green">
 
         <TextView
-            android:id="@+id/preferences_detail_item_name"
+            android:id="@+id/detail_item_name"
             style="@style/item_text_view"
+            android:textAllCaps="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:background="@android:color/holo_orange_light" />
+            android:textSize="16dp"
+            android:background="@color/secondary_choice_green" />
 
         <TextView
-            android:id="@+id/preferences_detail_item_quantity"
+            android:id="@+id/detail_item_quantity"
             style="@style/item_text_view"
-            android:layout_width="wrap_content"
+            android:gravity="right"
+            android:textAllCaps="true"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:background="@android:color/holo_orange_light" />
+            android:textSize="16dp"
+            android:background="@color/secondary_choice_green" />
 
     </LinearLayout>
 

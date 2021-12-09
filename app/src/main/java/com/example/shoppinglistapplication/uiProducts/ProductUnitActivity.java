@@ -26,11 +26,15 @@ import java.util.List;
 public class ProductUnitActivity extends AppCompatActivity {
 
     private ProductViewModel productViewModel;
+    private TextView subtitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recyclerview_with_edit_button);
+
+        subtitle = findViewById(R.id.subtitle_text_view);
+        subtitle.setText("Jednostka produktu:");
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         final UnitOfMeasurementListAdapter adapter = new UnitOfMeasurementListAdapter(new UnitOfMeasurementListAdapter.UnitOfMeasurementDiff());

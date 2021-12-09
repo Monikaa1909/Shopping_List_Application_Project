@@ -25,11 +25,15 @@ import java.util.List;
 public class ProductCategoryActivity extends AppCompatActivity {
 
     private ProductViewModel productViewModel;
+    private TextView subtitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recyclerview_with_edit_button);
+
+        subtitle = findViewById(R.id.subtitle_text_view);
+        subtitle.setText("Kategoria produktu:");
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         final CategoryListAdapter3 adapter = new CategoryListAdapter3(new CategoryListAdapter.CategoryDiff());

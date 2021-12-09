@@ -46,11 +46,13 @@
     <string name="hint_edit_portions">Podaj nową ilość porcji dania na liście</string>
     <string name="lose_your_list_of_preferences_data">Wraz z usunięciem listy, utracisz wszystkie dodane w niej dotąd dania</string>
     <string name="hint_edit_name_list_of_preferences">Podaj nową nazwę listy preferencji</string>
-    <string name="list_of_preferences_already_exists">Lista o podanej nazwie już istnieje</string>
+    <string name="list_already_exists">Lista o podanej nazwie już istnieje</string>
     <string name="unit_already_exists">Taka jednostka już istnieje</string>
     <string name="form_already_exists">Taka forma dostępności już istnieje</string>
     <string name="button_generate_shopping_list">Wygeneruj listę zakupów</string>
     <string name="hint_new_shopping_list_name">Podaj nową nazwę dla listy zakupów lub zostaw nazwę domyślną</string>
     <string name="shopping_list_already_exists">Lista zakupów o podanej nazwie już istnieje</string>
     <string name="button_load_shopping_list">Listy zakupów</string>
+    <string name="lose_your_shopping_list_data">Wraz z usunięciem listy utracisz wszystkie jej dane</string>
+    <string name="hint_edit_name_shopping_list">Podaj nową nazwę listy zakupów</string>
 </resources>

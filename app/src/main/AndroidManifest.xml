@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoppingListApplication">
         <activity
+            android:name=".uiShoppingList.EditShoppingListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiShoppingList.ShoppingListActivityToEditActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiShoppingList.ShoppingListActivityToDeleteActivity"
+            android:exported="false" />
+        <activity
             android:name=".uiShoppingList.ShoppingListDetailActivity"
             android:exported="false" />
         <activity
@@ -140,9 +149,6 @@
             android:exported="false" />
         <activity
             android:name=".uiProducts.ProductDetailsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".uiCategories.NewProductInCategoryActivity3"
             android:exported="false" />
         <activity
             android:name=".uiCategories.NewProductInCategoryActivity2"

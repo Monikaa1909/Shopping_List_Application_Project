@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.example.shoppinglistapplication.R;
 import com.example.shoppinglistapplication.adapterholder.ProductListAdapter;
@@ -22,11 +23,15 @@ import java.util.List;
 public class NewDishActivity4 extends AppCompatActivity {
 
     private ProductViewModel productViewModel;
+    private TextView subtitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recyclerview_without_button);
+
+        subtitle = findViewById(R.id.subtitle_text_view);
+        subtitle.setText("Wybierz nowy składnik:");
 
         int idCategory = (int) getIntent().getSerializableExtra(NewDishActivity2.KEY_NEW_INGREDIENT_CATEGORY_ID);
         int idDish = (int) getIntent().getSerializableExtra(NewDishActivity2.KEY_NEW_DISH_ID);

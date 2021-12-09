@@ -2,26 +2,12 @@ package com.example.shoppinglistapplication.uiDishes;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import android.util.Log;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.StartActivity;
-import com.example.shoppinglistapplication.entity.Dish;
-import com.example.shoppinglistapplication.uiCategories.CategoriesActivity;
-import com.example.shoppinglistapplication.uiCategories.NewCategoryActivity;
-import com.example.shoppinglistapplication.uiCategories.ProductsByCategoryActivity;
-import com.example.shoppinglistapplication.uiListOfPreferences.ListsOfPreferencesActivity;
-import com.example.shoppinglistapplication.uiListOfPreferences.NewListOfPreferencesActivity;
 import com.example.shoppinglistapplication.viewmodel.DishViewModel;
 
 public class NewDishActivity2 extends AppCompatActivity {
@@ -38,7 +24,7 @@ public class NewDishActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.two_choices);
+        setContentView(R.layout.activity_new_dish2_choices);
 
         button_add_ingredients = findViewById(R.id.button_add_ingredients);
         button_add_later = findViewById(R.id.button_add_ingredients_later);

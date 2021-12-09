@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.example.shoppinglistapplication.R;
 import com.example.shoppinglistapplication.adapterholder.FormOfAccessibilityListAdapter;
@@ -18,12 +19,15 @@ import java.util.List;
 public class ProductFormsActivity extends AppCompatActivity {
 
     private ProductViewModel productViewModel;
+    private TextView subtitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.recyclerview_with_add_delete_button);
+
+        subtitle = findViewById(R.id.subtitle_text_view);
+        subtitle.setText("Formy dostępności produktu:");
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         final FormOfAccessibilityListAdapter adapter = new FormOfAccessibilityListAdapter(new FormOfAccessibilityListAdapter.FormOfAccessibilityDiff());

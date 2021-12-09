@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.example.shoppinglistapplication.R;
 import com.example.shoppinglistapplication.adapterholder.FormOfAccessibilityListAdapter;
@@ -18,11 +19,15 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class NewProductFormActivity extends AppCompatActivity {
 
     private FormOfAccessibilityViewModel formOfAccessibilityViewModel;
+    private TextView subtitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recyclerview_without_button);
+
+        subtitle = findViewById(R.id.subtitle_text_view);
+        subtitle.setText("Wybierz formę dostępności dla produktu:");
 
         int idProduct = (int) getIntent().getSerializableExtra(ProductDetailsActivity.KEY_PRODUCT_DETAIL_ID);
 

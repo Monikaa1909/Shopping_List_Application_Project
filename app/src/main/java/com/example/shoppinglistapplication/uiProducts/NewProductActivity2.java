@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.example.shoppinglistapplication.R;
 import com.example.shoppinglistapplication.adapterholder.CategoryListAdapter;
@@ -14,11 +15,15 @@ import com.example.shoppinglistapplication.viewmodel.CategoryViewModel;
 public class NewProductActivity2 extends AppCompatActivity {
 
     private CategoryViewModel categoryViewModel;
+    private TextView subtitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recyclerview_without_button);
+
+        subtitle = findViewById(R.id.subtitle_text_view);
+        subtitle.setText("Wybierz kategorię nowego produktu:");
 
         String newProductName = getIntent().getStringExtra(NewProductActivity.KEY_NEW_PRODUCT_NAME);
 

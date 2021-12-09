@@ -69,7 +69,7 @@ public abstract class AppRoomDatabase extends RoomDatabase {
             synchronized (AppRoomDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            AppRoomDatabase.class, "app_database_nowa")
+                            AppRoomDatabase.class, "app_database_1")
                             .addCallback(roomDataBaseCallBack)
                             .build();
                 }

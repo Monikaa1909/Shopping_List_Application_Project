@@ -18,4 +18,7 @@
     <color name="main_light_green">#86a68a</color>
     <color name="nice_grey">#cfd8dc</color>
 
+    <color name="secondary_choice_green">#c0c4bc</color>
+    <color name="secondary_choice_grey">#90948c</color>
+
 </resources>

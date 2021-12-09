@@ -7,12 +7,6 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.uiDishes.DishesActivity;
-import com.example.shoppinglistapplication.uiDishes.NewDishActivity;
-import com.example.shoppinglistapplication.uiDishes.NewDishActivity2;
-import com.example.shoppinglistapplication.uiDishes.NewDishActivity3;
-import com.example.shoppinglistapplication.viewmodel.DishViewModel;
-import com.example.shoppinglistapplication.viewmodel.ListOfPreferencesDishViewModel;
 import com.example.shoppinglistapplication.viewmodel.ListOfPreferencesViewModel;
 
 public class NewListOfPreferencesActivity2 extends AppCompatActivity {
@@ -26,7 +20,7 @@ public class NewListOfPreferencesActivity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.two_choices);
+        setContentView(R.layout.activity_new_dish2_choices);
 
         button_add_ingredients = findViewById(R.id.button_add_ingredients);
         button_add_later = findViewById(R.id.button_add_ingredients_later);

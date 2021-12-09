@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shoppinglistapplication.R;
@@ -23,11 +24,15 @@ public class ProductsActivity extends AppCompatActivity {
 
     public static final String KEY_PRODUCT_INFO = "productInfo";
     private ProductViewModel productViewModel;
+    private TextView subtitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recyclerview_with_all_button);
+
+        subtitle = findViewById(R.id.subtitle_text_view);
+        subtitle.setText("Dostępne produkty:");
 
         if (getIntent().getStringExtra(KEY_PRODUCT_INFO) != null) {
             String info = getIntent().getStringExtra(KEY_PRODUCT_INFO);

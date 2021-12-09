@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".StartActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingTop="@dimen/big_padding">
 
     <Button
         android:id="@+id/button_load_list"

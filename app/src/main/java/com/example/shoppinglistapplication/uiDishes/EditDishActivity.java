@@ -23,6 +23,7 @@ public class EditDishActivity extends AppCompatActivity {
     private EditText editDishName;
     private DishViewModel dishViewModel;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

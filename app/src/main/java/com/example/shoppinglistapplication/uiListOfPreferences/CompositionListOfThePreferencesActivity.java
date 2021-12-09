@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shoppinglistapplication.R;
@@ -38,11 +39,15 @@ public class CompositionListOfThePreferencesActivity extends AppCompatActivity {
     public static final String KEY_PREFERENCES_INFO = "preferencesInfo";
 
     private ListOfPreferencesDishViewModel listOfPreferencesDishViewModel;
+    private TextView subtitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recyclerview_composition_list_of_preferences);
+
+        subtitle = findViewById(R.id.subtitle_text_view);
+        subtitle.setText("Skład listy:");
 
         int idListOfThePreferences = (int) getIntent().getSerializableExtra(KEY_LIST_OF_THE_PREFERENCES_ID);
 

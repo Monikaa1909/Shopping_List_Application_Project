@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 //import com.example.shoppinglistapplication.adapterholder.CategoryListAdapter;
@@ -27,13 +28,17 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class CategoriesActivity extends AppCompatActivity {
 
     public static final String KEY_CATEGORY_INFO = "categoryInfo";
-//    private static final int NEW_CATEGORY_ACTIVITY_REQUEST_CODE = 1;
     private CategoryViewModel categoryViewModel;
+
+    private TextView subtitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recyclerview_with_all_button);
+
+        subtitle = findViewById(R.id.subtitle_text_view);
+        subtitle.setText("Dostępne kategorie:");
 
         if (getIntent().getStringExtra(KEY_CATEGORY_INFO) != null) {
             String info = getIntent().getStringExtra(KEY_CATEGORY_INFO);

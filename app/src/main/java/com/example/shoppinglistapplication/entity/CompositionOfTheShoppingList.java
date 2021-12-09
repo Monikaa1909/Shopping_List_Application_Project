@@ -25,32 +25,34 @@ public class CompositionOfTheShoppingList {
     private int idShoppingList;
     @NonNull
     private int idProduct;
-
     @NonNull
-    private Integer quantity;
+    private Float quantity;
 
-//    private String suggestedFormOfAccessibility;
+    public CompositionOfTheShoppingList(@NonNull Float quantity, @NonNull int idShoppingList, @NonNull int idProduct) {
+        this.quantity = quantity;
+        this.idProduct = idProduct;
+        this.idShoppingList = idShoppingList;
+        this.suggestedFormOfAccessibility = "null";
+    }
 
+    public String getSuggestedFormOfAccessibility() { return suggestedFormOfAccessibility; }
+    public void setSuggestedFormOfAccessibility(String suggestedFormOfAccessibility) { this.suggestedFormOfAccessibility = suggestedFormOfAccessibility; }
+    private String suggestedFormOfAccessibility;
     public int getIdShoppingList() {
         return idShoppingList;
     }
-
     public int getIdProduct(){
         return idProduct;
     }
-
     public void setIdShoppingList(int idShoppingList) {
         this.idShoppingList = idShoppingList;
     }
-
     public void setIdProduct(int idProduct) {
         this.idProduct = idProduct;
     }
-
     @NonNull
-    public Integer getQuantity() { return quantity; }
-
-    public void setQuantity(@NonNull Integer quantity) { this.quantity = quantity; }
+    public Float getQuantity() { return quantity; }
+    public void setQuantity(@NonNull Float quantity) { this.quantity = quantity; }
 
 //    @NonNull
 //    public String getSuggestedFormOfAccessibility() { return suggestedFormOfAccessibility; }
@@ -63,12 +65,5 @@ public class CompositionOfTheShoppingList {
 //        this.idProduct = idProduct;
 //        this.idShoppingList = idShoppingList;
 //    }
-
-    public CompositionOfTheShoppingList(@NonNull Integer quantity, @NonNull int idShoppingList, @NonNull int idProduct) {
-        this.quantity = quantity;
-        this.idProduct = idProduct;
-        this.idShoppingList = idShoppingList;
-//        this.suggestedFormOfAccessibility = "null";
-    }
 }
 

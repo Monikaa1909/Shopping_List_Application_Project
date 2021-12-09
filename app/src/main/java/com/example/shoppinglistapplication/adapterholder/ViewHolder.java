@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shoppinglistapplication.entity.Product;
 import com.example.shoppinglistapplication.entity.ProductFormOfAccessibility;
-import com.example.shoppinglistapplication.entity.ShoppingList;
 import com.example.shoppinglistapplication.entity.UnitOfMeasurement;
 import com.example.shoppinglistapplication.uiCategories.CategoriesActivity;
 import com.example.shoppinglistapplication.uiCategories.EditCategoryActivity;
@@ -33,7 +32,6 @@ import com.example.shoppinglistapplication.uiListOfPreferences.EditListOfPrefere
 import com.example.shoppinglistapplication.uiListOfPreferences.EditPortionsActivity;
 import com.example.shoppinglistapplication.uiListOfPreferences.ListsOfPreferencesActivity;
 import com.example.shoppinglistapplication.uiListOfPreferences.NewListOfPreferencesActivity2;
-import com.example.shoppinglistapplication.uiListOfPreferences.NewListOfPreferencesActivity3;
 import com.example.shoppinglistapplication.uiListOfPreferences.NewListOfPreferencesActivity4;
 import com.example.shoppinglistapplication.uiListOfPreferences.NewListOfThePreferencesDetailActivity2;
 import com.example.shoppinglistapplication.uiListOfPreferences.CompositionListOfThePreferencesActivity;
@@ -45,6 +43,7 @@ import com.example.shoppinglistapplication.uiProducts.ProductDetailsActivity;
 import com.example.shoppinglistapplication.uiProducts.ProductFormsActivity;
 import com.example.shoppinglistapplication.uiProducts.ProductUnitActivity;
 import com.example.shoppinglistapplication.uiProducts.ProductsActivity;
+import com.example.shoppinglistapplication.uiShoppingList.EditShoppingListActivity;
 import com.example.shoppinglistapplication.uiShoppingList.ShoppingListActivity;
 import com.example.shoppinglistapplication.uiShoppingList.ShoppingListDetailActivity;
 import com.example.shoppinglistapplication.uiUnitOfMeasurement.UnitsOfMeasurementActivity;
@@ -56,6 +55,7 @@ import com.example.shoppinglistapplication.viewmodel.ListOfPreferencesDishViewMo
 import com.example.shoppinglistapplication.viewmodel.ListOfPreferencesViewModel;
 import com.example.shoppinglistapplication.viewmodel.ProductFormOfAccessibilityViewModel;
 import com.example.shoppinglistapplication.viewmodel.ProductViewModel;
+import com.example.shoppinglistapplication.viewmodel.ShoppingListViewModel;
 import com.example.shoppinglistapplication.viewmodel.UnitOfMeasurementViewModel;
 
 import java.util.List;
@@ -577,24 +577,21 @@ class ShoppingListDetailViewHolder extends RecyclerView.ViewHolder {
 
     private final TextView dishDetailItemView;
     private final TextView dishDetailItemView2;
-    private final TextView dishDetailItemView3;
 
     private ShoppingListDetailViewHolder(View itemView) {
         super(itemView);
-        dishDetailItemView = itemView.findViewById(R.id.dish_detail_item_name);
-        dishDetailItemView2 = itemView.findViewById(R.id.dish_detail_item_quantity);
-        dishDetailItemView3 = itemView.findViewById(R.id.dish_detail_item_unit);
+        dishDetailItemView = itemView.findViewById(R.id.detail_item_name);
+        dishDetailItemView2 = itemView.findViewById(R.id.detail_item_quantity);
     }
 
     public void bind(String name, float quantity, String unit) {
         dishDetailItemView.setText(name);
-        dishDetailItemView2.setText(String.valueOf(quantity));
-        dishDetailItemView3.setText(unit);
+        dishDetailItemView2.setText(String.valueOf(quantity) + " " + unit);
     }
 
     public static ShoppingListDetailViewHolder create(ViewGroup parent) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.recyclerview_dishes_details_item, parent, false);
+                .inflate(R.layout.recyclerview_list_of_details_item, parent, false);
         return new ShoppingListDetailViewHolder(view);
     }
 }
@@ -613,8 +610,8 @@ class ListOfThePreferenceDetailViewHolder extends RecyclerView.ViewHolder implem
     private ListOfThePreferenceDetailViewHolder(View itemView, int version) {
         super(itemView);
         itemView.setOnClickListener(this);
-        dishDetailItemView = itemView.findViewById(R.id.preferences_detail_item_name);
-        dishDetailItemView2 = itemView.findViewById(R.id.preferences_detail_item_quantity);
+        dishDetailItemView = itemView.findViewById(R.id.detail_item_name);
+        dishDetailItemView2 = itemView.findViewById(R.id.detail_item_quantity);
         this.version = version;
     }
 
@@ -631,7 +628,7 @@ class ListOfThePreferenceDetailViewHolder extends RecyclerView.ViewHolder implem
 
     public static ListOfThePreferenceDetailViewHolder create(ViewGroup parent, int version) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.recyclerview_list_of_preferences_detail_item, parent, false);
+                .inflate(R.layout.recyclerview_list_of_details_item, parent, false);
         return new ListOfThePreferenceDetailViewHolder(view, version);
     }
 
@@ -667,8 +664,8 @@ class ListOfThePreferenceDetailViewHolder2 extends RecyclerView.ViewHolder {
 
     private ListOfThePreferenceDetailViewHolder2(View itemView) {
         super(itemView);
-        dishDetailItemView = itemView.findViewById(R.id.preferences_detail_item_name);
-        dishDetailItemView2 = itemView.findViewById(R.id.preferences_detail_item_quantity);
+        dishDetailItemView = itemView.findViewById(R.id.detail_item_name);
+        dishDetailItemView2 = itemView.findViewById(R.id.detail_item_quantity);
     }
 
     public void bind(String dishName, int portions) {
@@ -678,7 +675,7 @@ class ListOfThePreferenceDetailViewHolder2 extends RecyclerView.ViewHolder {
 
     public static ListOfThePreferenceDetailViewHolder2 create(ViewGroup parent) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.recyclerview_list_of_preferences_detail_item, parent, false);
+                .inflate(R.layout.recyclerview_list_of_details_item, parent, false);
         return new ListOfThePreferenceDetailViewHolder2(view);
     }
 }
@@ -926,39 +923,39 @@ class ShoppingListViewHolder extends RecyclerView.ViewHolder implements View.OnC
             intent.putExtra(ShoppingListActivity.KEY_SHOPPING_LIST_ID, idShoppingList);
             v.getContext().startActivity(intent);
         }
-//        else if (version == 2) { // usuniecie listy
-//            ListOfPreferencesViewModel listOfPreferencesViewModel = new ListOfPreferencesViewModel(((Activity)v.getContext()).getApplication());
-//
-//            AlertDialog.Builder builder = new AlertDialog.Builder((Activity)v.getContext())
-//                    .setView(((Activity)v.getContext()).getLayoutInflater().inflate(R.layout.dialog_wrong_data, null))
-//                    .setTitle("Czy na pewno chcesz usunąć listę?")
-//                    .setMessage(R.string.lose_your_list_of_preferences_data)
-//                    .setPositiveButton("Tak", new DialogInterface.OnClickListener() {
-//                        public void onClick(DialogInterface dialog, int id) {
-//                            new Thread(() -> {
-//                                listOfPreferencesViewModel.deleteListOfPreferencesById(idListOfPreferences, emptyFunction -> {});
-//                                Intent intent = new Intent(v.getContext(), ListsOfPreferencesActivity.class);
-//                                v.getContext().startActivity(intent);
-//                                ((Activity)v.getContext()).finish();
-//                            }).start();
-//                        }
-//                    })
-//                    .setNegativeButton("Anuluj usuwanie listy", new DialogInterface.OnClickListener() {
-//                        public void onClick(DialogInterface dialog, int id) {
-//                            Intent intent = new Intent(v.getContext(), ListsOfPreferencesActivity.class);
-//                            v.getContext().startActivity(intent);
-//                            ((Activity)v.getContext()).finish();
-//                        }
-//                    });
-//            AlertDialog dialog = builder.create();
-//            dialog.show();
-//
-//        } else if (version == 3) {  // edytowanie listy
-//            Intent intent = new Intent(v.getContext(), EditListOfPreferencesActivity.class);
-//            intent.putExtra(EditListOfPreferencesActivity.KEY_EDIT_LIST_OF_PREFERENCES_ID, idListOfPreferences);
-//            v.getContext().startActivity(intent);
-//            ((Activity) v.getContext()).finish();
-//        }
+        else if (version == 2) { // usuniecie listy
+            ShoppingListViewModel shoppingListViewModel = new ShoppingListViewModel(((Activity)v.getContext()).getApplication());
+
+            AlertDialog.Builder builder = new AlertDialog.Builder((Activity)v.getContext())
+                    .setView(((Activity)v.getContext()).getLayoutInflater().inflate(R.layout.dialog_wrong_data, null))
+                    .setTitle("Czy na pewno chcesz usunąć listę?")
+                    .setMessage(R.string.lose_your_shopping_list_data)
+                    .setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            new Thread(() -> {
+                                shoppingListViewModel.deleteShoppingListById(idShoppingList, emptyFunction -> {});
+                                Intent intent = new Intent(v.getContext(), ShoppingListActivity.class);
+                                v.getContext().startActivity(intent);
+                                ((Activity)v.getContext()).finish();
+                            }).start();
+                        }
+                    })
+                    .setNegativeButton("Anuluj usuwanie listy", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            Intent intent = new Intent(v.getContext(), ShoppingListActivity.class);
+                            v.getContext().startActivity(intent);
+                            ((Activity)v.getContext()).finish();
+                        }
+                    });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+
+        } else if (version == 3) {  // edytowanie listy
+            Intent intent = new Intent(v.getContext(), EditShoppingListActivity.class);
+            intent.putExtra(EditShoppingListActivity.KEY_EDIT_SHOPPING_LIST_ID, idShoppingList);
+            v.getContext().startActivity(intent);
+            ((Activity) v.getContext()).finish();
+        }
     }
 }
 

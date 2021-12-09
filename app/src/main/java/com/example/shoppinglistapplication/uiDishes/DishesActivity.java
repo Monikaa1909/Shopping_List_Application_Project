@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,11 +25,15 @@ public class DishesActivity  extends AppCompatActivity {
 
     public static final String KEY_DISH_INFO = "dishInfo";
     private DishViewModel dishViewModel;
+    private TextView subtitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recyclerview_with_all_button);
+
+        subtitle = findViewById(R.id.subtitle_text_view);
+        subtitle.setText("Dostępne dania:");
 
         if (getIntent().getStringExtra(KEY_DISH_INFO) != null) {
             String info = getIntent().getStringExtra(KEY_DISH_INFO);

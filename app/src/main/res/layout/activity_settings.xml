@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".StartActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingTop="@dimen/big_padding">
 
     <Button
         android:id="@+id/button_load_unit_of_measurement"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
         android:text="@string/button_load_list_of_measurment"
         android:layout_margin="@dimen/big_padding"
-        android:textColor="@color/buttonLabel" />
+        android:gravity="center"
+        style="@style/main_button" />
 
     <Button
         android:id="@+id/button_load_form_of_accessibility"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
         android:text="@string/button_load_form_of_accessibility"
-        android:layout_margin="@dimen/big_padding"
-        android:textColor="@color/buttonLabel" />
+        android:gravity="center"
+        style="@style/main_button" />
 
 </LinearLayout>

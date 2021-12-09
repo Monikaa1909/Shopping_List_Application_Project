@@ -16,17 +16,22 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class FormOfAccessibilityActivity extends AppCompatActivity {
 
     public static final String KEY_INFO_FORM = "infoForm";
     private FormOfAccessibilityViewModel formOfAccessibilityViewModel;
+    private TextView subtitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recyclerview_with_add_delete_button);
+
+        subtitle = findViewById(R.id.subtitle_text_view);
+        subtitle.setText("Dostępne formy dostępności:");
 
         if (getIntent().getStringExtra(KEY_INFO_FORM) != null) {
             String info = getIntent().getStringExtra(KEY_INFO_FORM);

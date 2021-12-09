@@ -29,7 +29,7 @@ public interface ShoppingListDao {
     @Query("select exists (select * from ShoppingList where shoppingListName = :name)")
     Boolean shoppingListExists(String name);
 
-    @Query("UPDATE ShoppingList SET idShoppingList = :newListName WHERE idShoppingList =:id")
+    @Query("UPDATE ShoppingList SET shoppingListName = :newListName WHERE idShoppingList =:id")
     void updateShoppingListName(long id, String newListName);
 
     @Query("DELETE FROM ShoppingList WHERE idShoppingList = :id")

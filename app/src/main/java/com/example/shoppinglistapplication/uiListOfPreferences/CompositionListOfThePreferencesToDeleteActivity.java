@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.example.shoppinglistapplication.R;
 import com.example.shoppinglistapplication.adapterholder.DishDetailAdapter;
@@ -19,11 +20,15 @@ import java.util.List;
 public class CompositionListOfThePreferencesToDeleteActivity extends AppCompatActivity {
 
     private ListOfPreferencesDishViewModel listOfPreferencesDishViewModel;
+    private TextView subtitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recyclerview_deleting_editing);
+
+        subtitle = findViewById(R.id.subtitle_text_view);
+        subtitle.setText("Wybierz danie, które chcesz usunąć:");
 
         int idListOfThePreferences = (int) getIntent().getSerializableExtra(CompositionListOfThePreferencesActivity.KEY_LIST_OF_THE_PREFERENCES_ID);
 
