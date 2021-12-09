@@ -9,6 +9,7 @@ import androidx.room.Query;
 import com.example.shoppinglistapplication.entity.ListOfPreferencesDish;
 import com.example.shoppinglistapplication.helpfulModel.DishDetail;
 import com.example.shoppinglistapplication.helpfulModel.ListOfPreferencesDetail;
+import com.example.shoppinglistapplication.helpfulModel.ShoppingListDetail;
 
 import java.util.List;
 
@@ -38,6 +39,12 @@ public interface ListOfPreferencesDishDao {
             "where listofpreferences.idListOfPreferences = listofpreferencesdish.idListOfPreferences " +
             "and listofpreferencesdish.idDish = dish.idDish and listofpreferences.idListOfPreferences = :idListOfPreferences")
     List<ListOfPreferencesDetail> getListOfPreferencesDishDetail(int idListOfPreferences);
-
 }
-
+//select product.productName, sum(ingredientsofthedish.quantity)*sum(listofpreferencesdish.portions)  from listofpreferences, listofpreferencesdish, dish, ingredientsofthedish, product, unitofmeasurement
+//        where listofpreferences.idListOfPreferences = listofpreferencesdish.idListOfPreferences and listofpreferencesdish.idDish = dish.idDish and dish.idDish = ingredientsofthedish.idDish and
+//        ingredientsofthedish.idProduct = product.idProduct and product.idUnitOfMeasurement = unitofmeasurement.idUnitOfMeasurement and
+//        listofpreferences.idlistofpreferences = 1 group by product.productName
+//
+//jablko  180
+//gruszka 140
+//pomarancza 225

@@ -25,7 +25,6 @@ public class NewListOfPreferencesActivity extends AppCompatActivity {
 
     public static final String KEY_NEW_LIST_OF_PREFERENCES_NAME = "newListOfPreferencesName";
     private EditText editListName;
-    private Button saveName;
     ListOfPreferencesViewModel listOfPreferencesViewModel;
 
     @Override

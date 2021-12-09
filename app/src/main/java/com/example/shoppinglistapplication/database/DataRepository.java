@@ -5,6 +5,7 @@ import android.app.Application;
 import androidx.lifecycle.LiveData;
 
 import com.example.shoppinglistapplication.dao.CategoryDao;
+import com.example.shoppinglistapplication.dao.CompositionOfTheShoppingListDao;
 import com.example.shoppinglistapplication.dao.DishDao;
 import com.example.shoppinglistapplication.dao.FormOfAccessibilityDao;
 import com.example.shoppinglistapplication.dao.IngredientsOfTheDishDao;
@@ -12,8 +13,10 @@ import com.example.shoppinglistapplication.dao.ListOfPreferencesDao;
 import com.example.shoppinglistapplication.dao.ListOfPreferencesDishDao;
 import com.example.shoppinglistapplication.dao.ProductDao;
 import com.example.shoppinglistapplication.dao.ProductFormOfAccessibilityDao;
+import com.example.shoppinglistapplication.dao.ShoppingListDao;
 import com.example.shoppinglistapplication.dao.UnitOfMeasurementDao;
 import com.example.shoppinglistapplication.entity.Category;
+import com.example.shoppinglistapplication.entity.CompositionOfTheShoppingList;
 import com.example.shoppinglistapplication.entity.Dish;
 import com.example.shoppinglistapplication.entity.FormOfAccessibility;
 import com.example.shoppinglistapplication.entity.IngredientsOfTheDish;
@@ -21,9 +24,11 @@ import com.example.shoppinglistapplication.entity.ListOfPreferences;
 import com.example.shoppinglistapplication.entity.ListOfPreferencesDish;
 import com.example.shoppinglistapplication.entity.Product;
 import com.example.shoppinglistapplication.entity.ProductFormOfAccessibility;
+import com.example.shoppinglistapplication.entity.ShoppingList;
 import com.example.shoppinglistapplication.entity.UnitOfMeasurement;
 import com.example.shoppinglistapplication.helpfulModel.DishDetail;
 import com.example.shoppinglistapplication.helpfulModel.ListOfPreferencesDetail;
+import com.example.shoppinglistapplication.helpfulModel.ShoppingListDetail;
 
 import java.util.List;
 
@@ -41,6 +46,8 @@ public class DataRepository {
     private FormOfAccessibilityDao formOfAccessibilityDao;
     private ProductFormOfAccessibilityDao productFormOfAccessibilityDao;
     private ListOfPreferencesDishDao listOfPreferencesDishDao;
+    private ShoppingListDao shoppingListDao;
+    private CompositionOfTheShoppingListDao compositionOfTheShoppingListDao;
 
     private LiveData<List<Product>>  products;
     private LiveData<List<Category>>  categories;
@@ -51,6 +58,8 @@ public class DataRepository {
     private LiveData<List<FormOfAccessibility>>  formOfAccessibility;
     private LiveData<List<ProductFormOfAccessibility>> productFormOfAccessibility;
     private LiveData<List<ListOfPreferencesDish>> listOfPreferencesDish;
+    private LiveData<List<ShoppingList>> shoppingList;
+    private LiveData<List<CompositionOfTheShoppingList>> compositionOfTheShoppingList;
 
     private DataRepository(Application application) {
         database = AppRoomDatabase.getDatabase(application);
@@ -64,6 +73,8 @@ public class DataRepository {
         formOfAccessibilityDao = database.formOfAccessibilityDao();
         productFormOfAccessibilityDao = database.productFormOfAccessibilityDao();
         listOfPreferencesDishDao = database.listOfPreferencesDishDao();
+        shoppingListDao = database.shoppingListDao();
+        compositionOfTheShoppingListDao = database.compositionOfTheShoppingListDao();
 
         products = productDao.getAlphabetizedProducts();
         categories = categoryDao.getAlphabetizedCategories();
@@ -74,6 +85,8 @@ public class DataRepository {
         formOfAccessibility = formOfAccessibilityDao.getAllForms();
         productFormOfAccessibility = productFormOfAccessibilityDao.getAllProductFormOfAccessibility();
         listOfPreferencesDish = listOfPreferencesDishDao.getAllListOfPreferencesDish();
+        shoppingList = shoppingListDao.getAlphabetizedShoppingLists();
+        compositionOfTheShoppingList = compositionOfTheShoppingListDao.getAllCompositions();
     }
 
     public static DataRepository getInstance(Application application) {
@@ -100,7 +113,13 @@ public class DataRepository {
     public LiveData<List<FormOfAccessibility>> getAllFormsOfAccessibility() { return formOfAccessibility; }
     public LiveData<List<ProductFormOfAccessibility>> getAllProductFormOfAccessibility() { return productFormOfAccessibility; }
     public LiveData<List<ListOfPreferencesDish>> getAllListOfPreferencesDish() { return listOfPreferencesDish; }
+    public LiveData<List<ShoppingList>> getAllShoppingList() { return shoppingList; }
+    public LiveData<List<CompositionOfTheShoppingList>> getCompositionOfTheShoppingList() { return compositionOfTheShoppingList; }
 
+    public List<ShoppingListDetail> getShoppingListDetail(int idListOfPreferences) {return listOfPreferencesDao.getShoppingListDetail(idListOfPreferences); }
+    public List<ShoppingListDetail> getShoppingListDetail2(int idListOfPreferences) {return shoppingListDao.getShoppingListDetail(idListOfPreferences); }
+    public List<ShoppingListDetail> getShoppingListDetailByShoppingListId(int idShoppingList) {return compositionOfTheShoppingListDao.getShoppingListDetailByShoppingListId(idShoppingList);}
+    public List<ShoppingListDetail> getShoppingListDetailByPreferencesListId(int idListOfPreferences) {return compositionOfTheShoppingListDao.getShoppingListDetailByPreferencesListId(idListOfPreferences); }
     public List<DishDetail> getDishDetail(int idDish) { return ingredientsOfTheDishDao.getDetail(idDish); }
     public List<ListOfPreferencesDetail> getListOfPreferencesDishDetail(int idListOfPreferences) { return listOfPreferencesDishDao.getListOfPreferencesDishDetail(idListOfPreferences); }
     public List<Product> getProductsByCategoryName(String name) { return productDao.getProductsByCategoryName(name); }
@@ -109,6 +128,8 @@ public class DataRepository {
     public long getIdByCategoryName(String name) { return categoryDao.getIdByCategoryName(name); }
     public Integer getIdByDishName(String name) { return dishDao.getIdByDishName(name); }
     public Integer getIdByListOfPreferencesName(String name) { return listOfPreferencesDao.getIdByListOfPreferencesName(name); }
+    public Integer getIdByShoppingListName(String name) { return shoppingListDao.getIdByShoppingListName(name); }
+    public String getNameByListOfPreferencesId(int id) {return listOfPreferencesDao.getNameByListOfPreferencesId(id); }
 
     public Boolean categoryExists(String name) {
         return categoryDao.categoryExists(name);
@@ -124,6 +145,7 @@ public class DataRepository {
     public Boolean formExists(float form) { return formOfAccessibilityDao.formExists(form); }
     public Boolean ingredientExists(int idProduct, int idDish) { return ingredientsOfTheDishDao.ingredientsExists(idProduct, idDish); }
     public Boolean listOfPreferencesDishExists(int idDish, int idListOfPreferences) { return listOfPreferencesDishDao.listOfPreferencesDishExists(idDish, idListOfPreferences); }
+    public Boolean shoppingListExists(String name) { return shoppingListDao.shoppingListExists(name); }
 
     public long formIdByName(float form) { return formOfAccessibilityDao.formIdByName(form);}
     public long unitIdByName(String name) { return unitOfMeasurementDao.unitIdByName(name); }
@@ -194,6 +216,20 @@ public class DataRepository {
         });
     }
 
+    public void insert(ShoppingList shoppingList, Executor executor) {
+        AppRoomDatabase.databaseWriteExecutor.execute(() -> {
+            long id = shoppingListDao.insert(shoppingList);
+            executor.execute(id);
+        });
+    }
+
+    public void insert(CompositionOfTheShoppingList compositionOfTheShoppingList, Executor executor) {
+        AppRoomDatabase.databaseWriteExecutor.execute(() -> {
+            long id = compositionOfTheShoppingListDao.insert(compositionOfTheShoppingList);
+            executor.execute(id);
+        });
+    }
+
     public void deleteProductById(long id) {
         AppRoomDatabase.databaseWriteExecutor.execute(() -> {
             productDao.deleteProductById(id);
@@ -248,6 +284,12 @@ public class DataRepository {
         });
     }
 
+    public void deleteShoppingList(int idListOfPreferences) {
+        AppRoomDatabase.databaseWriteExecutor.execute(() -> {
+            shoppingListDao.deleteShoppingListById(idListOfPreferences);
+        });
+    }
+
     public void updateProductName(long id, String newProductName) {
         AppRoomDatabase.databaseWriteExecutor.execute(() -> {
             productDao.updateProductName(id, newProductName);
@@ -293,6 +335,12 @@ public class DataRepository {
     public void updateListOfPreferences(int idListOfPreferences, String name) {
         AppRoomDatabase.databaseWriteExecutor.execute(() -> {
             listOfPreferencesDao.updateListOfPreferencesName(idListOfPreferences, name);
+        });
+    }
+
+    public void updateShoppingList(int idShoppingList, String name) {
+        AppRoomDatabase.databaseWriteExecutor.execute(() -> {
+            shoppingListDao.updateShoppingListName(idShoppingList, name);
         });
     }
 

@@ -28,9 +28,8 @@ public class CompositionOfTheShoppingList {
 
     @NonNull
     private Integer quantity;
-    private String suggestedFormOfAccessibility;
 
-    private int idCompositionOfTheShoppingList;
+//    private String suggestedFormOfAccessibility;
 
     public int getIdShoppingList() {
         return idShoppingList;
@@ -48,27 +47,28 @@ public class CompositionOfTheShoppingList {
         this.idProduct = idProduct;
     }
 
-    public int getIdCompositionOfTheShoppingList() { return idCompositionOfTheShoppingList; }
-
-    public void setIdCompositionOfTheShoppingList(int idCompositionOfTheShoppingList) {
-        this.idCompositionOfTheShoppingList = idCompositionOfTheShoppingList;
-    }
-
     @NonNull
     public Integer getQuantity() { return quantity; }
 
     public void setQuantity(@NonNull Integer quantity) { this.quantity = quantity; }
 
-    @NonNull
-    public String getSuggestedFormOfAccessibility() { return suggestedFormOfAccessibility; }
+//    @NonNull
+//    public String getSuggestedFormOfAccessibility() { return suggestedFormOfAccessibility; }
+//
+//    public void setSuggestedFormOfAccessibility(@NonNull String suggestedFormOfAccessibility) { this.suggestedFormOfAccessibility = suggestedFormOfAccessibility; }
 
-    public void setSuggestedFormOfAccessibility(@NonNull String suggestedFormOfAccessibility) { this.suggestedFormOfAccessibility = suggestedFormOfAccessibility; }
+//    public CompositionOfTheShoppingList(@NonNull Integer quantity, @NonNull String suggestedFormOfAccessibility, @NonNull int idShoppingList, @NonNull int idProduct) {
+//        this.quantity = quantity;
+//        this.suggestedFormOfAccessibility = suggestedFormOfAccessibility;
+//        this.idProduct = idProduct;
+//        this.idShoppingList = idShoppingList;
+//    }
 
-    public CompositionOfTheShoppingList(@NonNull Integer quantity, @NonNull String suggestedFormOfAccessibility, @NonNull int idShoppingList, @NonNull int idProduct) {
+    public CompositionOfTheShoppingList(@NonNull Integer quantity, @NonNull int idShoppingList, @NonNull int idProduct) {
         this.quantity = quantity;
-        this.suggestedFormOfAccessibility = suggestedFormOfAccessibility;
         this.idProduct = idProduct;
         this.idShoppingList = idShoppingList;
+//        this.suggestedFormOfAccessibility = "null";
     }
 }
 

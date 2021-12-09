@@ -9,6 +9,7 @@ import androidx.lifecycle.LiveData;
 import com.example.shoppinglistapplication.database.DataRepository;
 import com.example.shoppinglistapplication.entity.Category;
 import com.example.shoppinglistapplication.entity.ListOfPreferences;
+import com.example.shoppinglistapplication.helpfulModel.ShoppingListDetail;
 
 import java.util.List;
 
@@ -17,10 +18,6 @@ public class ListOfPreferencesViewModel extends AndroidViewModel {
     private DataRepository dataRepository;
 
     private LiveData<List<ListOfPreferences>> listOfPreferences;
-
-    private LiveData<List<Category>> categoriesById;
-    private Integer categoriesById2;
-    private LiveData<String> categoryNameById;
 
     public ListOfPreferencesViewModel(@NonNull Application application) {
         super(application);
@@ -37,12 +34,18 @@ public class ListOfPreferencesViewModel extends AndroidViewModel {
         dataRepository.insert(list);
     }
 
+    public List<ShoppingListDetail> getShoppingListDetail(int idListOfPreferences) {return dataRepository.getShoppingListDetail(idListOfPreferences); }
+
     public Boolean listOfPreferencesExists(String name) {
         return dataRepository.listOfPreferencesExists(name);
     }
 
     public Integer getIdListOfPreferencesByName(String name) {
         return dataRepository.getIdByListOfPreferencesName(name); }
+
+    public String getNameByListOfPreferencesId(int id) {
+        return dataRepository.getNameByListOfPreferencesId(id);
+    }
 
     public void deleteListOfPreferencesById(int id, DataRepository.Executor executor) {
         dataRepository.deleteListOfPreferences(id);

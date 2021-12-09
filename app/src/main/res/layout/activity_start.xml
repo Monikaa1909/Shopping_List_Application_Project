@@ -7,14 +7,6 @@
     tools:context=".StartActivity"
     android:orientation="vertical">
 
-<!--    <Button-->
-<!--        android:id="@+id/button_create_new_list"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="@string/button_create_new_list"-->
-<!--        style="@style/main_button"-->
-<!--        android:layout_marginTop="24dp"-->
-<!--        />-->
-
     <Button
         android:id="@+id/button_load_list"
         android:layout_height="wrap_content"
@@ -44,5 +36,12 @@
         android:layout_height="wrap_content"
         android:text="@string/button_load_settings"
         style="@style/main_button" />
+
+    <Button
+        android:id="@+id/button_load_shopping_list"
+        android:layout_height="wrap_content"
+        android:text="@string/button_load_shopping_list"
+        style="@style/main_button"
+        android:layout_marginTop="30dp"/>
 
 </LinearLayout>

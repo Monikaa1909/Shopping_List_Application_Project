@@ -8,6 +8,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.shoppinglistapplication.R;
@@ -22,6 +23,7 @@ import com.example.shoppinglistapplication.uiDishes.IngredientsDishToDeleteActiv
 import com.example.shoppinglistapplication.uiDishes.IngredientsDishToEditActivity;
 import com.example.shoppinglistapplication.uiDishes.NewDishActivity;
 import com.example.shoppinglistapplication.uiDishes.NewDishDetailActivity;
+import com.example.shoppinglistapplication.uiShoppingList.GenerateShoppingListActivity;
 import com.example.shoppinglistapplication.viewmodel.IngredientsOfTheDishViewModel;
 import com.example.shoppinglistapplication.viewmodel.ListOfPreferencesDishViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -36,12 +38,11 @@ public class CompositionListOfThePreferencesActivity extends AppCompatActivity {
     public static final String KEY_PREFERENCES_INFO = "preferencesInfo";
 
     private ListOfPreferencesDishViewModel listOfPreferencesDishViewModel;
-    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.recyclerview_with_all_button);
+        setContentView(R.layout.recyclerview_composition_list_of_preferences);
 
         int idListOfThePreferences = (int) getIntent().getSerializableExtra(KEY_LIST_OF_THE_PREFERENCES_ID);
 
@@ -71,7 +72,7 @@ public class CompositionListOfThePreferencesActivity extends AppCompatActivity {
         }
 
         new Thread(() -> {
-            recyclerView = findViewById(R.id.recyclerview);
+            RecyclerView recyclerView = findViewById(R.id.recyclerview);
             final ListOfThePreferenceDetailAdapter2 adapter = new ListOfThePreferenceDetailAdapter2(new ListOfThePreferenceDetailAdapter2.ListOfThePreferenceDetailDiff());
             recyclerView.setAdapter(adapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -104,6 +105,16 @@ public class CompositionListOfThePreferencesActivity extends AppCompatActivity {
                 startActivity(intent);
                 this.finish();
             });
+
+            FloatingActionButton generateFab = findViewById(R.id.fab_generate);
+            generateFab.setOnClickListener(view -> {
+                Log.d("IDPREFERENCES", idListOfThePreferences + " ");
+                Intent intent = new Intent(CompositionListOfThePreferencesActivity.this, GenerateShoppingListActivity.class);
+                intent.putExtra(KEY_LIST_OF_THE_PREFERENCES_ID, idListOfThePreferences);
+                startActivity(intent);
+                this.finish();
+            });
+
         }).start();
     }
 }

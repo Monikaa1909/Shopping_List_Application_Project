@@ -7,6 +7,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 import com.example.shoppinglistapplication.entity.ListOfPreferences;
+import com.example.shoppinglistapplication.helpfulModel.ShoppingListDetail;
 
 import java.util.List;
 
@@ -25,6 +26,9 @@ public interface ListOfPreferencesDao {
     @Query("select idListOfPreferences from listofpreferences where listOfPreferencesName = :name limit 1;")
     Integer getIdByListOfPreferencesName(String name);
 
+    @Query("select listOfPreferencesName from listofpreferences where idListOfPreferences = :id limit 1;")
+    String getNameByListOfPreferencesId(int id);
+
     @Query("select exists (select * from listofpreferences where listOfPreferencesName = :name)")
     Boolean listOfPreferencesExists(String name);
 
@@ -33,5 +37,13 @@ public interface ListOfPreferencesDao {
 
     @Query("DELETE FROM listofpreferences WHERE idListOfPreferences = :id")
     void deleteListOfPreferencesById(long id);
+
+    @Query("select  product.idProduct, product.productName, sum(ingredientsofthedish.quantity * listofpreferencesdish.portions) as quantity, " +
+            "unitofmeasurement.unit from listofpreferences, listofpreferencesdish, dish, ingredientsofthedish, product, unitofmeasurement " +
+            "where listofpreferences.idListOfPreferences = listofpreferencesdish.idListOfPreferences and " +
+            "listofpreferencesdish.idDish = dish.idDish and dish.idDish = ingredientsofthedish.idDish and\n" +
+            "ingredientsofthedish.idProduct = product.idProduct and product.idUnitOfMeasurement = unitofmeasurement.idUnitOfMeasurement and " +
+            " listofpreferences.idListOfPreferences = :idListOfPreferences group by product.productName ORDER BY product.productName ASC")
+    List<ShoppingListDetail> getShoppingListDetail(int idListOfPreferences);
 }
 

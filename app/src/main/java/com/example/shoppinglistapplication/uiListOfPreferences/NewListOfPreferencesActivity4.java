@@ -67,7 +67,7 @@ public class NewListOfPreferencesActivity4 extends AppCompatActivity {
                         ListOfPreferencesDish listOfPreferencesDish = new ListOfPreferencesDish(newListOfPreferencesId, newDishId, portions);
                         listOfPreferencesDishViewModel.insert(listOfPreferencesDish, emptyFunction -> {});
                         Intent intent = new Intent(NewListOfPreferencesActivity4.this, CompositionListOfThePreferencesActivity.class);
-                        intent.putExtra(CompositionListOfThePreferencesActivity.KEY_LIST_OF_THE_PREFERENCES_ID, newDishId);
+                        intent.putExtra(CompositionListOfThePreferencesActivity.KEY_LIST_OF_THE_PREFERENCES_ID, newListOfPreferencesId);
                         startActivity(intent);
                         this.finish();
                     }

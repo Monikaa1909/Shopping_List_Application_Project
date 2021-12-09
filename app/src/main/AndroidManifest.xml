@@ -10,6 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoppingListApplication">
         <activity
+            android:name=".uiShoppingList.ShoppingListDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiShoppingList.NewShoppingListNameActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiShoppingList.ShoppingListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiShoppingList.GenerateShoppingListActivity"
+            android:exported="false" />
+        <activity
             android:name=".uiUnitOfMeasurement.UnitsOfMeasurementToDeleteActivity"
             android:exported="false" />
         <activity
