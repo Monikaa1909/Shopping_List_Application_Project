@@ -47,8 +47,6 @@ Tapp/src/main/java/com/example/shoppinglistapplication/uiDishes/EditDishActivity
 bapp/src/main/java/com/example/shoppinglistapplication/uiShoppingList/EditShoppingListActivity.java,c\a\ca35330b5b1d712b66e1997f7e9e0856cca457e5
 Š
 Zapp/src/main/java/com/example/shoppinglistapplication/viewmodel/ShoppingListViewModel.java,d\e\dedff6193aa083b99cbeae072db2d142b7b2d4e3
-~
-Napp/src/main/java/com/example/shoppinglistapplication/dao/ShoppingListDao.java,9\2\92b62810a4cab2a29db7d7b3a7bdc001c7493faf
 „
 Tapp/src/main/java/com/example/shoppinglistapplication/uiDishes/NewDishActivity2.java,d\4\d4c407e95866401ef9202f95d6551c185df7aebd
 z
