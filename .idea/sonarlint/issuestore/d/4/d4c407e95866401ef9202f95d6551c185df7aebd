@@ -1,0 +1,10 @@
+
+‚	java:S116"aRename this field "button_add_ingredients" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(îî»Èÿÿÿÿÿ8şºëÙ/
+p	java:S116"[Rename this field "button_add_later" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Àºç¨
+‡
+java:S1450"eRemove the "button_add_ingredients" field and declare it as a local variable in the relevant methods.(îî»Èÿÿÿÿÿ8…»ëÙ/
+u
+java:S1450"_Remove the "button_add_later" field and declare it as a local variable in the relevant methods.(Àºç¨
+w
+java:S1450"\Remove the "dishViewModel" field and declare it as a local variable in the relevant methods.(İŞÿ˜úÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‡ï“Æùÿÿÿÿ

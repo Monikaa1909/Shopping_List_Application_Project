@@ -1,8 +1,0 @@
-
-‹
-java:S1450"iRemove the "unitOfMeasurementViewModel" field and declare it as a local variable in the relevant methods.(õÆÔıÿÿÿÿ8Ø¬ØÕØ/
-N
-java:S1602 ",Remove useless curly braces around statement(Ë¼òÎıÿÿÿÿ8öõ½ÕØ/
-b
-java:S1612 "@Replace this lambda with method reference 'adapter::submitList'.(Ë¼òÎıÿÿÿÿ8¾æÄÙ/
-o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(°ÛÆô

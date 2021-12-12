@@ -1,0 +1,12 @@
+
+x
+java:S1450"[Remove the "editListName" field and declare it as a local variable in the relevant methods.(´Íâº8É³ÆùÙ/
+
+java:S1186,"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ı§„Ô8İ³ÆùÙ/
+E
+java:S1604+"(Make this anonymous inner class a lambda(’Æã¼8ê³ÆùÙ/
+J
+java:S16040"(Make this anonymous inner class a lambda(ÆŒ×€üÿÿÿÿ8ê³ÆùÙ/
+L
+java:S5411>"*Use the primitive boolean expression here.(ÿÏ²¶úÿÿÿÿ8¨ËùÙ/
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¬£éÊúÿÿÿÿ
