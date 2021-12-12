@@ -13,19 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.adapterholder.DishDetailAdapter;
-import com.example.shoppinglistapplication.adapterholder.ListOfThePreferenceDetailAdapter;
-import com.example.shoppinglistapplication.adapterholder.ListOfThePreferenceDetailAdapter2;
-import com.example.shoppinglistapplication.entity.ListOfPreferencesDish;
-import com.example.shoppinglistapplication.helpfulModel.DishDetail;
+import com.example.shoppinglistapplication.adapter.ListOfThePreferenceDetailAdapter;
 import com.example.shoppinglistapplication.helpfulModel.ListOfPreferencesDetail;
-import com.example.shoppinglistapplication.uiDishes.IngredientsDishActivity;
-import com.example.shoppinglistapplication.uiDishes.IngredientsDishToDeleteActivity;
-import com.example.shoppinglistapplication.uiDishes.IngredientsDishToEditActivity;
-import com.example.shoppinglistapplication.uiDishes.NewDishActivity;
-import com.example.shoppinglistapplication.uiDishes.NewDishDetailActivity;
 import com.example.shoppinglistapplication.uiShoppingList.GenerateShoppingListActivity;
-import com.example.shoppinglistapplication.viewmodel.IngredientsOfTheDishViewModel;
 import com.example.shoppinglistapplication.viewmodel.ListOfPreferencesDishViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -78,7 +68,7 @@ public class CompositionListOfThePreferencesActivity extends AppCompatActivity {
 
         new Thread(() -> {
             RecyclerView recyclerView = findViewById(R.id.recyclerview);
-            final ListOfThePreferenceDetailAdapter2 adapter = new ListOfThePreferenceDetailAdapter2(new ListOfThePreferenceDetailAdapter2.ListOfThePreferenceDetailDiff());
+            final ListOfThePreferenceDetailAdapter adapter = new ListOfThePreferenceDetailAdapter(new ListOfThePreferenceDetailAdapter.ListOfThePreferenceDetailDiff(), 0);
             recyclerView.setAdapter(adapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

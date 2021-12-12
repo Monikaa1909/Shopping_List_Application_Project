@@ -4,15 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.shoppinglistapplication.ItemState.ProductByCategoryToDeleteState;
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.adapterholder.ProductListAdapter2;
+import com.example.shoppinglistapplication.adapter.ProductListAdapter;
 import com.example.shoppinglistapplication.entity.Product;
 import com.example.shoppinglistapplication.viewmodel.ProductViewModel;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -32,7 +31,7 @@ public class ProductsByCategoryToDeleteActivity extends AppCompatActivity {
         int idCategory = (int) getIntent().getSerializableExtra(ProductsByCategoryActivity.KEY_CATEGORY_ID2);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final ProductListAdapter2 adapter = new ProductListAdapter2(new ProductListAdapter2.ProductDiff(), 5, idCategory);
+        final ProductListAdapter adapter = new ProductListAdapter(new ProductListAdapter.ProductDiff(), new ProductByCategoryToDeleteState(idCategory));
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

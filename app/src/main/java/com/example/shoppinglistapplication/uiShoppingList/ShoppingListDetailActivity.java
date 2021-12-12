@@ -4,30 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.adapterholder.ListOfThePreferenceDetailAdapter2;
-import com.example.shoppinglistapplication.adapterholder.ShoppingListDetailAdapter;
-import com.example.shoppinglistapplication.entity.CompositionOfTheShoppingList;
-import com.example.shoppinglistapplication.entity.ShoppingList;
-import com.example.shoppinglistapplication.helpfulModel.ListOfPreferencesDetail;
+import com.example.shoppinglistapplication.adapter.ShoppingListDetailAdapter;
+import com.example.shoppinglistapplication.builder.compositionOfTheShoppingListBuilder.SimpleCompositionOfTheShoppingListBuilder;
+import com.example.shoppinglistapplication.entity.SimpleCompositionOfTheShoppingList;
 import com.example.shoppinglistapplication.helpfulModel.ShoppingListDetail;
-import com.example.shoppinglistapplication.uiDishes.DishesActivity;
-import com.example.shoppinglistapplication.uiDishes.EditDishActivity;
-import com.example.shoppinglistapplication.uiDishes.NewDishActivity;
-import com.example.shoppinglistapplication.uiListOfPreferences.CompositionListOfThePreferencesActivity;
-import com.example.shoppinglistapplication.uiListOfPreferences.NewListOfPreferencesActivity;
-import com.example.shoppinglistapplication.uiProducts.NewProductActivity;
 import com.example.shoppinglistapplication.viewmodel.CompositionOfTheShoppingListViewModel;
-import com.example.shoppinglistapplication.viewmodel.ShoppingListViewModel;
 
 import java.util.List;
 
@@ -59,8 +44,15 @@ public class ShoppingListDetailActivity extends AppCompatActivity {
                     int idShoppingList = compositionOfTheShoppingListViewModel.getIdShoppingListByName(shoppingListName);
                     List<ShoppingListDetail> shoppingListDetails = compositionOfTheShoppingListViewModel.getShoppingListDetailByPreferencesListId(idListOfPreferences);
                     for (ShoppingListDetail detail : shoppingListDetails) {
-                        CompositionOfTheShoppingList compositionOfTheShoppingList = new CompositionOfTheShoppingList(detail.getQuantity(), idShoppingList, detail.getIdProduct());
-                        compositionOfTheShoppingListViewModel.insert(compositionOfTheShoppingList, emptyFunction -> {});
+
+                        // WZORZEC BUILDER:
+                        SimpleCompositionOfTheShoppingListBuilder simpleCompositionBuilder = new SimpleCompositionOfTheShoppingListBuilder();
+                        simpleCompositionBuilder.setQuantity(detail.getQuantity());
+                        simpleCompositionBuilder.setIdShoppingList(idShoppingList);
+                        simpleCompositionBuilder.setIdProduct(detail.getIdProduct());
+                        SimpleCompositionOfTheShoppingList simpleCompositionOfTheShoppingList = simpleCompositionBuilder.getResult();
+//                        CompositionOfTheShoppingList compositionOfTheShoppingList = new CompositionOfTheShoppingList(detail.getQuantity(), idShoppingList, detail.getIdProduct(), "none");
+                        compositionOfTheShoppingListViewModel.insert(simpleCompositionOfTheShoppingList, emptyFunction -> {});
                     }
                     adapter.submitList(shoppingListDetails);
                 }).start();
@@ -75,10 +67,10 @@ public class ShoppingListDetailActivity extends AppCompatActivity {
 
                 CompositionOfTheShoppingListViewModel compositionOfTheShoppingListViewModel = new CompositionOfTheShoppingListViewModel(this.getApplication());
                 List<ShoppingListDetail> shoppingListDetails = compositionOfTheShoppingListViewModel.getShoppingListDetailByShoppingListId(idShoppingList);
-                for (ShoppingListDetail detail : shoppingListDetails) {
-                    CompositionOfTheShoppingList compositionOfTheShoppingList = new CompositionOfTheShoppingList(detail.getQuantity(), idShoppingList, detail.getIdProduct());
-                    compositionOfTheShoppingListViewModel.insert(compositionOfTheShoppingList, emptyFunction -> {});
-                }
+//                for (ShoppingListDetail detail : shoppingListDetails) {
+//                    CompositionOfTheShoppingList compositionOfTheShoppingList = new CompositionOfTheShoppingList(detail.getQuantity(), idShoppingList, detail.getIdProduct());
+//                    compositionOfTheShoppingListViewModel.insert(compositionOfTheShoppingList, emptyFunction -> {});
+//                }
                 adapter.submitList(shoppingListDetails);
             }).start();
         }

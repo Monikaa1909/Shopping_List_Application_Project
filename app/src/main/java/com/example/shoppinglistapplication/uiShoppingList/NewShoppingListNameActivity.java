@@ -1,33 +1,19 @@
 package com.example.shoppinglistapplication.uiShoppingList;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.adapterholder.ShoppingListDetailAdapter;
-import com.example.shoppinglistapplication.entity.ListOfPreferences;
 import com.example.shoppinglistapplication.entity.ShoppingList;
-import com.example.shoppinglistapplication.helpfulModel.ShoppingListDetail;
-import com.example.shoppinglistapplication.uiDishes.NewDishActivity;
+import com.example.shoppinglistapplication.helpfulModel.DataValidator;
 import com.example.shoppinglistapplication.uiListOfPreferences.CompositionListOfThePreferencesActivity;
-import com.example.shoppinglistapplication.uiListOfPreferences.ListsOfPreferencesActivity;
-import com.example.shoppinglistapplication.uiListOfPreferences.NewListOfPreferencesActivity;
-import com.example.shoppinglistapplication.uiListOfPreferences.NewListOfPreferencesActivity2;
-import com.example.shoppinglistapplication.viewmodel.ListOfPreferencesViewModel;
 import com.example.shoppinglistapplication.viewmodel.ShoppingListViewModel;
-
-import java.util.List;
 
 public class NewShoppingListNameActivity extends AppCompatActivity {
 
@@ -50,10 +36,10 @@ public class NewShoppingListNameActivity extends AppCompatActivity {
             new Thread(() -> {
                 String shoppingListName;
                 if (TextUtils.isEmpty(editListName.getText())) {
-                    Log.d("NAZWAPROBLEM", "pole puste, domyslna nazwa: " + listOfPreferencesName);
                     shoppingListName = listOfPreferencesName;
                 } else {
-                   shoppingListName = editListName.getText().toString();
+                    DataValidator validator = new DataValidator();
+                    shoppingListName = validator.validateName(editListName.getText().toString());
                 }
                 shoppingListViewModel = new ShoppingListViewModel(this.getApplication());
                 if (!shoppingListViewModel.shoppingListsExists(shoppingListName)) {

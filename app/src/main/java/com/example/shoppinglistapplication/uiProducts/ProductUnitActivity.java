@@ -9,16 +9,9 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.adapterholder.CategoryListAdapter;
-import com.example.shoppinglistapplication.adapterholder.CategoryListAdapter3;
-import com.example.shoppinglistapplication.adapterholder.UnitOfMeasurementListAdapter;
-import com.example.shoppinglistapplication.entity.Category;
-import com.example.shoppinglistapplication.entity.Product;
+import com.example.shoppinglistapplication.adapter.UnitOfMeasurementListAdapter;
 import com.example.shoppinglistapplication.entity.UnitOfMeasurement;
-import com.example.shoppinglistapplication.uiCategories.NewProductInCategoryActivity;
-import com.example.shoppinglistapplication.uiCategories.ProductsByCategoryActivity;
 import com.example.shoppinglistapplication.viewmodel.ProductViewModel;
-import com.example.shoppinglistapplication.viewmodel.UnitOfMeasurementViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
@@ -37,7 +30,7 @@ public class ProductUnitActivity extends AppCompatActivity {
         subtitle.setText("Jednostka produktu:");
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final UnitOfMeasurementListAdapter adapter = new UnitOfMeasurementListAdapter(new UnitOfMeasurementListAdapter.UnitOfMeasurementDiff());
+        final UnitOfMeasurementListAdapter adapter = new UnitOfMeasurementListAdapter(new UnitOfMeasurementListAdapter.UnitOfMeasurementDiff(), 0);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

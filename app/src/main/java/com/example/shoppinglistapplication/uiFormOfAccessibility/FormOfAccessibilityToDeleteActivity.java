@@ -8,9 +8,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.adapterholder.CategoryListAdapter;
-import com.example.shoppinglistapplication.adapterholder.FormOfAccessibilityListAdapter2;
-import com.example.shoppinglistapplication.viewmodel.CategoryViewModel;
+import com.example.shoppinglistapplication.adapter.FormOfAccessibilityListAdapter;
 import com.example.shoppinglistapplication.viewmodel.FormOfAccessibilityViewModel;
 
 public class FormOfAccessibilityToDeleteActivity extends AppCompatActivity {
@@ -29,7 +27,7 @@ public class FormOfAccessibilityToDeleteActivity extends AppCompatActivity {
         formOfAccessibilityViewModel = new FormOfAccessibilityViewModel(this.getApplication());
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final FormOfAccessibilityListAdapter2 adapter = new FormOfAccessibilityListAdapter2(new FormOfAccessibilityListAdapter2.FormOfAccessibilityDiff(), 3);
+        final FormOfAccessibilityListAdapter adapter = new FormOfAccessibilityListAdapter(new FormOfAccessibilityListAdapter.FormOfAccessibilityDiff(), 3);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

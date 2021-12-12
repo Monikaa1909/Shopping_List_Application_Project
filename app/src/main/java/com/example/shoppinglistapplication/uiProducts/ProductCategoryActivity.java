@@ -5,14 +5,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.adapterholder.CategoryListAdapter;
-import com.example.shoppinglistapplication.adapterholder.CategoryListAdapter3;
-import com.example.shoppinglistapplication.adapterholder.ProductListAdapter;
+import com.example.shoppinglistapplication.adapter.CategoryListAdapter;
 import com.example.shoppinglistapplication.entity.Category;
-import com.example.shoppinglistapplication.entity.Product;
-import com.example.shoppinglistapplication.uiCategories.NewProductInCategoryActivity;
-import com.example.shoppinglistapplication.uiCategories.ProductsByCategoryActivity;
-import com.example.shoppinglistapplication.viewmodel.CategoryViewModel;
 import com.example.shoppinglistapplication.viewmodel.ProductViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -36,7 +30,7 @@ public class ProductCategoryActivity extends AppCompatActivity {
         subtitle.setText("Kategoria produktu:");
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final CategoryListAdapter3 adapter = new CategoryListAdapter3(new CategoryListAdapter.CategoryDiff());
+        final CategoryListAdapter adapter = new CategoryListAdapter(new CategoryListAdapter.CategoryDiff(), 0);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

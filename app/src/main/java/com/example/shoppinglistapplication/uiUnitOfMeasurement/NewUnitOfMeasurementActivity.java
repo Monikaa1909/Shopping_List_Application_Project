@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.shoppinglistapplication.R;
 import com.example.shoppinglistapplication.entity.Category;
 import com.example.shoppinglistapplication.entity.UnitOfMeasurement;
+import com.example.shoppinglistapplication.helpfulModel.DataValidator;
 import com.example.shoppinglistapplication.uiCategories.CategoriesActivity;
 import com.example.shoppinglistapplication.uiCategories.NewCategoryActivity;
 import com.example.shoppinglistapplication.viewmodel.CategoryViewModel;
@@ -56,7 +57,8 @@ public class NewUnitOfMeasurementActivity extends AppCompatActivity {
                 dialog.show();
             } else {
                 new Thread(() -> {
-                    String unitName = editUnitName.getText().toString();
+                    DataValidator validator = new DataValidator();
+                    String unitName = validator.validateName(editUnitName.getText().toString());
                     unitOfMeasurementViewModel = new UnitOfMeasurementViewModel(this.getApplication());
                     if (!unitOfMeasurementViewModel.unitExists(unitName)) {
                         Intent intent = new Intent(NewUnitOfMeasurementActivity.this, UnitsOfMeasurementActivity.class);

@@ -8,7 +8,8 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.adapterholder.UnitOfMeasurementListAdapter2;
+import com.example.shoppinglistapplication.adapter.UnitOfMeasurementListAdapter;
+import com.example.shoppinglistapplication.builder.productBuilder.SimpleProductBuilder;
 import com.example.shoppinglistapplication.viewmodel.UnitOfMeasurementViewModel;
 
 public class NewProductInCategoryActivity2 extends AppCompatActivity {
@@ -24,11 +25,13 @@ public class NewProductInCategoryActivity2 extends AppCompatActivity {
         subtitle = findViewById(R.id.subtitle_text_view);
         subtitle.setText("Wybierz jednostkę nowego produktu:");
 
-        String newProductName = getIntent().getStringExtra(ProductsByCategoryActivity.KEY_NEW_PRODUCT_NAME2);
-        int newCategoryId = (int) getIntent().getSerializableExtra(ProductsByCategoryActivity.KEY_CATEGORY_ID2);
+//        String newProductName = getIntent().getStringExtra(ProductsByCategoryActivity.KEY_NEW_PRODUCT_NAME2);
+//        int newCategoryId = (int) getIntent().getSerializableExtra(ProductsByCategoryActivity.KEY_CATEGORY_ID2);
+
+        SimpleProductBuilder simpleProductBuilder = (SimpleProductBuilder) getIntent().getExtras().getSerializable("builder");
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final UnitOfMeasurementListAdapter2 adapter = new UnitOfMeasurementListAdapter2(new UnitOfMeasurementListAdapter2.UnitOfMeasurementDiff(), 2, newProductName, newCategoryId);
+        final UnitOfMeasurementListAdapter adapter = new UnitOfMeasurementListAdapter(new UnitOfMeasurementListAdapter.UnitOfMeasurementDiff(), 2, simpleProductBuilder);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

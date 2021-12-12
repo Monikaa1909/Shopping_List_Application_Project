@@ -8,9 +8,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.adapterholder.PreferencesListAdapter;
-import com.example.shoppinglistapplication.adapterholder.ShoppingListAdapter;
-import com.example.shoppinglistapplication.viewmodel.ListOfPreferencesViewModel;
+import com.example.shoppinglistapplication.adapter.ShoppingListAdapter;
 import com.example.shoppinglistapplication.viewmodel.ShoppingListViewModel;
 
 public class ShoppingListActivityToDeleteActivity extends AppCompatActivity {

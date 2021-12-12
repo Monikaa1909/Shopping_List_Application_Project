@@ -7,9 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.adapterholder.CategoryListAdapter;
-import com.example.shoppinglistapplication.adapterholder.UnitOfMeasurementListAdapter2;
-import com.example.shoppinglistapplication.viewmodel.CategoryViewModel;
+import com.example.shoppinglistapplication.adapter.UnitOfMeasurementListAdapter;
 import com.example.shoppinglistapplication.viewmodel.UnitOfMeasurementViewModel;
 
 public class EditProductUnitActivity extends AppCompatActivity {
@@ -24,7 +22,7 @@ public class EditProductUnitActivity extends AppCompatActivity {
         int idProduct = (int) getIntent().getSerializableExtra(ProductDetailsActivity.KEY_PRODUCT_DETAIL_ID);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final UnitOfMeasurementListAdapter2 adapter = new UnitOfMeasurementListAdapter2(new UnitOfMeasurementListAdapter2.UnitOfMeasurementDiff(), 3, idProduct);
+        final UnitOfMeasurementListAdapter adapter = new UnitOfMeasurementListAdapter(new UnitOfMeasurementListAdapter.UnitOfMeasurementDiff(), 3, idProduct);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

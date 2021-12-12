@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.shoppinglistapplication.R;
+import com.example.shoppinglistapplication.helpfulModel.DataValidator;
 import com.example.shoppinglistapplication.uiDishes.DishesActivity;
 import com.example.shoppinglistapplication.uiDishes.EditDishActivity;
 import com.example.shoppinglistapplication.viewmodel.DishViewModel;
@@ -56,7 +57,8 @@ public class EditListOfPreferencesActivity extends AppCompatActivity {
             } else {
                 new Thread(() -> {
                     listOfPreferencesViewModel = new ListOfPreferencesViewModel(this.getApplication());
-                    String newListName = editListName.getText().toString();
+                    DataValidator validator = new DataValidator();
+                    String newListName = validator.validateName(editListName.getText().toString());
                     Intent intent = new Intent(EditListOfPreferencesActivity.this, ListsOfPreferencesActivity.class);
 
                     if (!listOfPreferencesViewModel.listOfPreferencesExists(newListName)) {

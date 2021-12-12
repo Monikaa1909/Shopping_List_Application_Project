@@ -8,18 +8,12 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.adapterholder.DishDetailAdapter;
-import com.example.shoppinglistapplication.adapterholder.DishDetailAdapter2;
+import com.example.shoppinglistapplication.adapter.DishDetailAdapter;
 import com.example.shoppinglistapplication.helpfulModel.DishDetail;
-import com.example.shoppinglistapplication.uiCategories.CategoriesActivity;
-import com.example.shoppinglistapplication.uiCategories.CategoriesToDeleteActivity;
-import com.example.shoppinglistapplication.uiCategories.CategoriesToEditActivity;
-import com.example.shoppinglistapplication.uiCategories.NewCategoryActivity;
 import com.example.shoppinglistapplication.viewmodel.IngredientsOfTheDishViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -34,7 +28,6 @@ public class IngredientsDishActivity extends AppCompatActivity {
     public static final String KEY_INGREDIENT_INFO = "ingredientInfo";
 
     private IngredientsOfTheDishViewModel ingredientsOfTheDishViewModel;
-    RecyclerView recyclerView;
     private TextView subtitle;
 
     @Override
@@ -73,8 +66,8 @@ public class IngredientsDishActivity extends AppCompatActivity {
         }
 
         new Thread(() -> {
-            recyclerView = findViewById(R.id.recyclerview);
-            final DishDetailAdapter2 adapter = new DishDetailAdapter2(new DishDetailAdapter2.DishDetailDiff());
+            RecyclerView recyclerView = findViewById(R.id.recyclerview);
+            final DishDetailAdapter adapter = new DishDetailAdapter(new DishDetailAdapter.DishDetailDiff(), 0);
             recyclerView.setAdapter(adapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

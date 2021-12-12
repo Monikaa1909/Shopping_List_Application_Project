@@ -5,11 +5,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 
+import com.example.shoppinglistapplication.ItemState.AddProductToDishState;
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.adapterholder.ProductListAdapter2;
+import com.example.shoppinglistapplication.adapter.ProductListAdapter;
 import com.example.shoppinglistapplication.entity.Product;
 import com.example.shoppinglistapplication.viewmodel.ProductViewModel;
 
@@ -32,7 +32,7 @@ public class NewDishDetailActivity2 extends AppCompatActivity {
         int idDish = (int) getIntent().getSerializableExtra(IngredientsDishActivity.KEY_DISH_ID);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final ProductListAdapter2 adapter = new ProductListAdapter2(new ProductListAdapter2.ProductDiff(), 6, idDish);
+        final ProductListAdapter adapter = new ProductListAdapter(new ProductListAdapter.ProductDiff(), new AddProductToDishState(idDish));
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

@@ -5,36 +5,20 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.SettingsActivity;
-import com.example.shoppinglistapplication.StartActivity;
-import com.example.shoppinglistapplication.adapterholder.DishDetailAdapter2;
-import com.example.shoppinglistapplication.adapterholder.ShoppingListDetailAdapter;
-import com.example.shoppinglistapplication.helpfulModel.DishDetail;
+import com.example.shoppinglistapplication.adapter.ShoppingListDetailAdapter;
 import com.example.shoppinglistapplication.helpfulModel.ShoppingListDetail;
-import com.example.shoppinglistapplication.uiDishes.DishesActivity;
-import com.example.shoppinglistapplication.uiDishes.EditDishActivity;
-import com.example.shoppinglistapplication.uiDishes.IngredientsDishActivity;
-import com.example.shoppinglistapplication.uiDishes.IngredientsDishToDeleteActivity;
-import com.example.shoppinglistapplication.uiDishes.IngredientsDishToEditActivity;
-import com.example.shoppinglistapplication.uiDishes.NewDishActivity;
-import com.example.shoppinglistapplication.uiDishes.NewDishDetailActivity;
 import com.example.shoppinglistapplication.uiListOfPreferences.CompositionListOfThePreferencesActivity;
-import com.example.shoppinglistapplication.uiProducts.ProductsActivity;
-import com.example.shoppinglistapplication.viewmodel.IngredientsOfTheDishViewModel;
 import com.example.shoppinglistapplication.viewmodel.ListOfPreferencesViewModel;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.Serializable;
 import java.util.List;
 
 public class GenerateShoppingListActivity extends AppCompatActivity {
@@ -79,8 +63,6 @@ public class GenerateShoppingListActivity extends AppCompatActivity {
             }
         }
 
-//        Log.d("NAZWAPROBLEM", "nazwa juz isnieje: " + shoppingListName);
-
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         final ShoppingListDetailAdapter adapter = new ShoppingListDetailAdapter(new ShoppingListDetailAdapter.ShoppingListDetailDiff());
         recyclerView.setAdapter(adapter);
@@ -90,6 +72,11 @@ public class GenerateShoppingListActivity extends AppCompatActivity {
 
         new Thread(() -> {
             List<ShoppingListDetail> shoppingListDetails = listOfPreferencesViewModel.getShoppingListDetail(idListOfPreferences);
+            for (ShoppingListDetail detail : shoppingListDetails
+                 ) {
+                Log.d("DETAIL QUANTITY TAG", String.valueOf(detail.getQuantity()));
+            }
+
             adapter.submitList(shoppingListDetails);
 
             String listOfPreferencesName = listOfPreferencesViewModel.getNameByListOfPreferencesId(idListOfPreferences);

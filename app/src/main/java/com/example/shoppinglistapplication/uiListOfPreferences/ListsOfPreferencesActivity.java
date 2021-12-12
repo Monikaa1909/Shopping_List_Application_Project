@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.adapterholder.PreferencesListAdapter;
+import com.example.shoppinglistapplication.adapter.PreferencesListAdapter;
 import com.example.shoppinglistapplication.viewmodel.ListOfPreferencesViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 

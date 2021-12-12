@@ -26,10 +26,11 @@ public class IngredientsOfTheDish {
 
     private int idProduct;
     private int idDish;
-    private float quantity;
+//    private float quantity;
+    private double quantity;
 
-    public float getQuantity() { return quantity; }
-    public void setQuantity(int quantity) { this.quantity = quantity; }
+    public double getQuantity() { return quantity; }
+    public void setQuantity(double quantity) { this.quantity = quantity; }
     public int getIdProduct() {
         return idProduct;
     }
@@ -42,7 +43,7 @@ public class IngredientsOfTheDish {
     public void setIdDish(int idDish) {
         this.idDish = idDish;
     }
-    public IngredientsOfTheDish(int idProduct, int idDish, float quantity) {
+    public IngredientsOfTheDish(int idProduct, int idDish, double quantity) {
         this.idProduct = idProduct;
         this.idDish = idDish;
         this.quantity = quantity;

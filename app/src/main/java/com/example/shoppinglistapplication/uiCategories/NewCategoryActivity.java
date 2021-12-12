@@ -15,11 +15,14 @@ import android.widget.Toast;
 
 import com.example.shoppinglistapplication.R;
 import com.example.shoppinglistapplication.entity.Category;
+import com.example.shoppinglistapplication.helpfulModel.DataValidator;
 import com.example.shoppinglistapplication.uiProducts.NewProductActivity;
 import com.example.shoppinglistapplication.uiProducts.NewProductActivity2;
 import com.example.shoppinglistapplication.uiProducts.ProductsActivity;
 import com.example.shoppinglistapplication.viewmodel.CategoryViewModel;
 import com.example.shoppinglistapplication.viewmodel.ProductViewModel;
+
+import javax.xml.validation.Validator;
 
 public class NewCategoryActivity extends AppCompatActivity {
 
@@ -37,7 +40,6 @@ public class NewCategoryActivity extends AppCompatActivity {
 
         final Button button = findViewById(R.id.button_save);
         button.setOnClickListener(view -> {
-            Intent replyIntent = new Intent();
             if (TextUtils.isEmpty(editCategoryName.getText())) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this)
                         .setView(this.getLayoutInflater().inflate(R.layout.dialog_wrong_data, null))
@@ -57,7 +59,8 @@ public class NewCategoryActivity extends AppCompatActivity {
                 dialog.show();
             } else {
                 new Thread(() -> {
-                    String categoryName = editCategoryName.getText().toString();
+                    DataValidator validator = new DataValidator();
+                    String categoryName = validator.validateName(editCategoryName.getText().toString());
                     categoryViewModel = new CategoryViewModel(this.getApplication());
                     if (!categoryViewModel.categoryExists(categoryName)) {
                         Intent intent = new Intent(NewCategoryActivity.this, CategoriesActivity.class);

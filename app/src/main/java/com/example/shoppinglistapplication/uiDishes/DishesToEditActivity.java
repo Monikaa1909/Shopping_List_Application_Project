@@ -8,9 +8,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.adapterholder.CategoryListAdapter;
-import com.example.shoppinglistapplication.adapterholder.DishListAdapter;
-import com.example.shoppinglistapplication.viewmodel.CategoryViewModel;
+import com.example.shoppinglistapplication.adapter.DishListAdapter;
 import com.example.shoppinglistapplication.viewmodel.DishViewModel;
 
 public class DishesToEditActivity extends AppCompatActivity {

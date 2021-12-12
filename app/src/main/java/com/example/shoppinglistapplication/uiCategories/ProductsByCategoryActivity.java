@@ -11,11 +11,11 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.shoppinglistapplication.ItemState.ProductNoActionState;
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.adapterholder.ProductListAdapter;
+import com.example.shoppinglistapplication.adapter.ProductListAdapter;
 import com.example.shoppinglistapplication.entity.Product;
-import com.example.shoppinglistapplication.uiProducts.NewProductActivity;
-import com.example.shoppinglistapplication.uiProducts.ProductsActivity;
+import com.example.shoppinglistapplication.builder.productBuilder.SimpleProductBuilder;
 import com.example.shoppinglistapplication.viewmodel.ProductViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -27,7 +27,6 @@ public class ProductsByCategoryActivity extends AppCompatActivity {
     public static final String KEY_NEW_PRODUCT_NAME2 = "productName2";
     public static final String KEY_PRODUCT_INFO = "productInfo";
     private ProductViewModel productViewModel;
-    RecyclerView recyclerView;
     private TextView subtitle;
 
     @Override
@@ -65,8 +64,8 @@ public class ProductsByCategoryActivity extends AppCompatActivity {
             }
         }
 
-        recyclerView = findViewById(R.id.recyclerview);
-        final ProductListAdapter adapter = new ProductListAdapter(new ProductListAdapter.ProductDiff());
+        RecyclerView recyclerView = findViewById(R.id.recyclerview);
+        final ProductListAdapter adapter = new ProductListAdapter(new ProductListAdapter.ProductDiff(), new ProductNoActionState());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -74,7 +73,13 @@ public class ProductsByCategoryActivity extends AppCompatActivity {
             productViewModel = new ProductViewModel(this.getApplication());
             FloatingActionButton addFab = findViewById(R.id.fab_add);
             addFab.setOnClickListener(view -> {
+
+                // WZORZEC BUILDER:
+                SimpleProductBuilder simpleProductBuilder = new SimpleProductBuilder();
+                simpleProductBuilder.setIdCategory(idCategory);
+
                 Intent intent = new Intent(ProductsByCategoryActivity.this, NewProductInCategoryActivity.class);
+                intent.putExtra("builder", simpleProductBuilder);
                 intent.putExtra(KEY_CATEGORY_ID2, idCategory);
                 startActivity(intent);
                 this.finish();

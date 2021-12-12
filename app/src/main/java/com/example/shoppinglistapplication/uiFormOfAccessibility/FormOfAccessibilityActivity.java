@@ -5,10 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.adapterholder.FormOfAccessibilityListAdapter;
-import com.example.shoppinglistapplication.entity.FormOfAccessibility;
-import com.example.shoppinglistapplication.uiUnitOfMeasurement.NewUnitOfMeasurementActivity;
-import com.example.shoppinglistapplication.uiUnitOfMeasurement.UnitsOfMeasurementActivity;
+import com.example.shoppinglistapplication.adapter.FormOfAccessibilityListAdapter;
 import com.example.shoppinglistapplication.viewmodel.FormOfAccessibilityViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -58,7 +55,7 @@ public class FormOfAccessibilityActivity extends AppCompatActivity {
         }
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final FormOfAccessibilityListAdapter adapter = new FormOfAccessibilityListAdapter(new FormOfAccessibilityListAdapter.FormOfAccessibilityDiff());
+        final FormOfAccessibilityListAdapter adapter = new FormOfAccessibilityListAdapter(new FormOfAccessibilityListAdapter.FormOfAccessibilityDiff(), 0);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

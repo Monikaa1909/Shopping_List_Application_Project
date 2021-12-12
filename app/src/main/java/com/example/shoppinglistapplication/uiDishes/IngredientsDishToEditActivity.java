@@ -1,19 +1,15 @@
 package com.example.shoppinglistapplication.uiDishes;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.adapterholder.CategoryListAdapter;
-import com.example.shoppinglistapplication.adapterholder.DishDetailAdapter;
+import com.example.shoppinglistapplication.adapter.DishDetailAdapter;
 import com.example.shoppinglistapplication.helpfulModel.DishDetail;
-import com.example.shoppinglistapplication.viewmodel.CategoryViewModel;
 import com.example.shoppinglistapplication.viewmodel.IngredientsOfTheDishViewModel;
 
 import java.util.List;

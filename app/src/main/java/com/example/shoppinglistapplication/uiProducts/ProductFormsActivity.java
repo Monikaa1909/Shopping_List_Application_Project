@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.adapterholder.FormOfAccessibilityListAdapter;
+import com.example.shoppinglistapplication.adapter.FormOfAccessibilityListAdapter;
 import com.example.shoppinglistapplication.entity.FormOfAccessibility;
 import com.example.shoppinglistapplication.viewmodel.ProductViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -30,7 +30,7 @@ public class ProductFormsActivity extends AppCompatActivity {
         subtitle.setText("Formy dostępności produktu:");
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final FormOfAccessibilityListAdapter adapter = new FormOfAccessibilityListAdapter(new FormOfAccessibilityListAdapter.FormOfAccessibilityDiff());
+        final FormOfAccessibilityListAdapter adapter = new FormOfAccessibilityListAdapter(new FormOfAccessibilityListAdapter.FormOfAccessibilityDiff(), 0);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

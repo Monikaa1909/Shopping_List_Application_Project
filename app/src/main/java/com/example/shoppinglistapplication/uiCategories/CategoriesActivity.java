@@ -8,20 +8,12 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
 //import com.example.shoppinglistapplication.adapterholder.CategoryListAdapter;
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.adapterholder.CategoryListAdapter;
-import com.example.shoppinglistapplication.entity.Category;
-import com.example.shoppinglistapplication.uiDishes.DishesActivity;
-import com.example.shoppinglistapplication.uiDishes.EditDishActivity;
-import com.example.shoppinglistapplication.uiProducts.NewProductActivity;
-import com.example.shoppinglistapplication.uiProducts.ProductsActivity;
-import com.example.shoppinglistapplication.uiProducts.ProductsToDeleteActivity;
-import com.example.shoppinglistapplication.uiProducts.ProductsToEditActivity;
+import com.example.shoppinglistapplication.adapter.CategoryListAdapter;
 import com.example.shoppinglistapplication.viewmodel.CategoryViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -44,7 +36,7 @@ public class CategoriesActivity extends AppCompatActivity {
             String info = getIntent().getStringExtra(KEY_CATEGORY_INFO);
             if (info.equals("alreadyExists")) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this)
-                        .setView(this.getLayoutInflater().inflate(R.layout.dialog_wrong_data, null))
+                        .setView(getLayoutInflater().inflate(R.layout.dialog_wrong_data, null))
                         .setTitle("Niepoprawna nazwa")
                         .setMessage(R.string.category_already_exists)
                         .setPositiveButton("Podaj nową nazwę", new DialogInterface.OnClickListener() {

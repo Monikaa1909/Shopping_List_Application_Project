@@ -9,7 +9,6 @@ import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.shoppinglistapplication.dao.CategoryDao;
-import com.example.shoppinglistapplication.dao.CompositionOfTheShoppingListDao;
 import com.example.shoppinglistapplication.dao.DishDao;
 import com.example.shoppinglistapplication.dao.FormOfAccessibilityDao;
 import com.example.shoppinglistapplication.dao.IngredientsOfTheDishDao;
@@ -18,9 +17,10 @@ import com.example.shoppinglistapplication.dao.ListOfPreferencesDishDao;
 import com.example.shoppinglistapplication.dao.ProductDao;
 import com.example.shoppinglistapplication.dao.ProductFormOfAccessibilityDao;
 import com.example.shoppinglistapplication.dao.ShoppingListDao;
+import com.example.shoppinglistapplication.dao.SimpleCompositionOfTheShoppingListDao;
 import com.example.shoppinglistapplication.dao.UnitOfMeasurementDao;
 import com.example.shoppinglistapplication.entity.Category;
-import com.example.shoppinglistapplication.entity.CompositionOfTheShoppingList;
+import com.example.shoppinglistapplication.entity.SimpleCompositionOfTheShoppingList;
 import com.example.shoppinglistapplication.entity.Dish;
 import com.example.shoppinglistapplication.entity.FormOfAccessibility;
 import com.example.shoppinglistapplication.entity.IngredientsOfTheDish;
@@ -43,7 +43,7 @@ import java.util.concurrent.Executors;
                         ListOfPreferences.class,
                         ListOfPreferencesDish.class,
                         ShoppingList.class,
-                        CompositionOfTheShoppingList.class,
+                        SimpleCompositionOfTheShoppingList.class,
                         ProductFormOfAccessibility.class},
                         version = 1, exportSchema = false)
 public abstract class AppRoomDatabase extends RoomDatabase {
@@ -52,7 +52,7 @@ public abstract class AppRoomDatabase extends RoomDatabase {
     public abstract CategoryDao categoryDao();
     public abstract FormOfAccessibilityDao formOfAccessibilityDao();
     public abstract UnitOfMeasurementDao unitOfMeasurementDao();
-    public abstract CompositionOfTheShoppingListDao compositionOfTheShoppingListDao();
+    public abstract SimpleCompositionOfTheShoppingListDao compositionOfTheShoppingListDao();
     public abstract DishDao dishDao();
     public abstract IngredientsOfTheDishDao ingredientsOfTheDishDao();
     public abstract ListOfPreferencesDao listOfPreferencesDao();

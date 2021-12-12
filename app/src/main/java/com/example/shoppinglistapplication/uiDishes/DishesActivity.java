@@ -1,6 +1,5 @@
 package com.example.shoppinglistapplication.uiDishes;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,11 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.adapterholder.DishListAdapter;
-import com.example.shoppinglistapplication.uiCategories.CategoriesActivity;
-import com.example.shoppinglistapplication.uiCategories.CategoriesToDeleteActivity;
-import com.example.shoppinglistapplication.uiCategories.CategoriesToEditActivity;
-import com.example.shoppinglistapplication.uiCategories.NewCategoryActivity;
+import com.example.shoppinglistapplication.adapter.DishListAdapter;
 import com.example.shoppinglistapplication.viewmodel.DishViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 

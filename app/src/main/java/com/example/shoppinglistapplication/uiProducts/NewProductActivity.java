@@ -7,23 +7,19 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.entity.Product;
+import com.example.shoppinglistapplication.helpfulModel.DataValidator;
+import com.example.shoppinglistapplication.builder.productBuilder.SimpleProductBuilder;
 import com.example.shoppinglistapplication.viewmodel.ProductViewModel;
-
-import java.util.List;
 
 public class NewProductActivity extends AppCompatActivity  {
 
     public static final String KEY_NEW_PRODUCT_NAME = "productName";
     public static final String KEY_CATEGORY_ID = "categoryID";
-//    public static final String KEY_UNIT_ID = "unitID";
-//    public static final String KEY_FORM_ID = "formID";
     private ProductViewModel productViewModel;
     private EditText editProductName;
 
@@ -57,11 +53,18 @@ public class NewProductActivity extends AppCompatActivity  {
                 dialog.show();
             } else {
                 new Thread(() -> {
-                    String productName = editProductName.getText().toString();
+                    DataValidator validator = new DataValidator();
+                    String productName = validator.validateName(editProductName.getText().toString());
                     productViewModel = new ProductViewModel(this.getApplication());
                     if (!productViewModel.productExists(productName)) {
+
+                        // WZORZEC BUILDER:
+                        SimpleProductBuilder simpleProductBuilder = new SimpleProductBuilder();
+                        simpleProductBuilder.setProductName(productName);
+
                         Intent intent = new Intent(NewProductActivity.this, NewProductActivity2.class);
                         intent.putExtra(KEY_NEW_PRODUCT_NAME, productName);
+                        intent.putExtra("builder", simpleProductBuilder);
                         startActivity(intent);
                         this.finish();
                     } else {

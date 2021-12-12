@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.shoppinglistapplication.R;
+import com.example.shoppinglistapplication.helpfulModel.DataValidator;
 import com.example.shoppinglistapplication.uiDishes.DishesActivity;
 import com.example.shoppinglistapplication.uiDishes.EditDishActivity;
 import com.example.shoppinglistapplication.uiProducts.EditProductActivity;
@@ -58,7 +59,8 @@ public class EditCategoryActivity extends AppCompatActivity {
             } else {
                 new Thread(() -> {
                     categoryViewModel = new CategoryViewModel(this.getApplication());
-                    String newCategoryName = editCategoryName.getText().toString();
+                    DataValidator validator = new DataValidator();
+                    String newCategoryName = validator.validateName(editCategoryName.getText().toString());
                     Intent intent = new Intent(EditCategoryActivity.this, CategoriesActivity.class);
                     if (!categoryViewModel.categoryExists(newCategoryName)) {
                         categoryViewModel.updateCategoryName(idCategory, newCategoryName, emptyFunction -> {});

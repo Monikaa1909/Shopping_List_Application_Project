@@ -3,7 +3,7 @@ package com.example.shoppinglistapplication.helpfulModel;
 public class DishDetail {
     private String productName;
     private int idProduct;
-    private float quantity;
+    private double quantity;
     private String unit;
     private int idDish;
 
@@ -19,11 +19,11 @@ public class DishDetail {
         this.productName = productName;
     }
 
-    public float getQuantity() {
+    public double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(float quantity) {
+    public void setQuantity(double quantity) {
         this.quantity = quantity;
     }
 

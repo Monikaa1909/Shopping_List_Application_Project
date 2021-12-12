@@ -17,21 +17,12 @@ public class ListOfPreferences {
     public int getIdListOfPreferences() {
         return idListOfPreferences;
     }
-
-    public void setIdListOfPreferences(int idListOfPreferences) {
-        this.idListOfPreferences = idListOfPreferences;
-    }
-
+    public void setIdListOfPreferences(int idListOfPreferences) { this.idListOfPreferences = idListOfPreferences; }
     @NonNull
     public String getListOfPreferencesName() {
         return listOfPreferencesName;
     }
+    public void setListOfPreferencesName(@NonNull String listOfPreferencesName) { this.listOfPreferencesName = listOfPreferencesName; }
 
-    public void setListOfPreferencesName(@NonNull String listOfPreferencesName) {
-        this.listOfPreferencesName = listOfPreferencesName;
-    }
-
-    public ListOfPreferences(@NonNull String listOfPreferencesName) {
-        this.listOfPreferencesName = listOfPreferencesName;
-    }
+    public ListOfPreferences(@NonNull String listOfPreferencesName) { this.listOfPreferencesName = listOfPreferencesName; }
 }

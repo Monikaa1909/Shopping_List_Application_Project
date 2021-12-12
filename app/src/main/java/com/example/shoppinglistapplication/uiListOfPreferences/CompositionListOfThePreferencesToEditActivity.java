@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.adapterholder.ListOfThePreferenceDetailAdapter;
+import com.example.shoppinglistapplication.adapter.ListOfThePreferenceDetailAdapter;
 import com.example.shoppinglistapplication.helpfulModel.ListOfPreferencesDetail;
 import com.example.shoppinglistapplication.viewmodel.ListOfPreferencesDishViewModel;
 

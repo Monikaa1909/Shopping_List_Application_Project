@@ -18,46 +18,23 @@ import androidx.room.PrimaryKey;
                         parentColumns = "idUnitOfMeasurement",
                         childColumns = "idUnitOfMeasurement",
                         onDelete = CASCADE),
-//                @ForeignKey(
-//                        entity = FormOfAccessibility.class,
-//                        parentColumns = "idFormOfAccessibility",
-//                        childColumns = "idFormOfAccessibility",
-//                        onDelete = CASCADE)
 })
 
 public class Product {
 
     @PrimaryKey(autoGenerate = true)
     private int idProduct;
-
     @NonNull
     private String productName;
-
     @NonNull
     private int idCategory;
+    @NonNull
+    private int idUnitOfMeasurement;
 
     public int getIdUnitOfMeasurement() {
         return idUnitOfMeasurement;
     }
-
-    public void setIdUnitOfMeasurement(int idUnitOfMeasurement) {
-        this.idUnitOfMeasurement = idUnitOfMeasurement;
-    }
-
-//    public int getIdFormOfAccessibility() {
-//        return idFormOfAccessibility;
-//    }
-//
-//    public void setIdFormOfAccessibility(int idFormOfAccessibility) {
-//        this.idFormOfAccessibility = idFormOfAccessibility;
-//    }
-
-    @NonNull
-    private int idUnitOfMeasurement;
-
-//    @NonNull
-//    private int idFormOfAccessibility;
-
+    public void setIdUnitOfMeasurement(int idUnitOfMeasurement) { this.idUnitOfMeasurement = idUnitOfMeasurement; }
     public int getIdCategory() {
         return idCategory;
     }
@@ -72,7 +49,6 @@ public class Product {
     public Product(@NonNull String productName, int idCategory, int idUnitOfMeasurement) {
         this.productName = productName;
         this.idCategory = idCategory;
-//        this.idFormOfAccessibility = idFormOfAccessibility;
         this.idUnitOfMeasurement = idUnitOfMeasurement;
     }
 }

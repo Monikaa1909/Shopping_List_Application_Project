@@ -8,8 +8,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.adapterholder.DishListAdapter;
-import com.example.shoppinglistapplication.uiDishes.NewDishActivity2;
+import com.example.shoppinglistapplication.adapter.DishListAdapter;
 import com.example.shoppinglistapplication.viewmodel.DishViewModel;
 
 public class NewListOfPreferencesActivity3 extends AppCompatActivity {
@@ -23,7 +22,7 @@ public class NewListOfPreferencesActivity3 extends AppCompatActivity {
         setContentView(R.layout.recyclerview_without_button);
 
         subtitle = findViewById(R.id.subtitle_text_view);
-        subtitle.setText("Wybierz danie, któe chcesz dodać do listy:");
+        subtitle.setText("Wybierz danie:");
 
         int idListOfPreferences = (int) getIntent().getSerializableExtra(NewListOfPreferencesActivity2.KEY_NEW_LIST_OF_PREFERENCES_ID);
 

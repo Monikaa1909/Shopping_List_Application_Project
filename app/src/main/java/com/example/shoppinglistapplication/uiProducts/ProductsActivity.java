@@ -8,15 +8,12 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.shoppinglistapplication.ItemState.ProductToShowDetailState;
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.adapterholder.ProductListAdapter2;
-import com.example.shoppinglistapplication.uiCategories.CategoriesActivity;
-import com.example.shoppinglistapplication.uiCategories.EditCategoryActivity;
-import com.example.shoppinglistapplication.uiCategories.ProductsByCategoryActivity;
+import com.example.shoppinglistapplication.adapter.ProductListAdapter;
 import com.example.shoppinglistapplication.viewmodel.ProductViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -82,7 +79,7 @@ public class ProductsActivity extends AppCompatActivity {
         productViewModel = new ProductViewModel(this.getApplication());
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final ProductListAdapter2 adapter = new ProductListAdapter2(new ProductListAdapter2.ProductDiff(), 3);
+        final ProductListAdapter adapter = new ProductListAdapter(new ProductListAdapter.ProductDiff(), new ProductToShowDetailState());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

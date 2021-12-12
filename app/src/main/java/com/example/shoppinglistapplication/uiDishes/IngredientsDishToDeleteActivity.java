@@ -4,18 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.adapterholder.DishDetailAdapter;
-import com.example.shoppinglistapplication.adapterholder.DishListAdapter;
+import com.example.shoppinglistapplication.adapter.DishDetailAdapter;
 import com.example.shoppinglistapplication.helpfulModel.DishDetail;
-import com.example.shoppinglistapplication.uiCategories.CategoriesToEditActivity;
-import com.example.shoppinglistapplication.viewmodel.DishViewModel;
 import com.example.shoppinglistapplication.viewmodel.IngredientsOfTheDishViewModel;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 

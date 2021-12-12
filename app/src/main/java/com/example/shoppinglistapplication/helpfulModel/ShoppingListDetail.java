@@ -6,7 +6,7 @@ public class ShoppingListDetail {
 //    private String shoppingListName;
     private int idProduct;
     private String productName;
-    private float quantity;
+    private double quantity;
     private String unit;
 
     public ShoppingListDetail() {}
@@ -43,11 +43,11 @@ public class ShoppingListDetail {
         this.productName = productName;
     }
 
-    public float getQuantity() {
+    public double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(double quantity) {
         this.quantity = quantity;
     }
 

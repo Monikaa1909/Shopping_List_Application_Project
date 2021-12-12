@@ -5,15 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.adapterholder.UnitOfMeasurementListAdapter;
-import com.example.shoppinglistapplication.entity.UnitOfMeasurement;
-import com.example.shoppinglistapplication.uiCategories.CategoriesActivity;
-import com.example.shoppinglistapplication.uiCategories.EditCategoryActivity;
-import com.example.shoppinglistapplication.uiCategories.NewCategoryActivity;
-import com.example.shoppinglistapplication.uiDishes.DishesActivity;
-import com.example.shoppinglistapplication.uiDishes.EditDishActivity;
-import com.example.shoppinglistapplication.uiFormOfAccessibility.FormOfAccessibilityActivity;
-import com.example.shoppinglistapplication.uiFormOfAccessibility.FormOfAccessibilityToDeleteActivity;
+import com.example.shoppinglistapplication.adapter.UnitOfMeasurementListAdapter;
 import com.example.shoppinglistapplication.viewmodel.UnitOfMeasurementViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -63,7 +55,7 @@ public class UnitsOfMeasurementActivity extends AppCompatActivity {
         }
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final UnitOfMeasurementListAdapter adapter = new UnitOfMeasurementListAdapter(new UnitOfMeasurementListAdapter.UnitOfMeasurementDiff());
+        final UnitOfMeasurementListAdapter adapter = new UnitOfMeasurementListAdapter(new UnitOfMeasurementListAdapter.UnitOfMeasurementDiff(), 0);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -77,6 +69,7 @@ public class UnitsOfMeasurementActivity extends AppCompatActivity {
         fab.setOnClickListener(view -> {
             Intent intent = new Intent(UnitsOfMeasurementActivity.this, NewUnitOfMeasurementActivity.class);
             startActivity(intent);
+            finish();
         });
 
         FloatingActionButton deleteFab = findViewById(R.id.fab_delete);

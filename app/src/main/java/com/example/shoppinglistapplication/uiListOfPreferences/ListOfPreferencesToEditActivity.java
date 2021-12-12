@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.adapterholder.PreferencesListAdapter;
+import com.example.shoppinglistapplication.adapter.PreferencesListAdapter;
 import com.example.shoppinglistapplication.viewmodel.ListOfPreferencesViewModel;
 
 public class ListOfPreferencesToEditActivity extends AppCompatActivity {

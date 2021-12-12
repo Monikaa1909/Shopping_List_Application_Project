@@ -4,17 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.adapterholder.FormOfAccessibilityListAdapter;
-import com.example.shoppinglistapplication.adapterholder.FormOfAccessibilityListAdapter2;
-import com.example.shoppinglistapplication.uiFormOfAccessibility.FormOfAccessibilityActivity;
-import com.example.shoppinglistapplication.uiFormOfAccessibility.NewFormOfAccessibilityActivity;
+import com.example.shoppinglistapplication.adapter.FormOfAccessibilityListAdapter;
 import com.example.shoppinglistapplication.viewmodel.FormOfAccessibilityViewModel;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class NewProductFormActivity extends AppCompatActivity {
 
@@ -32,7 +27,7 @@ public class NewProductFormActivity extends AppCompatActivity {
         int idProduct = (int) getIntent().getSerializableExtra(ProductDetailsActivity.KEY_PRODUCT_DETAIL_ID);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final FormOfAccessibilityListAdapter2 adapter = new FormOfAccessibilityListAdapter2(new FormOfAccessibilityListAdapter2.FormOfAccessibilityDiff(), 1, idProduct);
+        final FormOfAccessibilityListAdapter adapter = new FormOfAccessibilityListAdapter(new FormOfAccessibilityListAdapter.FormOfAccessibilityDiff(), 1, idProduct);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

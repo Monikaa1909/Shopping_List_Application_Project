@@ -8,10 +8,8 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.adapterholder.CategoryListAdapter;
-import com.example.shoppinglistapplication.adapterholder.ProductListAdapter2;
+import com.example.shoppinglistapplication.adapter.CategoryListAdapter;
 import com.example.shoppinglistapplication.viewmodel.CategoryViewModel;
-import com.example.shoppinglistapplication.viewmodel.ProductViewModel;
 
 public class CategoriesToDeleteActivity extends AppCompatActivity {
 

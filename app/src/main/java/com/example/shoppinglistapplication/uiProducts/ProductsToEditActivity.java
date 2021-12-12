@@ -7,8 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.shoppinglistapplication.ItemState.ProductToEditState;
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.adapterholder.ProductListAdapter2;
+import com.example.shoppinglistapplication.adapter.ProductListAdapter;
 import com.example.shoppinglistapplication.viewmodel.ProductViewModel;
 
 public class ProductsToEditActivity extends AppCompatActivity {
@@ -27,7 +28,7 @@ public class ProductsToEditActivity extends AppCompatActivity {
         productViewModel = new ProductViewModel(this.getApplication());
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final ProductListAdapter2 adapter = new ProductListAdapter2(new ProductListAdapter2.ProductDiff(), 4);
+        final ProductListAdapter adapter = new ProductListAdapter(new ProductListAdapter.ProductDiff(), new ProductToEditState());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

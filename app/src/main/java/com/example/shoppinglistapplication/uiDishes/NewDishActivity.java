@@ -3,6 +3,7 @@ package com.example.shoppinglistapplication.uiDishes;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.shoppinglistapplication.R;
 import com.example.shoppinglistapplication.entity.Dish;
+import com.example.shoppinglistapplication.helpfulModel.DataValidator;
 import com.example.shoppinglistapplication.uiProducts.NewProductActivity;
 import com.example.shoppinglistapplication.uiProducts.NewProductActivity2;
 import com.example.shoppinglistapplication.uiProducts.ProductsActivity;
@@ -55,7 +56,8 @@ public class NewDishActivity extends AppCompatActivity {
                 dialog.show();
             } else {
                 new Thread(() -> {
-                    String dishName = editDishName.getText().toString();
+                    DataValidator validator = new DataValidator();
+                    String dishName = validator.validateName(editDishName.getText().toString());
                     dishViewModel = new DishViewModel(this.getApplication());
                     if (!dishViewModel.dishExists(dishName)) {
                         Intent intent = new Intent(NewDishActivity.this, NewDishActivity2.class);

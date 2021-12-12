@@ -7,16 +7,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.uiProducts.NewProductActivity;
-import com.example.shoppinglistapplication.uiProducts.NewProductActivity2;
-import com.example.shoppinglistapplication.uiProducts.ProductsActivity;
+import com.example.shoppinglistapplication.helpfulModel.DataValidator;
+import com.example.shoppinglistapplication.builder.productBuilder.SimpleProductBuilder;
 import com.example.shoppinglistapplication.viewmodel.ProductViewModel;
 
 public class NewProductInCategoryActivity extends AppCompatActivity {
@@ -35,6 +32,7 @@ public class NewProductInCategoryActivity extends AppCompatActivity {
         editProductInCategoryName.setHint(R.string.hint_new_name_product);
 
         int idCategory = (int) getIntent().getSerializableExtra(ProductsByCategoryActivity.KEY_CATEGORY_ID2);
+        SimpleProductBuilder simpleProductBuilder = (SimpleProductBuilder) getIntent().getExtras().getSerializable("builder");
 
         final Button button = findViewById(R.id.button_save);
         button.setOnClickListener(view -> {
@@ -58,12 +56,15 @@ public class NewProductInCategoryActivity extends AppCompatActivity {
                 dialog.show();
             }else {
                 new Thread(() -> {
-                    String productName = editProductInCategoryName.getText().toString();
+                    DataValidator validator = new DataValidator();
+                    String productName = validator.validateName(editProductInCategoryName.getText().toString());
                     productViewModel = new ProductViewModel(this.getApplication());
                     if (!productViewModel.productExists(productName)) {
+                        simpleProductBuilder.setProductName(productName);
                         Intent intent = new Intent(NewProductInCategoryActivity.this, NewProductInCategoryActivity2.class);
-                        intent.putExtra(ProductsByCategoryActivity.KEY_NEW_PRODUCT_NAME2, productName);
-                        intent.putExtra(ProductsByCategoryActivity.KEY_CATEGORY_ID2, idCategory);
+//                        intent.putExtra(ProductsByCategoryActivity.KEY_NEW_PRODUCT_NAME2, productName);
+//                        intent.putExtra(ProductsByCategoryActivity.KEY_CATEGORY_ID2, idCategory);
+                        intent.putExtra("builder", simpleProductBuilder);
                         startActivity(intent);
                         this.finish();
                     } else {

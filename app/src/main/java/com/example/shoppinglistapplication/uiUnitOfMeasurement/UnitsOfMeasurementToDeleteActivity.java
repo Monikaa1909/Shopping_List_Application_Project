@@ -8,9 +8,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.adapterholder.FormOfAccessibilityListAdapter2;
-import com.example.shoppinglistapplication.adapterholder.UnitOfMeasurementListAdapter2;
-import com.example.shoppinglistapplication.viewmodel.FormOfAccessibilityViewModel;
+import com.example.shoppinglistapplication.adapter.UnitOfMeasurementListAdapter;
 import com.example.shoppinglistapplication.viewmodel.UnitOfMeasurementViewModel;
 
 public class UnitsOfMeasurementToDeleteActivity extends AppCompatActivity {
@@ -29,7 +27,7 @@ public class UnitsOfMeasurementToDeleteActivity extends AppCompatActivity {
         unitOfMeasurementViewModel = new UnitOfMeasurementViewModel(this.getApplication());
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final UnitOfMeasurementListAdapter2 adapter = new UnitOfMeasurementListAdapter2(new UnitOfMeasurementListAdapter2.UnitOfMeasurementDiff(), 4);
+        final UnitOfMeasurementListAdapter adapter = new UnitOfMeasurementListAdapter(new UnitOfMeasurementListAdapter.UnitOfMeasurementDiff(), 4);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
