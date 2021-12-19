@@ -11,7 +11,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.shoppinglistapplication.ItemState.ProductToShowDetailState;
+import com.example.shoppinglistapplication.ItemState.ProductState.ProductToShowDetailState;
 import com.example.shoppinglistapplication.R;
 import com.example.shoppinglistapplication.adapter.ProductListAdapter;
 import com.example.shoppinglistapplication.viewmodel.ProductViewModel;

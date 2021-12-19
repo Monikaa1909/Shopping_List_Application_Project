@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.shoppinglistapplication.ItemState.CategoryState.AddCategoryToNewProductState;
 import com.example.shoppinglistapplication.R;
 import com.example.shoppinglistapplication.adapter.CategoryListAdapter;
 import com.example.shoppinglistapplication.builder.productBuilder.SimpleProductBuilder;
@@ -29,7 +30,7 @@ public class NewProductActivity2 extends AppCompatActivity {
         SimpleProductBuilder simpleProductBuilder = (SimpleProductBuilder) getIntent().getExtras().getSerializable("builder");
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final CategoryListAdapter adapter = new CategoryListAdapter(new CategoryListAdapter.CategoryDiff(), 6, simpleProductBuilder);
+        final CategoryListAdapter adapter = new CategoryListAdapter(new CategoryListAdapter.CategoryDiff(), new AddCategoryToNewProductState(simpleProductBuilder));
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

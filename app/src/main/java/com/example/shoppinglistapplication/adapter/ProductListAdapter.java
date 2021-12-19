@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 
-import com.example.shoppinglistapplication.ItemState.IProductState;
+import com.example.shoppinglistapplication.ItemState.ProductState.IProductState;
 import com.example.shoppinglistapplication.entity.Product;
 import com.example.shoppinglistapplication.viewholder.ProductViewHolder;
 

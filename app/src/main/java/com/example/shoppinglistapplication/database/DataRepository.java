@@ -13,9 +13,10 @@ import com.example.shoppinglistapplication.dao.ListOfPreferencesDishDao;
 import com.example.shoppinglistapplication.dao.ProductDao;
 import com.example.shoppinglistapplication.dao.ProductFormOfAccessibilityDao;
 import com.example.shoppinglistapplication.dao.ShoppingListDao;
-import com.example.shoppinglistapplication.dao.SimpleCompositionOfTheShoppingListDao;
+import com.example.shoppinglistapplication.dao.CompositionOfTheShoppingListDao;
 import com.example.shoppinglistapplication.dao.UnitOfMeasurementDao;
 import com.example.shoppinglistapplication.entity.Category;
+import com.example.shoppinglistapplication.entity.OptimizedCompositionOfTheShoppingList;
 import com.example.shoppinglistapplication.entity.SimpleCompositionOfTheShoppingList;
 import com.example.shoppinglistapplication.entity.Dish;
 import com.example.shoppinglistapplication.entity.FormOfAccessibility;
@@ -29,6 +30,7 @@ import com.example.shoppinglistapplication.entity.UnitOfMeasurement;
 import com.example.shoppinglistapplication.helpfulModel.DishDetail;
 import com.example.shoppinglistapplication.helpfulModel.ListOfPreferencesDetail;
 import com.example.shoppinglistapplication.helpfulModel.ShoppingListDetail;
+import com.example.shoppinglistapplication.helpfulModel.OptimizedShoppingListDetail;
 
 import java.util.List;
 
@@ -47,7 +49,7 @@ public class DataRepository {
     private ProductFormOfAccessibilityDao productFormOfAccessibilityDao = null;
     private ListOfPreferencesDishDao listOfPreferencesDishDao = null;
     private ShoppingListDao shoppingListDao = null;
-    private SimpleCompositionOfTheShoppingListDao simpleCompositionOfTheShoppingListDao = null;
+    private CompositionOfTheShoppingListDao compositionOfTheShoppingListDao = null;
 
     private LiveData<List<Product>>  products = null;
     private LiveData<List<Category>>  categories = null;
@@ -63,30 +65,6 @@ public class DataRepository {
 
     private DataRepository(Application application) {
         database = AppRoomDatabase.getDatabase(application);
-
-//        productDao = database.productDao();
-//        categoryDao = database.categoryDao();
-//        listOfPreferencesDao = database.listOfPreferencesDao();
-//        dishDao = database.dishDao();
-//        ingredientsOfTheDishDao = database.ingredientsOfTheDishDao();
-//        unitOfMeasurementDao = database.unitOfMeasurementDao();
-//        formOfAccessibilityDao = database.formOfAccessibilityDao();
-//        productFormOfAccessibilityDao = database.productFormOfAccessibilityDao();
-//        listOfPreferencesDishDao = database.listOfPreferencesDishDao();
-//        shoppingListDao = database.shoppingListDao();
-//        compositionOfTheShoppingListDao = database.compositionOfTheShoppingListDao();
-//
-//        products = productDao.getAlphabetizedProducts();
-//        categories = categoryDao.getAlphabetizedCategories();
-//        listsOfPreferences = listOfPreferencesDao.getAlphabetizedListOfPreferences();
-//        dishes = dishDao.getAlphabetizedDishes();
-//        ingredientsOfTheDish = ingredientsOfTheDishDao.getAllIngredientsOfTheDish();
-//        units = unitOfMeasurementDao.getAllUnits();
-//        formOfAccessibility = formOfAccessibilityDao.getAllForms();
-//        productFormOfAccessibility = productFormOfAccessibilityDao.getAllProductFormOfAccessibility();
-//        listOfPreferencesDish = listOfPreferencesDishDao.getAllListOfPreferencesDish();
-//        shoppingList = shoppingListDao.getAlphabetizedShoppingLists();
-//        compositionOfTheShoppingList = compositionOfTheShoppingListDao.getAllCompositions();
     }
 
     public static DataRepository getInstance(Application application) {
@@ -181,9 +159,9 @@ public class DataRepository {
     }
 
     public LiveData<List<SimpleCompositionOfTheShoppingList>> getCompositionOfTheShoppingList() {
-        if (simpleCompositionOfTheShoppingListDao == null) {
-            simpleCompositionOfTheShoppingListDao = database.compositionOfTheShoppingListDao();
-            compositionOfTheShoppingList = simpleCompositionOfTheShoppingListDao.getAllCompositions();
+        if (compositionOfTheShoppingListDao == null) {
+            compositionOfTheShoppingListDao = database.compositionOfTheShoppingListDao();
+            compositionOfTheShoppingList = compositionOfTheShoppingListDao.getAllCompositions();
         }
         return compositionOfTheShoppingList;
     }
@@ -203,17 +181,24 @@ public class DataRepository {
     }
 
     public List<ShoppingListDetail> getShoppingListDetailByShoppingListId(int idShoppingList) {
-        if (simpleCompositionOfTheShoppingListDao == null) {
-            simpleCompositionOfTheShoppingListDao = database.compositionOfTheShoppingListDao();
+        if (compositionOfTheShoppingListDao == null) {
+            compositionOfTheShoppingListDao = database.compositionOfTheShoppingListDao();
         }
-        return simpleCompositionOfTheShoppingListDao.getShoppingListDetailByShoppingListId(idShoppingList);
+        return compositionOfTheShoppingListDao.getSimpleShoppingListDetailByShoppingListId(idShoppingList);
     }
 
     public List<ShoppingListDetail> getShoppingListDetailByPreferencesListId(int idListOfPreferences) {
-        if (simpleCompositionOfTheShoppingListDao == null) {
-            simpleCompositionOfTheShoppingListDao = database.compositionOfTheShoppingListDao();
+        if (compositionOfTheShoppingListDao == null) {
+            compositionOfTheShoppingListDao = database.compositionOfTheShoppingListDao();
         }
-        return simpleCompositionOfTheShoppingListDao.getShoppingListDetailByPreferencesListId(idListOfPreferences);
+        return compositionOfTheShoppingListDao.getShoppingListDetailByPreferencesListId(idListOfPreferences);
+    }
+
+    public List<OptimizedShoppingListDetail> getOptimizedShoppingListDetailByShoppingListId(int idShoppingList) {
+        if (compositionOfTheShoppingListDao == null) {
+            compositionOfTheShoppingListDao = database.compositionOfTheShoppingListDao();
+        }
+        return compositionOfTheShoppingListDao.getOptimizedShoppingListDetailByShoppingListId(idShoppingList);
     }
 
     public List<DishDetail> getDishDetail(int idDish) {
@@ -272,11 +257,39 @@ public class DataRepository {
         return shoppingListDao.getIdByShoppingListName(name);
     }
 
+    public Integer getIdByShoppingListName2(String name) {
+        if (compositionOfTheShoppingListDao == null) {
+            compositionOfTheShoppingListDao = database.compositionOfTheShoppingListDao();
+        }
+        return compositionOfTheShoppingListDao.getIdByShoppingListName(name);
+    }
+
+    public String getUnitOfProduct(int idProduct) {
+        if (compositionOfTheShoppingListDao == null) {
+            compositionOfTheShoppingListDao = database.compositionOfTheShoppingListDao();
+        }
+        return compositionOfTheShoppingListDao.getUnitOfProduct(idProduct);
+    }
+
     public String getNameByListOfPreferencesId(int id) {
         if (listOfPreferencesDao == null) {
             listOfPreferencesDao = database.listOfPreferencesDao();
         }
         return listOfPreferencesDao.getNameByListOfPreferencesId(id);
+    }
+
+    public String getTypeOfShoppingListById(int idShoppingList) {
+        if (compositionOfTheShoppingListDao == null) {
+            compositionOfTheShoppingListDao = database.compositionOfTheShoppingListDao();
+        }
+        return compositionOfTheShoppingListDao.getTypeOfShoppingListById(idShoppingList);
+    }
+
+    public List<Double> getFormsOfAccessibilityByProductId(int idProduct) {
+        if (compositionOfTheShoppingListDao == null) {
+            compositionOfTheShoppingListDao = database.compositionOfTheShoppingListDao();
+        }
+        return compositionOfTheShoppingListDao.getFormsOfAccessibilityByProductId(idProduct);
     }
 
     public Boolean categoryExists(String name) {
@@ -477,11 +490,21 @@ public class DataRepository {
     }
 
     public void insert(SimpleCompositionOfTheShoppingList simpleCompositionOfTheShoppingList, Executor executor) {
-        if (simpleCompositionOfTheShoppingListDao == null) {
-            simpleCompositionOfTheShoppingListDao = database.compositionOfTheShoppingListDao();
+        if (compositionOfTheShoppingListDao == null) {
+            compositionOfTheShoppingListDao = database.compositionOfTheShoppingListDao();
         }
         AppRoomDatabase.databaseWriteExecutor.execute(() -> {
-            long id = simpleCompositionOfTheShoppingListDao.insert(simpleCompositionOfTheShoppingList);
+            long id = compositionOfTheShoppingListDao.insert(simpleCompositionOfTheShoppingList);
+            executor.execute(id);
+        });
+    }
+
+    public void insert(OptimizedCompositionOfTheShoppingList optimizedCompositionOfTheShoppingList, Executor executor) {
+        if (compositionOfTheShoppingListDao == null) {
+            compositionOfTheShoppingListDao = database.compositionOfTheShoppingListDao();
+        }
+        AppRoomDatabase.databaseWriteExecutor.execute(() -> {
+            long id = compositionOfTheShoppingListDao.insert(optimizedCompositionOfTheShoppingList);
             executor.execute(id);
         });
     }

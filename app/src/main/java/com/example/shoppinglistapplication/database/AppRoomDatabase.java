@@ -17,9 +17,10 @@ import com.example.shoppinglistapplication.dao.ListOfPreferencesDishDao;
 import com.example.shoppinglistapplication.dao.ProductDao;
 import com.example.shoppinglistapplication.dao.ProductFormOfAccessibilityDao;
 import com.example.shoppinglistapplication.dao.ShoppingListDao;
-import com.example.shoppinglistapplication.dao.SimpleCompositionOfTheShoppingListDao;
+import com.example.shoppinglistapplication.dao.CompositionOfTheShoppingListDao;
 import com.example.shoppinglistapplication.dao.UnitOfMeasurementDao;
 import com.example.shoppinglistapplication.entity.Category;
+import com.example.shoppinglistapplication.entity.OptimizedCompositionOfTheShoppingList;
 import com.example.shoppinglistapplication.entity.SimpleCompositionOfTheShoppingList;
 import com.example.shoppinglistapplication.entity.Dish;
 import com.example.shoppinglistapplication.entity.FormOfAccessibility;
@@ -44,6 +45,7 @@ import java.util.concurrent.Executors;
                         ListOfPreferencesDish.class,
                         ShoppingList.class,
                         SimpleCompositionOfTheShoppingList.class,
+                        OptimizedCompositionOfTheShoppingList.class,
                         ProductFormOfAccessibility.class},
                         version = 1, exportSchema = false)
 public abstract class AppRoomDatabase extends RoomDatabase {
@@ -52,7 +54,7 @@ public abstract class AppRoomDatabase extends RoomDatabase {
     public abstract CategoryDao categoryDao();
     public abstract FormOfAccessibilityDao formOfAccessibilityDao();
     public abstract UnitOfMeasurementDao unitOfMeasurementDao();
-    public abstract SimpleCompositionOfTheShoppingListDao compositionOfTheShoppingListDao();
+    public abstract CompositionOfTheShoppingListDao compositionOfTheShoppingListDao();
     public abstract DishDao dishDao();
     public abstract IngredientsOfTheDishDao ingredientsOfTheDishDao();
     public abstract ListOfPreferencesDao listOfPreferencesDao();
@@ -102,7 +104,27 @@ public abstract class AppRoomDatabase extends RoomDatabase {
 
                 FormOfAccessibilityDao formOfAccessibilityDao = INSTANCE.formOfAccessibilityDao();
                 formOfAccessibilityDao.deleteAll();
-                FormOfAccessibility formOfAccessibility = new FormOfAccessibility((float) 0);    // id:1
+                FormOfAccessibility formOfAccessibility = new FormOfAccessibility((double) 0);    // id:1
+                formOfAccessibilityDao.insert(formOfAccessibility);
+                formOfAccessibility = new FormOfAccessibility((double) 50);    // id:2
+                formOfAccessibilityDao.insert(formOfAccessibility);
+                formOfAccessibility = new FormOfAccessibility((double) 100);    // id:3
+                formOfAccessibilityDao.insert(formOfAccessibility);
+                formOfAccessibility = new FormOfAccessibility((double) 200);    // id:4
+                formOfAccessibilityDao.insert(formOfAccessibility);
+                formOfAccessibility = new FormOfAccessibility((double) 500);    // id:5
+                formOfAccessibilityDao.insert(formOfAccessibility);
+                formOfAccessibility = new FormOfAccessibility((double) 0.5);    // id:6
+                formOfAccessibilityDao.insert(formOfAccessibility);
+                formOfAccessibility = new FormOfAccessibility((double) 1);    // id:7
+                formOfAccessibilityDao.insert(formOfAccessibility);
+                formOfAccessibility = new FormOfAccessibility((double) 2);    // id:8
+                formOfAccessibilityDao.insert(formOfAccessibility);
+                formOfAccessibility = new FormOfAccessibility((double) 5);    // id:9
+                formOfAccessibilityDao.insert(formOfAccessibility);
+                formOfAccessibility = new FormOfAccessibility((double) 0.1);    // id:10
+                formOfAccessibilityDao.insert(formOfAccessibility);
+                formOfAccessibility = new FormOfAccessibility((double) 0.250);    // id:11
                 formOfAccessibilityDao.insert(formOfAccessibility);
 
                 UnitOfMeasurementDao unitOfMeasurementDao = INSTANCE.unitOfMeasurementDao();
@@ -136,9 +158,9 @@ public abstract class AppRoomDatabase extends RoomDatabase {
                 productDao.insert(product10);
                 Product product11 = new Product("Chleb", 6, 1);  // id:11
                 productDao.insert(product11);
-                Product product12 = new Product("Chleb", 6, 1);  // id:12
+                Product product12 = new Product("Bułeczka", 6, 1);  // id:12
                 productDao.insert(product12);
-                Product product13 = new Product("Mleko", 2, 2);  // id:13
+                Product product13 = new Product("Mleko", 5, 2);  // id:13
                 productDao.insert(product13);
                 Product product14 = new Product("Majonez", 1, 1);    // id:14
                 productDao.insert(product14);
@@ -146,7 +168,7 @@ public abstract class AppRoomDatabase extends RoomDatabase {
                 productDao.insert(product15);
                 Product product16 = new Product("Sos Teriyaki", 1, 2); // id:16
                 productDao.insert(product16);
-                Product product17 = new Product("Ser gouda", 2, 1); // id:17
+                Product product17 = new Product("Ser gouda", 5, 1); // id:17
                 productDao.insert(product17);
                 Product product18 = new Product("Makaron", 1, 1); // id:18
                 productDao.insert(product18);
@@ -192,11 +214,11 @@ public abstract class AppRoomDatabase extends RoomDatabase {
                 ingredientsOfTheDishDao.deleteAll();
                 IngredientsOfTheDish ingredientsOfTheDish1 = new IngredientsOfTheDish(15, 1, 35);
                 ingredientsOfTheDishDao.insert(ingredientsOfTheDish1);
-                IngredientsOfTheDish ingredientsOfTheDish2 = new IngredientsOfTheDish(13, 1, (float) 0.150);
+                IngredientsOfTheDish ingredientsOfTheDish2 = new IngredientsOfTheDish(13, 1, (double) 0.150);
                 ingredientsOfTheDishDao.insert(ingredientsOfTheDish2);
                 IngredientsOfTheDish ingredientsOfTheDish3 = new IngredientsOfTheDish(9, 2, 300);
                 ingredientsOfTheDishDao.insert(ingredientsOfTheDish3);
-                IngredientsOfTheDish ingredientsOfTheDish4 = new IngredientsOfTheDish(7, 2, (float) 220.5);
+                IngredientsOfTheDish ingredientsOfTheDish4 = new IngredientsOfTheDish(7, 2, (double) 220.5);
                 ingredientsOfTheDishDao.insert(ingredientsOfTheDish4);
                 IngredientsOfTheDish ingredientsOfTheDish5 = new IngredientsOfTheDish(6, 2, 80);
                 ingredientsOfTheDishDao.insert(ingredientsOfTheDish5);
@@ -204,7 +226,7 @@ public abstract class AppRoomDatabase extends RoomDatabase {
                 ingredientsOfTheDishDao.insert(ingredientsOfTheDish6);
                 IngredientsOfTheDish ingredientsOfTheDish7 = new IngredientsOfTheDish(18, 3, 330);
                 ingredientsOfTheDishDao.insert(ingredientsOfTheDish7);
-                IngredientsOfTheDish ingredientsOfTheDish8 = new IngredientsOfTheDish(19, 3, (float) 0.240);
+                IngredientsOfTheDish ingredientsOfTheDish8 = new IngredientsOfTheDish(19, 3, (double) 0.240);
                 ingredientsOfTheDishDao.insert(ingredientsOfTheDish8);
                 IngredientsOfTheDish ingredientsOfTheDish9 = new IngredientsOfTheDish(1, 4, 60);
                 ingredientsOfTheDishDao.insert(ingredientsOfTheDish9);
@@ -222,7 +244,7 @@ public abstract class AppRoomDatabase extends RoomDatabase {
                 ingredientsOfTheDishDao.insert(ingredientsOfTheDish15);
                 IngredientsOfTheDish ingredientsOfTheDish16 = new IngredientsOfTheDish(9, 6, 350);
                 ingredientsOfTheDishDao.insert(ingredientsOfTheDish16);
-                IngredientsOfTheDish ingredientsOfTheDish17 = new IngredientsOfTheDish(16, 6, (float) 0.80);
+                IngredientsOfTheDish ingredientsOfTheDish17 = new IngredientsOfTheDish(16, 6, (double) 0.80);
                 ingredientsOfTheDishDao.insert(ingredientsOfTheDish17);
                 IngredientsOfTheDish ingredientsOfTheDish18 = new IngredientsOfTheDish(23, 6, 150);
                 ingredientsOfTheDishDao.insert(ingredientsOfTheDish18);
@@ -246,12 +268,101 @@ public abstract class AppRoomDatabase extends RoomDatabase {
 
                 ProductFormOfAccessibilityDao productFormOfAccessibilityDao = INSTANCE.productFormOfAccessibilityDao();
                 productFormOfAccessibilityDao.deleteAll();
-                ProductFormOfAccessibility productFormOfAccessibility1 = new ProductFormOfAccessibility(1, 1);
-                productFormOfAccessibilityDao.insert(productFormOfAccessibility1);
-                ProductFormOfAccessibility productFormOfAccessibility2 = new ProductFormOfAccessibility(2, 1);
-                productFormOfAccessibilityDao.insert(productFormOfAccessibility2);
-                ProductFormOfAccessibility productFormOfAccessibility3 = new ProductFormOfAccessibility(3, 1);
-                productFormOfAccessibilityDao.insert(productFormOfAccessibility3);
+                ProductFormOfAccessibility productFormOfAccessibility = new ProductFormOfAccessibility(1, 2);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(1, 3);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(1, 4);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(1, 5);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(2, 2);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(2, 3);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(2, 3);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(2, 4);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(2, 5);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(3, 2);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(3, 3);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(3, 3);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(3, 4);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(3, 5);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(4, 2);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(4, 3);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(4, 3);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(4, 4);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(4, 5);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(5, 2);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(5, 3);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(5, 3);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(5, 4);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(5, 5);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(6, 2);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(6, 3);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(6, 3);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(6, 4);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(6, 5);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(7, 2);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(7, 3);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(7, 3);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(7, 4);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(7, 5);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(8, 2);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(8, 3);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(8, 3);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(8, 4);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(8, 5);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+
+                productFormOfAccessibility = new ProductFormOfAccessibility(16, 6);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(16, 7);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(16, 10);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(16, 11);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(19, 6);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(19, 7);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(19, 10);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
+                productFormOfAccessibility = new ProductFormOfAccessibility(19, 11);
+                productFormOfAccessibilityDao.insert(productFormOfAccessibility);
             });
         }
     };

@@ -8,6 +8,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,7 +50,27 @@ public class IngredientsDishActivity extends AppCompatActivity {
                         .setMessage(R.string.ingredient_already_exists)
                         .setPositiveButton("Wybierz inny składnik", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                Intent intent = new Intent(IngredientsDishActivity.this, NewDishActivity.class);
+                                Intent intent = new Intent(IngredientsDishActivity.this, NewDishDetailActivity.class);
+                                intent.putExtra(KEY_DISH_ID, idDish);
+                                startActivity(intent);
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("Anuluj dodawanie nowego składnika", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Toast.makeText(getApplicationContext(),"Anulowano dodawanie nowego składnika",Toast.LENGTH_LONG).show();
+                            }
+                        });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            } else if (info.equals("quantityNotPositive")) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                        .setView(this.getLayoutInflater().inflate(R.layout.dialog_wrong_data, null))
+                        .setTitle("Niepoprawne dane")
+                        .setMessage(R.string.valueNotPositive)
+                        .setPositiveButton("Dodaj składnik jeszcze raz", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Intent intent = new Intent(IngredientsDishActivity.this, NewDishDetailActivity.class);
                                 intent.putExtra(KEY_DISH_ID, idDish);
                                 startActivity(intent);
                                 finish();

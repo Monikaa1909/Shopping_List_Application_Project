@@ -36,7 +36,7 @@ public class FormOfAccessibilityListAdapter extends ListAdapter<FormOfAccessibil
     @Override
     public void onBindViewHolder(FormOfAccessibilityViewHolder holder, int position) {
         FormOfAccessibility current = getItem(position);
-        holder.bind(String.valueOf(current.getForm()), current.getIdFormOfAccessibility());
+        holder.bind(String.valueOf(Math.round(current.getForm() * 100.0) / 100.0), current.getIdFormOfAccessibility());
     }
 
     public static class FormOfAccessibilityDiff extends DiffUtil.ItemCallback<FormOfAccessibility> {
@@ -48,7 +48,7 @@ public class FormOfAccessibilityListAdapter extends ListAdapter<FormOfAccessibil
 
         @Override
         public boolean areContentsTheSame(@NonNull FormOfAccessibility oldItem, @NonNull FormOfAccessibility newItem) {
-            return oldItem.getForm().equals(newItem.getForm());
+            return oldItem.getForm() == newItem.getForm();
         }
     }
 }

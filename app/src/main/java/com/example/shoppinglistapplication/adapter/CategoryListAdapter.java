@@ -6,49 +6,23 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 
+import com.example.shoppinglistapplication.ItemState.CategoryState.ICategoryState;
 import com.example.shoppinglistapplication.entity.Category;
 import com.example.shoppinglistapplication.builder.productBuilder.SimpleProductBuilder;
 import com.example.shoppinglistapplication.viewholder.CategoryViewHolder;
 
 public class CategoryListAdapter extends ListAdapter<Category, CategoryViewHolder> {
 
-    private int version;
-    private int idItem;
-    private String productName;
-    private SimpleProductBuilder simpleProductBuilder;
+    private ICategoryState state;
 
-    public CategoryListAdapter(@NonNull DiffUtil.ItemCallback<Category> diffCallback, int version) {
+    public CategoryListAdapter(@NonNull DiffUtil.ItemCallback<Category> diffCallback, ICategoryState state) {
         super(diffCallback);
-        this.version = version;
-    }
-
-    public CategoryListAdapter(@NonNull DiffUtil.ItemCallback<Category> diffCallback, int version, int idItem) {
-        super(diffCallback);
-        this.version = version;
-        this.idItem = idItem;
-    }
-
-//    public CategoryListAdapter(@NonNull DiffUtil.ItemCallback<Category> diffCallback, int version, String productName) {
-//        super(diffCallback);
-//        this.version = version;
-//        this.productName = productName;
-//    }
-
-    public CategoryListAdapter(@NonNull DiffUtil.ItemCallback<Category> diffCallback, int version, SimpleProductBuilder simpleProductBuilder) {
-        super(diffCallback);
-        this.version = version;
-        this.simpleProductBuilder = simpleProductBuilder;
+        this.state = state;
     }
 
     @Override
     public CategoryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        if (version == 3 || version == 7 || version == 2) {
-            return CategoryViewHolder.create(parent, version, idItem);
-        } else if (version == 6) {
-//            return CategoryViewHolder.create(parent, version, productName);
-            return CategoryViewHolder.create(parent, version, simpleProductBuilder);
-        }
-        return CategoryViewHolder.create(parent, version);
+        return state.createViewHolder(parent, viewType);
     }
 
     @Override

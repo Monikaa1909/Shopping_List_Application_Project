@@ -20,10 +20,13 @@ public class NewListOfPreferencesActivity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_dish2_choices);
+        setContentView(R.layout.activity_two_choices);
 
-        button_add_ingredients = findViewById(R.id.button_add_ingredients);
-        button_add_later = findViewById(R.id.button_add_ingredients_later);
+        button_add_ingredients = findViewById(R.id.button_first_choice);
+        button_add_later = findViewById(R.id.button_second_choice);
+
+        button_add_ingredients.setText(R.string.button_add_ingredients);
+        button_add_later.setText(R.string.button_add_ingredients_later);
 
         listOfPreferencesViewModel = new ListOfPreferencesViewModel(this.getApplication());
 

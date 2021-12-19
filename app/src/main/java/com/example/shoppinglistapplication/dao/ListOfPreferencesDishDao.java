@@ -7,9 +7,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 import com.example.shoppinglistapplication.entity.ListOfPreferencesDish;
-import com.example.shoppinglistapplication.helpfulModel.DishDetail;
 import com.example.shoppinglistapplication.helpfulModel.ListOfPreferencesDetail;
-import com.example.shoppinglistapplication.helpfulModel.ShoppingListDetail;
 
 import java.util.List;
 

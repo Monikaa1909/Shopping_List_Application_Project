@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.shoppinglistapplication.ItemState.CategoryState.AddCategoryToIngredientsNewDishState;
 import com.example.shoppinglistapplication.R;
 import com.example.shoppinglistapplication.adapter.CategoryListAdapter;
 import com.example.shoppinglistapplication.viewmodel.CategoryViewModel;
@@ -27,7 +28,7 @@ public class NewDishActivity3 extends AppCompatActivity {
         int newDishId = (int) getIntent().getSerializableExtra(NewDishActivity2.KEY_NEW_DISH_ID);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final CategoryListAdapter adapter = new CategoryListAdapter(new CategoryListAdapter.CategoryDiff(), 7, newDishId);
+        final CategoryListAdapter adapter = new CategoryListAdapter(new CategoryListAdapter.CategoryDiff(), new AddCategoryToIngredientsNewDishState(newDishId));
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

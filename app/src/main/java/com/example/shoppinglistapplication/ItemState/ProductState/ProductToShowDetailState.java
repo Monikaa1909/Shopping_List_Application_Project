@@ -1,4 +1,4 @@
-package com.example.shoppinglistapplication.ItemState;
+package com.example.shoppinglistapplication.ItemState.ProductState;
 
 import android.content.Intent;
 import android.view.View;

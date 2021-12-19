@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.shoppinglistapplication.ItemState.CategoryState.CategoryNoActionState;
 import com.example.shoppinglistapplication.R;
 import com.example.shoppinglistapplication.adapter.CategoryListAdapter;
 import com.example.shoppinglistapplication.entity.Category;
@@ -30,7 +31,7 @@ public class ProductCategoryActivity extends AppCompatActivity {
         subtitle.setText("Kategoria produktu:");
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final CategoryListAdapter adapter = new CategoryListAdapter(new CategoryListAdapter.CategoryDiff(), 0);
+        final CategoryListAdapter adapter = new CategoryListAdapter(new CategoryListAdapter.CategoryDiff(), new CategoryNoActionState());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

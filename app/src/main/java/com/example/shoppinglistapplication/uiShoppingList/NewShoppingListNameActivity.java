@@ -30,6 +30,7 @@ public class NewShoppingListNameActivity extends AppCompatActivity {
 
         int idListOfPreferences = (int) getIntent().getSerializableExtra(ShoppingListActivity.KEY_SHOPPING_LIST_PREFERENCES_ID);
         String listOfPreferencesName  = getIntent().getStringExtra(ShoppingListActivity.KEY_SHOPPING_LIST_PREFERENCES_NAME);
+        String typeOfShoppingList  = getIntent().getStringExtra(TypeOfShoppingListActivity.TYPE_OF_SHOPPING_LIST);
 
         final Button button = findViewById(R.id.button_save);
         button.setOnClickListener(view -> {
@@ -43,20 +44,18 @@ public class NewShoppingListNameActivity extends AppCompatActivity {
                 }
                 shoppingListViewModel = new ShoppingListViewModel(this.getApplication());
                 if (!shoppingListViewModel.shoppingListsExists(shoppingListName)) {
-                    Log.d("NAZWAPROBLEM", "nazwa nie isnieje: " + shoppingListName);
-                    Intent intent = new Intent(NewShoppingListNameActivity.this, ShoppingListDetailActivity.class);
-                    ShoppingList shoppingList = new ShoppingList(shoppingListName);
+                    Intent intent = new Intent(NewShoppingListNameActivity.this, NewShoppingListDetailActivity.class);
+                    ShoppingList shoppingList = new ShoppingList(shoppingListName, typeOfShoppingList);
                     shoppingListViewModel.insert(shoppingList, emptyFunction -> {});
+                    intent.putExtra(TypeOfShoppingListActivity.TYPE_OF_SHOPPING_LIST, typeOfShoppingList);
                     intent.putExtra(ShoppingListActivity.KEY_SHOPPING_LIST_NAME, shoppingListName);
                     intent.putExtra(ShoppingListActivity.KEY_SHOPPING_LIST_PREFERENCES_ID, idListOfPreferences);
-                    intent.putExtra(ShoppingListDetailActivity.REQUEST_CREATE_SHOPPING_LIST_DETAIL, "create");
                     startActivity(intent);
                     this.finish();
                 } else {
                     Intent intent = new Intent(NewShoppingListNameActivity.this, GenerateShoppingListActivity.class);
                     intent.putExtra(ShoppingListActivity.KEY_SHOPPING_LIST_INFO, "alreadyExists");
                     intent.putExtra(CompositionListOfThePreferencesActivity.KEY_LIST_OF_THE_PREFERENCES_ID, idListOfPreferences);
-//                    intent.putExtra(ShoppingListActivity.KEY_SHOPPING_LIST_NAME, shoppingListName);
                     startActivity(intent);
                     this.finish();
                 }

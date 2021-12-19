@@ -7,17 +7,15 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/button_add_ingredients"
+        android:id="@+id/button_first_choice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/button_add_ingredients"
         style="@style/main_button" />
 
     <Button
-        android:id="@+id/button_add_ingredients_later"
+        android:id="@+id/button_second_choice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/button_add_ingredients_later"
         style="@style/main_button" />
 
 </LinearLayout>

@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoppingListApplication">
         <activity
+            android:name=".uiShoppingList.NewShoppingListDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".uiShoppingList.TypeOfShoppingListActivity"
+            android:exported="false" />
+        <activity
             android:name=".uiShoppingList.EditShoppingListActivity"
             android:exported="false" />
         <activity

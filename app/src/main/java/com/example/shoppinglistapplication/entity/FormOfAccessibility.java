@@ -10,18 +10,18 @@ public class FormOfAccessibility {
     private int idFormOfAccessibility;
 
     @NonNull
-    private Float form;
+    private double form;
 
     public int getIdFormOfAccessibility() { return idFormOfAccessibility; }
 
     public void setIdFormOfAccessibility(int idFormOfAccessibility) { this.idFormOfAccessibility = idFormOfAccessibility; }
 
     @NonNull
-    public Float getForm() { return form; }
+    public double getForm() { return form; }
 
-    public void setForm(@NonNull Float form) { this.form = form; }
+    public void setForm(@NonNull double form) { this.form = form; }
 
-    public FormOfAccessibility(@NonNull Float form) {
+    public FormOfAccessibility(@NonNull double form) {
         this.form = form;
     }
 

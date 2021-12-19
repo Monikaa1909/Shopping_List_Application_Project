@@ -37,7 +37,7 @@
         <entry key="..\:/Users/User/Desktop/SBD Projekt/ShoppingListApplication2/ShoppingListApplication/app/src/main/res/layout/activity_products_by_dishes.xml" value="0.10729166666666666" />
         <entry key="..\:/Users/User/Desktop/SBD Projekt/ShoppingListApplication2/ShoppingListApplication/app/src/main/res/layout/activity_settings.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/User/Desktop/SBD Projekt/ShoppingListApplication2/ShoppingListApplication/app/src/main/res/layout/activity_shopping_list.xml" value="0.17708333333333334" />
-        <entry key="..\:/Users/User/Desktop/SBD Projekt/ShoppingListApplication2/ShoppingListApplication/app/src/main/res/layout/activity_start.xml" value="0.21693840579710144" />
+        <entry key="..\:/Users/User/Desktop/SBD Projekt/ShoppingListApplication2/ShoppingListApplication/app/src/main/res/layout/activity_start.xml" value="0.536" />
         <entry key="..\:/Users/User/Desktop/SBD Projekt/ShoppingListApplication2/ShoppingListApplication/app/src/main/res/layout/activity_units_of_measurement.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/User/Desktop/SBD Projekt/ShoppingListApplication2/ShoppingListApplication/app/src/main/res/layout/add_delete.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User/Desktop/SBD Projekt/ShoppingListApplication2/ShoppingListApplication/app/src/main/res/layout/dialog_wrong_data.xml" value="0.103125" />
@@ -67,6 +67,7 @@
         <entry key="..\:/Users/User/Desktop/SBD Projekt/ShoppingListApplication2/ShoppingListApplication/app/src/main/res/layout/recyclerview_list_of_details_item.xml" value="0.175" />
         <entry key="..\:/Users/User/Desktop/SBD Projekt/ShoppingListApplication2/ShoppingListApplication/app/src/main/res/layout/recyclerview_list_of_preferences_detail_item.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User/Desktop/SBD Projekt/ShoppingListApplication2/ShoppingListApplication/app/src/main/res/layout/recyclerview_lists_item.xml" value="0.21145833333333333" />
+        <entry key="..\:/Users/User/Desktop/SBD Projekt/ShoppingListApplication2/ShoppingListApplication/app/src/main/res/layout/recyclerview_optimized_list_of_details_item.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/User/Desktop/SBD Projekt/ShoppingListApplication2/ShoppingListApplication/app/src/main/res/layout/recyclerview_products_item.xml" value="0.17291666666666666" />
         <entry key="..\:/Users/User/Desktop/SBD Projekt/ShoppingListApplication2/ShoppingListApplication/app/src/main/res/layout/recyclerview_units_item.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/User/Desktop/SBD Projekt/ShoppingListApplication2/ShoppingListApplication/app/src/main/res/layout/recyclerview_with_add_button.xml" value="0.18958333333333333" />

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.example.shoppinglistapplication.R;
 import com.example.shoppinglistapplication.viewmodel.DishViewModel;
@@ -24,10 +23,13 @@ public class NewDishActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_new_dish2_choices);
+        setContentView(R.layout.activity_two_choices);
 
-        button_add_ingredients = findViewById(R.id.button_add_ingredients);
-        button_add_later = findViewById(R.id.button_add_ingredients_later);
+        button_add_ingredients = findViewById(R.id.button_first_choice);
+        button_add_later = findViewById(R.id.button_second_choice);
+
+        button_add_ingredients.setText(R.string.button_add_ingredients);
+        button_add_later.setText(R.string.button_add_ingredients_later);
 
         dishViewModel = new DishViewModel(this.getApplication());
 

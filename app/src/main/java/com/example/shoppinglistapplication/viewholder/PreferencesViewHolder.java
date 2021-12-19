@@ -47,6 +47,7 @@ public class PreferencesViewHolder extends RecyclerView.ViewHolder implements Vi
             Intent intent = new Intent(v.getContext(), CompositionListOfThePreferencesActivity.class);
             intent.putExtra(CompositionListOfThePreferencesActivity.KEY_LIST_OF_THE_PREFERENCES_ID, idListOfPreferences);
             v.getContext().startActivity(intent);
+            ((Activity)v.getContext()).finish();
         } else if (version == 2) { // usuniecie listy
             ListOfPreferencesViewModel listOfPreferencesViewModel = new ListOfPreferencesViewModel(((Activity)v.getContext()).getApplication());
 

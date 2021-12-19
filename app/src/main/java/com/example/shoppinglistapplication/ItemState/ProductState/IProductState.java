@@ -1,4 +1,4 @@
-package com.example.shoppinglistapplication.ItemState;
+package com.example.shoppinglistapplication.ItemState.ProductState;
 
 import android.view.View;
 import android.view.ViewGroup;

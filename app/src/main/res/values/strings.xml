@@ -55,4 +55,9 @@
     <string name="button_load_shopping_list">Listy zakupów</string>
     <string name="lose_your_shopping_list_data">Wraz z usunięciem listy utracisz wszystkie jej dane</string>
     <string name="hint_edit_name_shopping_list">Podaj nową nazwę listy zakupów</string>
+    <string name="valueNotPositive">Ilość musi być dodatnia</string>
+    <string name="button_create_simple_list">Zwykła lista zakupów</string>
+    <string name="button_create_optimized_list">Lista z sugerowaną formą zakupów</string>
+    <string name="button_show_list">Pokaż utworzoną listę</string>
+    <string name="button_show_menu">Przejdź do menu</string>
 </resources>

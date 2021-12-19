@@ -1,4 +1,4 @@
-package com.example.shoppinglistapplication.ItemState;
+package com.example.shoppinglistapplication.ItemState.ProductState;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,9 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.shoppinglistapplication.uiProducts.EditProductActivity;
-import com.example.shoppinglistapplication.uiProducts.ProductsActivity;
 import com.example.shoppinglistapplication.viewholder.ProductViewHolder;
-import com.example.shoppinglistapplication.viewmodel.ProductViewModel;
 
 public class ProductToEditState implements IProductState{
 

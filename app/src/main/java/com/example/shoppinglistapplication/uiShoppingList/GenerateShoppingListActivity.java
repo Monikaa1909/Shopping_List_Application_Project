@@ -14,7 +14,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -72,17 +71,17 @@ public class GenerateShoppingListActivity extends AppCompatActivity {
 
         new Thread(() -> {
             List<ShoppingListDetail> shoppingListDetails = listOfPreferencesViewModel.getShoppingListDetail(idListOfPreferences);
-            for (ShoppingListDetail detail : shoppingListDetails
-                 ) {
-                Log.d("DETAIL QUANTITY TAG", String.valueOf(detail.getQuantity()));
-            }
+//            for (ShoppingListDetail detail : shoppingListDetails
+//                 ) {
+//                Log.d("DETAIL QUANTITY TAG", String.valueOf(detail.getQuantity()));
+//            }
 
             adapter.submitList(shoppingListDetails);
 
             String listOfPreferencesName = listOfPreferencesViewModel.getNameByListOfPreferencesId(idListOfPreferences);
 
             button_generate_shopping_list.setOnClickListener(view -> {
-                Intent intent = new Intent(GenerateShoppingListActivity.this, NewShoppingListNameActivity.class);
+                Intent intent = new Intent(GenerateShoppingListActivity.this, TypeOfShoppingListActivity.class);
                 intent.putExtra(ShoppingListActivity.KEY_SHOPPING_LIST_PREFERENCES_ID, idListOfPreferences);
                 intent.putExtra(ShoppingListActivity.KEY_SHOPPING_LIST_PREFERENCES_NAME, listOfPreferencesName);
                 startActivity(intent);

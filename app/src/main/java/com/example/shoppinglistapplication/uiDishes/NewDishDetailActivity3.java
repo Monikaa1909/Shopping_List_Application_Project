@@ -65,20 +65,25 @@ public class NewDishDetailActivity3 extends AppCompatActivity {
                 new Thread(() -> {
                     float quantity = Float.valueOf(editQuantity.getText().toString());
                     ingredientsOfTheDishViewModel = new IngredientsOfTheDishViewModel(this.getApplication());
-                    if (!ingredientsOfTheDishViewModel.ingredientExists(newIngredientId, dishId)) {
+                    if (quantity == 0) {
+                        Intent intent = new Intent(NewDishDetailActivity3.this, IngredientsDishActivity.class);
+                        intent.putExtra(IngredientsDishActivity.KEY_INGREDIENT_INFO, "quantityNotPositive");
+                        intent.putExtra(IngredientsDishActivity.KEY_DISH_ID, dishId);
+                        startActivity(intent);
+                    }
+                    else if (!ingredientsOfTheDishViewModel.ingredientExists(newIngredientId, dishId)) {
                         IngredientsOfTheDish ingredientsOfTheDish = new IngredientsOfTheDish(newIngredientId, dishId, quantity);
                         ingredientsOfTheDishViewModel.insert(ingredientsOfTheDish, emptyFunction -> {});
                         Intent intent = new Intent(NewDishDetailActivity3.this, IngredientsDishActivity.class);
                         intent.putExtra(IngredientsDishActivity.KEY_DISH_ID, dishId);
                         startActivity(intent);
-                        this.finish();
                     } else {
                         Intent intent = new Intent(NewDishDetailActivity3.this, IngredientsDishActivity.class);
                         intent.putExtra(IngredientsDishActivity.KEY_INGREDIENT_INFO, "alreadyExists");
                         intent.putExtra(IngredientsDishActivity.KEY_DISH_ID, dishId);
                         startActivity(intent);
-                        this.finish();
                     }
+                    this.finish();
                 }).start();
             }
         });

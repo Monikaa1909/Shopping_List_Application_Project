@@ -7,8 +7,10 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.shoppinglistapplication.database.DataRepository;
+import com.example.shoppinglistapplication.entity.OptimizedCompositionOfTheShoppingList;
 import com.example.shoppinglistapplication.entity.SimpleCompositionOfTheShoppingList;
 import com.example.shoppinglistapplication.helpfulModel.ShoppingListDetail;
+import com.example.shoppinglistapplication.helpfulModel.OptimizedShoppingListDetail;
 
 import java.util.List;
 
@@ -33,10 +35,21 @@ public class CompositionOfTheShoppingListViewModel extends AndroidViewModel {
 
     public List<ShoppingListDetail> getShoppingListDetailByShoppingListId(int idShoppingList) { return dataRepository.getShoppingListDetailByShoppingListId(idShoppingList);}
 
-    public Integer getIdShoppingListByName(String name) {
-        return dataRepository.getIdByShoppingListName(name); }
+    public List<OptimizedShoppingListDetail> getOptimizedShoppingListDetailByShoppingListId(int idShoppingList) { return dataRepository.getOptimizedShoppingListDetailByShoppingListId(idShoppingList);}
+
+    public String getTypeOfShoppingListById(int idShoppingList) { return dataRepository.getTypeOfShoppingListById(idShoppingList); }
+
+    public List<Double> getFormsOfAccessibilityByProductId(int idProduct) { return dataRepository.getFormsOfAccessibilityByProductId(idProduct); }
+
+    public Integer getIdShoppingListByName(String name) { return dataRepository.getIdByShoppingListName2(name); }
+
+    public String getUnitOfProduct(int idProduct) { return dataRepository.getUnitOfProduct(idProduct); }
 
     public void insert(SimpleCompositionOfTheShoppingList simpleCompositionOfTheShoppingList, DataRepository.Executor executor) {
         dataRepository.insert(simpleCompositionOfTheShoppingList, executor);
+    }
+
+    public void insert(OptimizedCompositionOfTheShoppingList optimizedCompositionOfTheShoppingList, DataRepository.Executor executor) {
+        dataRepository.insert(optimizedCompositionOfTheShoppingList, executor);
     }
 }

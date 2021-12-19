@@ -1,4 +1,4 @@
-package com.example.shoppinglistapplication.ItemState;
+package com.example.shoppinglistapplication.ItemState.ProductState;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 
 import com.example.shoppinglistapplication.entity.UnitOfMeasurement;
 import com.example.shoppinglistapplication.uiDishes.IngredientsDishActivity;
-import com.example.shoppinglistapplication.uiDishes.NewDishActivity2;
-import com.example.shoppinglistapplication.uiDishes.NewDishActivity5;
 import com.example.shoppinglistapplication.uiDishes.NewDishDetailActivity3;
 import com.example.shoppinglistapplication.viewholder.ProductViewHolder;
 import com.example.shoppinglistapplication.viewmodel.ProductViewModel;

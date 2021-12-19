@@ -32,7 +32,7 @@ public class DishDetailViewHolder extends RecyclerView.ViewHolder implements Vie
 
     public void bind(String name, double quantity, String unit, int idProduct, int idDish) {
         dishDetailItemView.setText(name);
-        dishDetailItemView2.setText(String.valueOf(quantity) + " " + unit);
+        dishDetailItemView2.setText(String.valueOf(Math.round(quantity * 100.0) / 100.0) + " " + unit);
         this.idProduct = idProduct;
         this.idDish = idDish;
     }

@@ -2,30 +2,12 @@ package com.example.shoppinglistapplication.helpfulModel;
 
 public class ShoppingListDetail {
 
-//    private int idShoppingList;
-//    private String shoppingListName;
     private int idProduct;
     private String productName;
     private double quantity;
     private String unit;
 
     public ShoppingListDetail() {}
-
-//    public int getIdShoppingList() {
-//        return idShoppingList;
-//    }
-//
-//    public void setIdShoppingList(int idShoppingList) {
-//        this.idShoppingList = idShoppingList;
-//    }
-//
-//    public String getShoppingListName() {
-//        return shoppingListName;
-//    }
-//
-//    public void setShoppingListName(String shoppingListName) {
-//        this.shoppingListName = shoppingListName;
-//    }
 
     public int getIdProduct() {
         return idProduct;
@@ -58,4 +40,5 @@ public class ShoppingListDetail {
     public void setUnit(String unit) {
         this.unit = unit;
     }
+
 }

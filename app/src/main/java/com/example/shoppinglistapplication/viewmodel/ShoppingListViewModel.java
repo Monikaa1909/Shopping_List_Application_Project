@@ -7,8 +7,6 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
 import com.example.shoppinglistapplication.database.DataRepository;
-import com.example.shoppinglistapplication.entity.Category;
-import com.example.shoppinglistapplication.entity.ListOfPreferences;
 import com.example.shoppinglistapplication.entity.ShoppingList;
 import com.example.shoppinglistapplication.helpfulModel.ShoppingListDetail;
 

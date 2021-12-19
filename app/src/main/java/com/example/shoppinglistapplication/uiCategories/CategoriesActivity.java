@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 //import com.example.shoppinglistapplication.adapterholder.CategoryListAdapter;
+import com.example.shoppinglistapplication.ItemState.CategoryState.CategoryToShowDetailState;
 import com.example.shoppinglistapplication.R;
 import com.example.shoppinglistapplication.adapter.CategoryListAdapter;
 import com.example.shoppinglistapplication.viewmodel.CategoryViewModel;
@@ -78,7 +79,7 @@ public class CategoriesActivity extends AppCompatActivity {
         }
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final CategoryListAdapter adapter = new CategoryListAdapter(new CategoryListAdapter.CategoryDiff(), 1);
+        final CategoryListAdapter adapter = new CategoryListAdapter(new CategoryListAdapter.CategoryDiff(), new CategoryToShowDetailState());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

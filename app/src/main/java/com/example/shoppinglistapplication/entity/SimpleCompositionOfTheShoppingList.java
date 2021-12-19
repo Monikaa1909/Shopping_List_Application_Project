@@ -19,40 +19,50 @@ import androidx.room.ForeignKey;
                         childColumns = "idProduct",
                         onDelete = CASCADE)})
 
-public class SimpleCompositionOfTheShoppingList {
+public class SimpleCompositionOfTheShoppingList extends CompositionOfTheShoppingList {
 
-    @NonNull
-    private int idShoppingList;
-    @NonNull
-    private int idProduct;
-    @NonNull
-    private double quantity;
-    private String suggestedFormOfAccessibility;
+//    private static final String suggestedFormOfAccessibility = "none";
 
-    public SimpleCompositionOfTheShoppingList(@NonNull double quantity, @NonNull int idShoppingList, @NonNull int idProduct, String suggestedFormOfAccessibility) {
-        this.quantity = quantity;
-        this.idProduct = idProduct;
-        this.idShoppingList = idShoppingList;
-        this.suggestedFormOfAccessibility = suggestedFormOfAccessibility;
+    public SimpleCompositionOfTheShoppingList() {
+        super();
     }
 
-    public int getIdShoppingList() {
-        return idShoppingList;
-    }
-    public int getIdProduct(){
-        return idProduct;
-    }
-    public void setIdShoppingList(int idShoppingList) {
-        this.idShoppingList = idShoppingList;
-    }
-    public void setIdProduct(int idProduct) {
-        this.idProduct = idProduct;
-    }
-    @NonNull
-    public double getQuantity() { return quantity; }
-    public void setQuantity(@NonNull double quantity) { this.quantity = quantity; }
-    public String getSuggestedFormOfAccessibility() { return suggestedFormOfAccessibility; }
-    public void setSuggestedFormOfAccessibility(String suggestedFormOfAccessibility) { this.suggestedFormOfAccessibility = suggestedFormOfAccessibility; }
+//    public SimpleCompositionOfTheShoppingList(@NonNull double quantity, @NonNull int idShoppingList, @NonNull int idProduct) {
+//        super(quantity, idShoppingList, idProduct, suggestedFormOfAccessibility);
+//    }
+
+//    @NonNull
+//    private int idShoppingList;
+//    @NonNull
+//    private int idProduct;
+//    @NonNull
+//    private double quantity;
+//    private String suggestedFormOfAccessibility;
+//
+//    public SimpleCompositionOfTheShoppingList(@NonNull double quantity, @NonNull int idShoppingList, @NonNull int idProduct, String suggestedFormOfAccessibility) {
+//        this.quantity = quantity;
+//        this.idProduct = idProduct;
+//        this.idShoppingList = idShoppingList;
+//        this.suggestedFormOfAccessibility = suggestedFormOfAccessibility;
+//    }
+//
+//    public int getIdShoppingList() {
+//        return idShoppingList;
+//    }
+//    public int getIdProduct(){
+//        return idProduct;
+//    }
+//    public void setIdShoppingList(int idShoppingList) {
+//        this.idShoppingList = idShoppingList;
+//    }
+//    public void setIdProduct(int idProduct) {
+//        this.idProduct = idProduct;
+//    }
+//    @NonNull
+//    public double getQuantity() { return quantity; }
+//    public void setQuantity(@NonNull double quantity) { this.quantity = quantity; }
+//    public String getSuggestedFormOfAccessibility() { return suggestedFormOfAccessibility; }
+//    public void setSuggestedFormOfAccessibility(String suggestedFormOfAccessibility) { this.suggestedFormOfAccessibility = suggestedFormOfAccessibility; }
 
 //    public CompositionOfTheShoppingList(@NonNull Integer quantity, @NonNull String suggestedFormOfAccessibility, @NonNull int idShoppingList, @NonNull int idProduct) {
 //        this.quantity = quantity;
