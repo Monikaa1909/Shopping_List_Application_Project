@@ -10,10 +10,6 @@ public class SimpleCompositionOfTheShoppingListBuilder implements ICompositionOf
 
     private static SimpleCompositionOfTheShoppingListBuilder INSTANCE;
     private SimpleCompositionOfTheShoppingList simpleCompositionOfTheShoppingList;
-    private int idShoppingList;
-    private int idProduct;
-    private double quantity;
-    private String suggestedFormOfAccessibility;
 
     private SimpleCompositionOfTheShoppingListBuilder() { this.reset(); }
 
@@ -29,26 +25,22 @@ public class SimpleCompositionOfTheShoppingListBuilder implements ICompositionOf
 
     @Override
     public void setIdShoppingList(int idShoppingList) {
-//        this.idShoppingList = idShoppingList;
         simpleCompositionOfTheShoppingList.setIdShoppingList(idShoppingList);
     }
 
     @Override
     public void setIdProduct(int idProduct) {
         simpleCompositionOfTheShoppingList.setIdProduct(idProduct);
-//        this.idProduct = idProduct;
     }
 
     @Override
     public void setQuantity(double quantity) {
-//        this.quantity = quantity;
         simpleCompositionOfTheShoppingList.setQuantity(quantity);
     }
 
     @Override
     public void setSuggestedFormOfAccessibility(double quantity, List<Double> forms, String unit) {
         simpleCompositionOfTheShoppingList.setSuggestedFormOfAccessibility("brak");
-//        this.suggestedFormOfAccessibility = "brak";
     }
 
     public SimpleCompositionOfTheShoppingList getResult() {
