@@ -29,8 +29,7 @@ public class ProductViewHolder extends RecyclerView.ViewHolder implements View.O
     }
 
     public static ProductViewHolder create(ViewGroup parent, IProductState state) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.recyclerview_item, parent, false);
+        View view = state.createView(parent);
         return new ProductViewHolder(view, state);
     }
 

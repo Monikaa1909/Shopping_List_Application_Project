@@ -46,12 +46,22 @@ public class FormOfAccessibilityViewHolder extends RecyclerView.ViewHolder imple
     }
 
     public static FormOfAccessibilityViewHolder create(ViewGroup parent, int version, int idProduct) {
+        if (version == 2 || version == 3) {
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.recyclerview_item_edit_delete, parent, false);
+            return new FormOfAccessibilityViewHolder(view, version, idProduct);
+        }
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recyclerview_item, parent, false);
         return new FormOfAccessibilityViewHolder(view, version, idProduct);
     }
 
     public static FormOfAccessibilityViewHolder create(ViewGroup parent, int version) {
+        if (version == 2 || version == 3) {
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.recyclerview_item_edit_delete, parent, false);
+            return new FormOfAccessibilityViewHolder(view, version);
+        }
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recyclerview_item, parent, false);
         return new FormOfAccessibilityViewHolder(view, version);

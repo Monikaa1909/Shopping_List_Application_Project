@@ -51,6 +51,11 @@ public class DishViewHolder extends RecyclerView.ViewHolder implements View.OnCl
     }
 
     public static DishViewHolder create(ViewGroup parent, int version) {
+        if (version == 2 || version == 3) {
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.recyclerview_item_edit_delete, parent, false);
+            return new DishViewHolder(view, version);
+        }
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recyclerview_item, parent, false);
         return new DishViewHolder(view, version);

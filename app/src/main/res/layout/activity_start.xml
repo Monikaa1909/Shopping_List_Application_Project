@@ -1,48 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".StartActivity"
     android:orientation="vertical"
-    android:paddingTop="@dimen/big_padding">
+    android:layout_gravity="center"
+    android:layout_marginTop="20dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp">
 
-    <Button
-        android:id="@+id/button_load_list"
-        android:layout_height="wrap_content"
-        android:text="@string/button_load_list"
-        style="@style/main_button" />
+        <Button
+            android:id="@+id/button_load_list"
+            android:text="@string/button_load_list"
+            style="@style/main_button"/>
 
-    <Button
-        android:id="@+id/button_load_products"
-        android:layout_height="wrap_content"
-        android:text="@string/button_load_products"
-        style="@style/main_button" />
+        <Button
+            android:id="@+id/button_load_shopping_list"
+            android:text="@string/button_load_shopping_list"
+            style="@style/main_button"/>
 
-    <Button
-        android:id="@+id/button_load_categories"
-        android:layout_height="wrap_content"
-        android:text="@string/button_load_categories"
-        style="@style/main_button"/>
+        <Button
+            android:id="@+id/button_load_inspirations"
+            android:text="@string/button_load_inspirations"
+            style="@style/main_button"/>
 
-    <Button
-        android:id="@+id/button_load_dishes"
-        android:layout_height="wrap_content"
-        android:text="@string/button_load_dishes"
-        style="@style/main_button" />
-
-    <Button
-        android:id="@+id/button_load_settings"
-        android:layout_height="wrap_content"
-        android:text="@string/button_load_settings"
-        style="@style/main_button" />
-
-    <Button
-        android:id="@+id/button_load_shopping_list"
-        android:layout_height="wrap_content"
-        android:text="@string/button_load_shopping_list"
-        style="@style/main_button"
-        android:layout_marginTop="30dp"/>
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/shoppinglistapp"/>
 
 </LinearLayout>

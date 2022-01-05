@@ -36,6 +36,11 @@ public class PreferencesViewHolder extends RecyclerView.ViewHolder implements Vi
     }
 
     public static PreferencesViewHolder create(ViewGroup parent, int version) {
+        if (version == 2 || version == 3) {
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.recyclerview_item_edit_delete, parent, false);
+            return new PreferencesViewHolder(view, version);
+        }
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recyclerview_item, parent, false);
         return new PreferencesViewHolder(view, version);

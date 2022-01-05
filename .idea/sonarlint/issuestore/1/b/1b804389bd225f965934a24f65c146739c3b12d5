@@ -1,7 +1,0 @@
-
-	java:S116"lRename this field "button_load_form_of_accessibility" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ãàÛ²şÿÿÿÿ8µı÷Š×/
-†	java:S116"jRename this field "button_load_unit_of_measurement" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.( ×‡8øŞ‹×/
-’
-java:S1450"pRemove the "button_load_form_of_accessibility" field and declare it as a local variable in the relevant methods.(ãàÛ²şÿÿÿÿ8ÿ¹ùŠ×/
-‹
-java:S1450"nRemove the "button_load_unit_of_measurement" field and declare it as a local variable in the relevant methods.( ×‡8‹ß‹×/

@@ -36,6 +36,11 @@ public class ShoppingListViewHolder extends RecyclerView.ViewHolder implements V
     }
 
     public static ShoppingListViewHolder create(ViewGroup parent, int version) {
+        if (version == 2 || version == 3) {
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.recyclerview_item_edit_delete, parent, false);
+            return new ShoppingListViewHolder(view, version);
+        }
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recyclerview_item, parent, false);
         return new ShoppingListViewHolder(view, version);
@@ -45,6 +50,7 @@ public class ShoppingListViewHolder extends RecyclerView.ViewHolder implements V
     public void onClick(View v) {
         if (version == 1) { // wyświetlanie zawartości listy
             Intent intent = new Intent(v.getContext(), ShoppingListDetailActivity.class);
+            intent.putExtra(ShoppingListDetailActivity.THEME_TYPE, 0);
             intent.putExtra(ShoppingListActivity.KEY_SHOPPING_LIST_ID, idShoppingList);
             v.getContext().startActivity(intent);
         }

@@ -8,6 +8,7 @@ import androidx.room.Query;
 
 import com.example.shoppinglistapplication.entity.OptimizedCompositionOfTheShoppingList;
 import com.example.shoppinglistapplication.entity.SimpleCompositionOfTheShoppingList;
+import com.example.shoppinglistapplication.helpfulModel.ShoppingListCheckBox;
 import com.example.shoppinglistapplication.helpfulModel.ShoppingListDetail;
 import com.example.shoppinglistapplication.helpfulModel.OptimizedShoppingListDetail;
 
@@ -27,6 +28,12 @@ public interface CompositionOfTheShoppingListDao {
 
     @Query("SELECT * FROM SimpleCompositionOfTheShoppingList")
     LiveData<List<SimpleCompositionOfTheShoppingList>> getAllCompositions();
+
+    @Query("UPDATE simplecompositionoftheshoppinglist SET bought = :bought WHERE idShoppingList =:idShoppingList and idProduct =:idProduct")
+    void updateSimpleShoppingListBought(long idShoppingList, long idProduct, Boolean bought);
+
+    @Query("UPDATE optimizedcompositionoftheshoppinglist SET bought = :bought WHERE idShoppingList =:idShoppingList and idProduct =:idProduct")
+    void updateOptimizedShoppingListBought(long idShoppingList, long idProduct, Boolean bought);
 
     @Query("select  product.idProduct, product.productName, sum(ingredientsofthedish.quantity * listofpreferencesdish.portions) as quantity, " +
             "unitofmeasurement.unit from listofpreferences, listofpreferencesdish, dish, ingredientsofthedish, product, unitofmeasurement " +
@@ -49,6 +56,20 @@ public interface CompositionOfTheShoppingListDao {
             "product.idUnitOfMeasurement = unitofmeasurement.idUnitOfMeasurement and " +
             "product.idProduct = optimizedCompositionOfTheShoppingList.idProduct ")
     List<OptimizedShoppingListDetail> getOptimizedShoppingListDetailByShoppingListId(int idShoppingList);
+
+    @Query("select  product.idProduct, product.productName, SimpleCompositionOfTheShoppingList.quantity, unitofmeasurement.unit, SimpleCompositionOfTheShoppingList.bought " +
+            "from product, SimpleCompositionOfTheShoppingList, unitofmeasurement where SimpleCompositionOfTheShoppingList.idShoppingList = :idShoppingList and " +
+            "product.idUnitOfMeasurement = unitofmeasurement.idUnitOfMeasurement and " +
+            "product.idProduct = SimpleCompositionOfTheShoppingList.idProduct ORDER BY product.productName ASC")
+    List<ShoppingListCheckBox> getSimpleShoppingListCheckBoxByShoppingListId(int idShoppingList);
+
+    @Query("select  product.idProduct, product.productName, optimizedCompositionOfTheShoppingList.quantity, " +
+            "unitofmeasurement.unit, optimizedCompositionOfTheShoppingList.bought " +
+            "from product, optimizedCompositionOfTheShoppingList, unitofmeasurement where  " +
+            "optimizedCompositionOfTheShoppingList.idShoppingList = :idShoppingList and " +
+            "product.idUnitOfMeasurement = unitofmeasurement.idUnitOfMeasurement and " +
+            "product.idProduct = optimizedCompositionOfTheShoppingList.idProduct ")
+    List<ShoppingListCheckBox> getOptimizedShoppingListCheckBoxByShoppingListId(int idShoppingList);
 
     @Query("select form from productformofaccessibility, formofaccessibility where " +
             "productformofaccessibility.idFormOfAccessibility = formofaccessibility.idFormOfAccessibility " +

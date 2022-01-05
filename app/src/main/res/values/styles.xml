@@ -1,24 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Base application theme. -->
+
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/main_dark_green</item>
-        <item name="colorPrimaryDark">@color/main_medium_green</item>
-        <item name="colorAccent">@color/colorAccent</item>
+<!--        <item name="android:textViewStyle">@style/simple_item_text_view</item>-->
+<!--        <item name="cardViewStyle">@style/simple_cardview</item>-->
     </style>
 
-    <!-- The default font for RecyclerView items is too small.
-    The margin is a simple delimiter between the words. -->
-    <style name="item_text_view">
+    <style name="AppTheme.Dark" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/dark_green</item>
+        <item name="colorPrimaryVariant">@color/super_dark_green</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">#c0c4bc</item>
+        <item name="colorSecondaryVariant">#90948c</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+<!--        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>-->
+
+<!--        <item name="panelMenuListTheme">@style/AppTheme</item>-->
+        <!-- Customize your theme here. -->
+<!--        <item name="android:textViewStyle">@style/simple_item_text_view_dark</item>-->
+        <item name="android:background">@color/black</item>
+        <item name="android:textColor">@color/white</item>
+<!--        <item name="cardViewStyle">@style/simple_cardview_dark</item>-->
+    </style>
+
+    <style name="simple_item_text_view_dark">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_marginLeft">20dp</item>
         <item name="android:layout_marginRight">20dp</item>
         <item name="android:layout_marginTop">4dp</item>
         <item name="android:layout_marginBottom">4dp</item>
         <item name="android:padding">4dp</item>
-        <item name="android:background">@color/main_light_green</item>
         <item name="android:textAppearance">@android:style/TextAppearance.Large</item>
+    </style>
+
+    <style name="simple_item_text_view">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:background">@color/light_green</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Large</item>
+    </style>
+
+    <style name="detail_item_text_view">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:background">@color/super_light_green</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Large</item>
+    </style>
+
+    <style name="simple_relative_layout">
+<!--        <item name="android:background">@color/light_green</item>-->
+    </style>
+
+    <style name="simple_cardview">
+        <item name="cardCornerRadius">6dp</item>
+        <item name="cardElevation">3dp</item>
+        <item name="cardUseCompatPadding">true</item>
+        <item name="cardBackgroundColor">@color/light_green</item>
+    </style>
+
+    <style name="simple_cardview_dark">
+        <item name="cardCornerRadius">6dp</item>
+        <item name="cardElevation">3dp</item>
+        <item name="cardUseCompatPadding">true</item>
+        <item name="cardBackgroundColor">@color/dark_green</item>
+    </style>
+
+    <style name="delete_edit_cardview">
+        <item name="cardCornerRadius">6dp</item>
+        <item name="cardElevation">3dp</item>
+        <item name="cardUseCompatPadding">true</item>
+        <item name="cardBackgroundColor">@color/light_grey</item>
+    </style>
+
+    <style name="details_linear_layout">
+        <item name="android:background">@color/super_light_green</item>
+    </style>
+
+    <style name="edit_delete_item_text_view">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:background">@color/light_grey</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Medium</item>
     </style>
 
     <style name="subtitle_text_view">
@@ -34,14 +112,17 @@
 
     <style name="main_button">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_marginLeft">20dp</item>
-        <item name="android:layout_marginRight">20dp</item>
-        <item name="android:layout_marginTop">10dp</item>
-        <item name="android:layout_marginBottom">10dp</item>
-        <item name="android:background">@color/colorPrimary</item>
-        <item name="android:textColor">@color/buttonLabel</item>
+        <item name="android:layout_height">60dp</item>
+<!--        <item name="android:layout_marginLeft">20dp</item>-->
+<!--        <item name="android:layout_marginRight">20dp</item>-->
+<!--        <item name="android:layout_marginTop">2dp</item>-->
+<!--        <item name="android:layout_marginBottom">2dp</item>-->
+<!--        <item name="android:background">@color/colorPrimary</item>-->
+<!--        <item name="android:textColor">@color/buttonLabel</item>-->
         <item name="android:focusable">true</item>
-        <item name="android:radius">50dp</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Large</item>
+<!--        <item name="android:radius">6dp</item>-->
+<!--        <item name="boxCornerRadiusBottomStart">10dp</item>-->
     </style>
 
 </resources>

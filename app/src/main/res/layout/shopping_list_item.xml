@@ -14,18 +14,25 @@
             android:id="@+id/detail_item_name"
             style="@style/detail_item_text_view"
             android:textAllCaps="true"
-            android:layout_width="wrap_content"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:textSize="14dp" />
 
         <TextView
             android:id="@+id/detail_item_quantity"
             style="@style/detail_item_text_view"
-            android:gravity="right"
+            android:gravity="center"
             android:textAllCaps="true"
-            android:layout_width="match_parent"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:textSize="14dp" />
+
+        <CheckBox
+            android:id="@+id/checkbox"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/dark_green"
+            android:gravity="right|end" />
 
     </LinearLayout>
 

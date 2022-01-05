@@ -3,33 +3,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StartActivity"
     android:orientation="vertical"
-    android:paddingTop="@dimen/big_padding">
+    android:layout_gravity="center"
+    android:layout_marginTop="20dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp">
 
     <Button
         android:id="@+id/button_category"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:text="@string/button_category"
         style="@style/main_button"/>
 
     <Button
         android:id="@+id/button_unit_of_measurement"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:text="@string/button_unit_of_measurment"
-        android:layout_margin="@dimen/big_padding"
-        android:gravity="center"
         style="@style/main_button" />
 
     <Button
         android:id="@+id/button_form_of_accessibility"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:text="@string/button_form_of_accessibility"
-        android:layout_margin="@dimen/big_padding"
-        android:gravity="center"
         style="@style/main_button" />
 
 </LinearLayout>

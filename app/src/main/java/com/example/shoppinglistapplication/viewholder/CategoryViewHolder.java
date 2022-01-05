@@ -30,8 +30,7 @@ public class CategoryViewHolder extends RecyclerView.ViewHolder implements View.
     }
 
     public static CategoryViewHolder create(ViewGroup parent, ICategoryState state) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.recyclerview_item, parent, false);
+        View view = state.createView(parent);
         return new CategoryViewHolder(view, state);
     }
 

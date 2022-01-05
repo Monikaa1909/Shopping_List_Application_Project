@@ -71,6 +71,11 @@ public class UnitOfMeasurementViewHolder extends RecyclerView.ViewHolder impleme
     }
 
     public static UnitOfMeasurementViewHolder create(ViewGroup parent, int version) {
+        if (version == 3 || version == 4) {
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.recyclerview_item_edit_delete, parent, false);
+            return new UnitOfMeasurementViewHolder(view, version);
+        }
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recyclerview_item, parent, false);
         return new UnitOfMeasurementViewHolder(view, version);

@@ -27,6 +27,7 @@ public class CategoriesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme_Dark);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recyclerview_with_all_button);
 

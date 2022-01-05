@@ -29,6 +29,7 @@ import com.example.shoppinglistapplication.entity.ShoppingList;
 import com.example.shoppinglistapplication.entity.UnitOfMeasurement;
 import com.example.shoppinglistapplication.helpfulModel.DishDetail;
 import com.example.shoppinglistapplication.helpfulModel.ListOfPreferencesDetail;
+import com.example.shoppinglistapplication.helpfulModel.ShoppingListCheckBox;
 import com.example.shoppinglistapplication.helpfulModel.ShoppingListDetail;
 import com.example.shoppinglistapplication.helpfulModel.OptimizedShoppingListDetail;
 
@@ -199,6 +200,20 @@ public class DataRepository {
             compositionOfTheShoppingListDao = database.compositionOfTheShoppingListDao();
         }
         return compositionOfTheShoppingListDao.getOptimizedShoppingListDetailByShoppingListId(idShoppingList);
+    }
+
+    public List<ShoppingListCheckBox> getShoppingListCheckBoxByShoppingListId(int idShoppingList) {
+        if (compositionOfTheShoppingListDao == null) {
+            compositionOfTheShoppingListDao = database.compositionOfTheShoppingListDao();
+        }
+        return compositionOfTheShoppingListDao.getSimpleShoppingListCheckBoxByShoppingListId(idShoppingList);
+    }
+
+    public List<ShoppingListCheckBox> getOptimizedShoppingListCheckBoxByShoppingListId(int idShoppingList) {
+        if (compositionOfTheShoppingListDao == null) {
+            compositionOfTheShoppingListDao = database.compositionOfTheShoppingListDao();
+        }
+        return compositionOfTheShoppingListDao.getOptimizedShoppingListCheckBoxByShoppingListId(idShoppingList);
     }
 
     public List<DishDetail> getDishDetail(int idDish) {
@@ -614,6 +629,24 @@ public class DataRepository {
         }
         AppRoomDatabase.databaseWriteExecutor.execute(() -> {
             productDao.updateProductCategory(id, newProductCategory);
+        });
+    }
+
+    public void updateSimpleShoppingListBought(long idShoppingList, long idProduct, Boolean bought) {
+        if (compositionOfTheShoppingListDao == null) {
+            compositionOfTheShoppingListDao = database.compositionOfTheShoppingListDao();
+        }
+        AppRoomDatabase.databaseWriteExecutor.execute(() -> {
+            compositionOfTheShoppingListDao.updateSimpleShoppingListBought(idShoppingList, idProduct, bought);
+        });
+    }
+
+    public void updateOptimizedShoppingListBought(long idShoppingList, long idProduct, Boolean bought) {
+        if (compositionOfTheShoppingListDao == null) {
+            compositionOfTheShoppingListDao = database.compositionOfTheShoppingListDao();
+        }
+        AppRoomDatabase.databaseWriteExecutor.execute(() -> {
+            compositionOfTheShoppingListDao.updateOptimizedShoppingListBought(idShoppingList, idProduct, bought);
         });
     }
 
