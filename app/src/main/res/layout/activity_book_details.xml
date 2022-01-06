@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_gravity="center"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    tools:context=".api.BookDetailsActivity">
+
+    <ImageView
+        android:id="@+id/img_cover"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_gravity="center"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        android:scaleType="centerInside" />
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/book_item_container"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        style="@style/simple_cardview">
+
+            <TextView
+                android:id="@+id/book_title"
+                style="@style/simple_item_text_view"
+                android:textSize="@dimen/big_padding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:scaleType="centerInside"
+                android:textAlignment="center"
+                android:textAppearance="?attr/textAppearanceListItem"/>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        style="@style/simple_cardview">
+
+        <TextView
+            android:id="@+id/book_author"
+            style="@style/simple_item_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:scaleType="centerInside"
+            android:textAlignment="center"
+            android:textAppearance="?attr/textAppearanceListItem" />
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</LinearLayout>
