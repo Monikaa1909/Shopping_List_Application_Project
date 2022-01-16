@@ -16,12 +16,6 @@
             android:name=".uiShoppingList.ShoppingListCheckBoxActivity"
             android:exported="false" />
         <activity
-            android:name=".sensor.SensorDetailsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".sensor.SensorActivity"
-            android:exported="false" />
-        <activity
             android:name=".api.BookDetailsActivity"
             android:exported="false" />
         <activity
@@ -246,6 +240,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name=".service.PushNotificationService" android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"></action>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
