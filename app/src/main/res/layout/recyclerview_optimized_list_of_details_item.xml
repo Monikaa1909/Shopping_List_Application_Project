@@ -13,7 +13,7 @@
         <TextView
             android:id="@+id/detail_item_name"
             style="@style/detail_item_text_view"
-            android:background="@color/dark_green"
+            android:background="@color/super_light_green"
             android:textAllCaps="true"
             android:layout_marginRight="5dp"
             android:layout_width="90dp"
@@ -23,11 +23,11 @@
         <TextView
             android:id="@+id/detail_item_quantity"
             style="@style/detail_item_text_view"
-            android:background="@color/white"
+            android:background="@color/super_light_green"
             android:paddingLeft="0dp"
             android:paddingRight="0dp"
             android:layout_marginLeft="5dp"
-            android:gravity="center"
+            android:gravity="left"
             android:textAllCaps="true"
             android:layout_width="85dp"
             android:layout_height="wrap_content"
