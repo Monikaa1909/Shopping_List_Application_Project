@@ -79,7 +79,7 @@ public class OptimizedCompositionOfTheShoppingListBuilder implements ICompositio
             }
             optimizedCompositionOfTheShoppingList.setSuggestedFormOfAccessibility(String.valueOf(stringBuilder) + " " + unit.toUpperCase());
         } else {
-            optimizedCompositionOfTheShoppingList.setSuggestedFormOfAccessibility("Brak wystarczających danych");
+            optimizedCompositionOfTheShoppingList.setSuggestedFormOfAccessibility("Brak danych");
         }
     }
 
