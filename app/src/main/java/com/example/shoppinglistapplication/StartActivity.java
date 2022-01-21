@@ -81,10 +81,10 @@ public class StartActivity extends AppCompatActivity {
                 intent = new Intent(StartActivity.this, DishesActivity.class);
                 startActivity(intent);
                 return true;
-//            case R.id.menu_item_settings:
-//                intent = new Intent(StartActivity.this, SettingsActivity.class);
-//                startActivity(intent);
-//                return true;
+            case R.id.menu_item_settings:
+                intent = new Intent(StartActivity.this, SettingsActivity.class);
+                startActivity(intent);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

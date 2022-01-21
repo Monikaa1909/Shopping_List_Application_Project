@@ -177,8 +177,6 @@ aapp/src/main/java/com/example/shoppinglistapplication/adapter/FormOfAccessibili
 Yapp/src/main/java/com/example/shoppinglistapplication/uiDishes/NewDishDetailActivity.java,1\7\17aacceb5ee24b3b6ca1be7c3ec53c2660b6fd6d
 ä
 Zapp/src/main/java/com/example/shoppinglistapplication/viewmodel/ShoppingListViewModel.java,d\e\dedff6193aa083b99cbeae072db2d142b7b2d4e3
-ë
-aapp/src/main/java/com/example/shoppinglistapplication/uiProducts/EditProductCategoryActivity.java,0\9\0968975cc95cfabc14ee435afe757ab873eb4e5b
 ö
 japp/src/main/java/com/example/shoppinglistapplication/uiCategories/ProductsByCategoryToDeleteActivity.java,0\e\0e879c312cacb97960ab4dbca86c02faf647cf00
 ï
@@ -223,8 +221,6 @@ Vapp/src/main/java/com/example/shoppinglistapplication/adapter/ShoppingListAdapt
 fapp/src/main/java/com/example/shoppinglistapplication/builder/productBuilder/SimpleProductBuilder.java,7\6\76ebf212710eb8a046a05734b265a066ed3e3767
 â
 Yapp/src/main/java/com/example/shoppinglistapplication/uiProducts/NewProductActivity3.java,1\9\194e7857d84fe66f736cde1e9a4b09813e5343f3
-ä
-Zapp/src/main/java/com/example/shoppinglistapplication/helpfulModel/ShoppingListDetail.java,2\9\29d8b461da4250008c4c02c3b51175f5ae635802
 è
 _app/src/main/java/com/example/shoppinglistapplication/ItemState/ProductState/IProductState.java,2\9\29084096b30a95a50060a843ee52f2dfb1ab3a88
 ã
@@ -319,3 +315,5 @@ eapp/src/main/java/com/example/shoppinglistapplication/adapter/OptimizedShopping
 fapp/src/main/java/com/example/shoppinglistapplication/uiShoppingList/ShoppingListCheckBoxActivity.java,8\6\86882d1b20cc59715cc99492bfac3d571a6d5571
 ¡
 êapp/src/main/java/com/example/shoppinglistapplication/builder/compositionOfTheShoppingListBuilder/SimpleCompositionOfTheShoppingListBuilder.java,3\d\3d863a35a63d8d998600705184ef0f0bf4bccb30
+ä
+Zapp/src/main/java/com/example/shoppinglistapplication/service/PushNotificationService.java,f\a\fa143b51093a91fbf609e3df77195bbbe8f68cd6
