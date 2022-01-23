@@ -1,4 +1,4 @@
-package com.example.shoppinglistapplication.ItemState.CategoryState;
+package com.example.shoppinglistapplication.itemState.categoryState;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,22 +7,23 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.uiDishes.NewDishActivity2;
-import com.example.shoppinglistapplication.uiDishes.NewDishActivity4;
+import com.example.shoppinglistapplication.builder.productBuilder.SimpleProductBuilder;
+import com.example.shoppinglistapplication.uiProducts.NewProductActivity3;
 import com.example.shoppinglistapplication.viewholder.CategoryViewHolder;
 
-public class AddCategoryToIngredientsNewDishState implements ICategoryState {
+public class AddCategoryToNewProductState implements ICategoryState {
 
-    private int idAddedInformation;
-    public AddCategoryToIngredientsNewDishState(int idAddedInformation) {
-        this.idAddedInformation = idAddedInformation;
+    private SimpleProductBuilder simpleProductBuilder;
+
+    public AddCategoryToNewProductState(SimpleProductBuilder builder) {
+        this.simpleProductBuilder = builder;
     }
 
     @Override
     public void onClick(View v, int idCategory) {
-        Intent intent = new Intent(v.getContext(), NewDishActivity4.class);
-        intent.putExtra(NewDishActivity2.KEY_NEW_INGREDIENT_CATEGORY_ID, idCategory);
-        intent.putExtra(NewDishActivity2.KEY_NEW_DISH_ID, idAddedInformation);
+        Intent intent = new Intent(v.getContext(), NewProductActivity3.class);
+        simpleProductBuilder.setIdCategory(idCategory);
+        intent.putExtra("builder", simpleProductBuilder);
         v.getContext().startActivity(intent);
         ((Activity) v.getContext()).finish();
     }

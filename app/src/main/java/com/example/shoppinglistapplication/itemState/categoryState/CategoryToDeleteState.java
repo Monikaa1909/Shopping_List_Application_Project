@@ -1,4 +1,4 @@
-package com.example.shoppinglistapplication.ItemState.CategoryState;
+package com.example.shoppinglistapplication.itemState.categoryState;
 
 import android.app.Activity;
 import android.app.AlertDialog;

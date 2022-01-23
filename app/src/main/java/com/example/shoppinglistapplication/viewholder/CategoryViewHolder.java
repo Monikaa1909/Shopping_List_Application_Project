@@ -1,15 +1,13 @@
 package com.example.shoppinglistapplication.viewholder;
 
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.shoppinglistapplication.ItemState.CategoryState.ICategoryState;
+import com.example.shoppinglistapplication.itemState.categoryState.ICategoryState;
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.builder.productBuilder.SimpleProductBuilder;
 
 public class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 

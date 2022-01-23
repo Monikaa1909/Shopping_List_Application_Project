@@ -1,23 +1,21 @@
-package com.example.shoppinglistapplication.ItemState.ProductState;
+package com.example.shoppinglistapplication.itemState.productState;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.shoppinglistapplication.R;
-import com.example.shoppinglistapplication.uiProducts.EditProductActivity;
+import com.example.shoppinglistapplication.uiProducts.ProductDetailsActivity;
 import com.example.shoppinglistapplication.viewholder.ProductViewHolder;
 
-public class ProductToEditState implements IProductState{
+public class ProductToShowDetailState implements IProductState {
 
     @Override
     public void onClick(View v, int idProduct) {
-        Intent intent = new Intent(v.getContext(), EditProductActivity.class);
-        intent.putExtra(EditProductActivity.KEY_EDIT_PRODUCT_ID, idProduct);
+        Intent intent = new Intent(v.getContext(), ProductDetailsActivity.class);
+        intent.putExtra(ProductDetailsActivity.KEY_PRODUCT_DETAIL_ID, idProduct);
         v.getContext().startActivity(intent);
-        ((Activity)v.getContext()).finish();
     }
 
     @Override
@@ -28,6 +26,6 @@ public class ProductToEditState implements IProductState{
     @Override
     public View createView(ViewGroup parent) {
         return LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.recyclerview_item_edit_delete, parent, false);
+                .inflate(R.layout.recyclerview_item, parent, false);
     }
 }

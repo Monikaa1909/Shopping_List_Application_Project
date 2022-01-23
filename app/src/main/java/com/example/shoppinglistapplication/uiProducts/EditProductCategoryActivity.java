@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import com.example.shoppinglistapplication.ItemState.CategoryState.EditProductCategoryState;
+import com.example.shoppinglistapplication.itemState.categoryState.EditProductCategoryState;
 import com.example.shoppinglistapplication.R;
 import com.example.shoppinglistapplication.adapter.CategoryListAdapter;
 import com.example.shoppinglistapplication.viewmodel.CategoryViewModel;

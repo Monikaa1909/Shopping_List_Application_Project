@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.example.shoppinglistapplication.ItemState.CategoryState.AddCategoryToIngredientsNewDishState;
+import com.example.shoppinglistapplication.itemState.categoryState.AddCategoryToIngredientsNewDishState;
 import com.example.shoppinglistapplication.R;
 import com.example.shoppinglistapplication.adapter.CategoryListAdapter;
 import com.example.shoppinglistapplication.viewmodel.CategoryViewModel;

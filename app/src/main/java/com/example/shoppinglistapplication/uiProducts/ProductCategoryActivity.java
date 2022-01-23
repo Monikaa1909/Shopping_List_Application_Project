@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.shoppinglistapplication.ItemState.CategoryState.CategoryNoActionState;
+import com.example.shoppinglistapplication.itemState.categoryState.CategoryNoActionState;
 import com.example.shoppinglistapplication.R;
 import com.example.shoppinglistapplication.adapter.CategoryListAdapter;
 import com.example.shoppinglistapplication.entity.Category;

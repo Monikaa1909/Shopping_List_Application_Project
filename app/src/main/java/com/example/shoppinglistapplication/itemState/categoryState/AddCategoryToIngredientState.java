@@ -1,4 +1,4 @@
-package com.example.shoppinglistapplication.ItemState.CategoryState;
+package com.example.shoppinglistapplication.itemState.categoryState;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,7 +10,6 @@ import com.example.shoppinglistapplication.R;
 import com.example.shoppinglistapplication.uiDishes.IngredientsDishActivity;
 import com.example.shoppinglistapplication.uiDishes.NewDishDetailActivity2;
 import com.example.shoppinglistapplication.viewholder.CategoryViewHolder;
-import com.example.shoppinglistapplication.viewholder.ProductViewHolder;
 
 public class AddCategoryToIngredientState implements ICategoryState {
 

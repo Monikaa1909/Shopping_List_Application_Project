@@ -12,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 //import com.example.shoppinglistapplication.adapterholder.CategoryListAdapter;
-import com.example.shoppinglistapplication.ItemState.CategoryState.CategoryToShowDetailState;
+import com.example.shoppinglistapplication.itemState.categoryState.CategoryToShowDetailState;
 import com.example.shoppinglistapplication.R;
 import com.example.shoppinglistapplication.adapter.CategoryListAdapter;
 import com.example.shoppinglistapplication.viewmodel.CategoryViewModel;

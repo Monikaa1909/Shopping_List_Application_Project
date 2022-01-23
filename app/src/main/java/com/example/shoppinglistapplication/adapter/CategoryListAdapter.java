@@ -6,9 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 
-import com.example.shoppinglistapplication.ItemState.CategoryState.ICategoryState;
+import com.example.shoppinglistapplication.itemState.categoryState.ICategoryState;
 import com.example.shoppinglistapplication.entity.Category;
-import com.example.shoppinglistapplication.builder.productBuilder.SimpleProductBuilder;
 import com.example.shoppinglistapplication.viewholder.CategoryViewHolder;
 
 public class CategoryListAdapter extends ListAdapter<Category, CategoryViewHolder> {

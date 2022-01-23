@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.example.shoppinglistapplication.ItemState.ProductState.AddProductToDishState;
+import com.example.shoppinglistapplication.itemState.productState.AddProductToDishState;
 import com.example.shoppinglistapplication.R;
 import com.example.shoppinglistapplication.adapter.ProductListAdapter;
 import com.example.shoppinglistapplication.entity.Product;
